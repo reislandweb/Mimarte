@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   VARIABLES CSS GLOBALES
+   Modifica aquí para cambiar fuentes y colores base globalmente
+───────────────────────────────────────────────────────────── */
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+:root {
+  /* PRIMARY */
+  --primary-100: #faeadc;
+  --primary-200: #f3d0b5;
+  --primary-300: #e8ad80;
+  --primary-400: #dc8449;
+  --primary-500: #d4693a;
+  --primary-600: #c5572e;
+  --primary-700: #a44227;
+
+  /* NUDE */
+  --nude-50:  #faf7f4;
+  --nude-100: #f3ede6;
+  --nude-200: #e6d9cc;
+  --nude-300: #d4bfac;
+  --nude-400: #bc9e87;
+  --nude-500: #a98470;
+  --nude-600: #9b7362;
+  --nude-900: #2a201c;
+
+  /* DARK */
+  --dark: #1a1614;
+}
+
+
+html {
+  scroll-behavior: auto; /* Lenis maneja el scroll suave, no el nativo */
+}
+
+/* Cursor personalizado — oculta el cursor del sistema en desktop */
+@media (hover: hover) {
+  * { cursor: none; }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #de8520; }
+::-webkit-scrollbar-thumb { background: #080300; border-radius: 2px; }
+
+/* Utilidad para secciones que van sobre el canvas 3D */
+@layer utilities {
+  .section-content {
+    position: relative;
+    z-index: 10; /* Por encima del canvas Three.js que está en z-index: 0 */
+  }
+}
+
+/* SECCION DE HERO */
+.subtitle {
+  font-size: 20px;
+  font-family: sans-serif;
+  color: var(--primary-700);
+}
