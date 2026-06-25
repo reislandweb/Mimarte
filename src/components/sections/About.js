@@ -25,20 +25,15 @@ export default function About() {
           <span className="font-body text-xs tracking-[0.3em] uppercase text-primary-500 mb-4 block">
             Nuestro espacio {/* MODIFICA: subtítulo de sección */}
           </span>
-          <h2 className="font-display text-5xl md:text-6xl font-light leading-tight mb-8 text-dark">
-            Belleza que<br />
-            <em className="italic text-primary-500">cuida de ti</em> {/* MODIFICA: título */}
+          <h2 className="font-display text-5xl md:text-3xl font-light leading-tight mb-8 text-dark">
+            ¿QUIEN SOY?<br />
+            
           </h2>
           <p className="font-body text-dark/70 leading-relaxed mb-5 text-base">
             {/* MODIFICA: primer párrafo descriptivo */}
-            En nuestro centro de Zaragoza, te recibimos con las manos abiertas.
-            Cuidarse es un placer y también una necesidad, y aquí te ofrecemos los mejores
-            tratamientos con tecnología avanzada y productos de primera calidad.
-          </p>
-          <p className="font-body text-dark/70 leading-relaxed mb-10 text-base">
-            {/* MODIFICA: segundo párrafo */}
-            Nuestro equipo de profesionales especializadas cuidará de ti y te ayudará a
-            ofrecer tu mejor versión cada día.
+            Soy Dayana, esteticista apasionada y perfeccionista, formada en Arte-Miss en Zaragoza. Con varios años de experiencia en el sector de la estética, me he especializado en técnicas avanzadas como la maderoterapia y el dermapen, buscando siempre ofrecer tratamientos con resultados visibles y bienestar garantizado.
+Creo firmemente que todos merecemos dedicar tiempo a nuestro bienestar y embellecer nuestra piel de manera natural. Mi enfoque es completamente personalizado, siempre escuchando a cada cliente y adaptando los tratamientos a sus necesidades específicas. Mi misión es que cada persona que pase por Mimarte Estética no solo vea mejoras estéticas, sino que también se sienta cuidada, relajada y renovada.
+Mi compromiso es ofrecer lo mejor de mí, brindando un servicio profesional, cercano y de alta calidad, donde tu satisfacción y bienestar sean siempre mi prioridad.
           </p>
 
           {/* Stats — modifica el array STATS arriba */}
@@ -59,7 +54,7 @@ export default function About() {
           <div className="aspect-[3/4] overflow-hidden bg-nude-200">
             <div className="w-full h-full transition-transform duration-700 hover:scale-105"
               style={{
-                backgroundImage: 'url(/images/about.jpg)',
+                backgroundImage: 'url(/images/Dayana.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}

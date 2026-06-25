@@ -10,7 +10,6 @@ const LINKS = [
   { label: 'Inicio',       href: '#inicio' },
   { label: 'Nosotros',     href: '#nosotros' },
   { label: 'Tratamientos', href: '#tratamientos' },
-  { label: 'Indiba',       href: '#indiba' },
   { label: 'Bonos',        href: '#bonos' },
   { label: 'Productos',    href: '#productos' },
   { label: 'Contacto',     href: '#contacto' },

@@ -24,7 +24,7 @@ const dmSans = DM_Sans({
 // SEO METADATA — modifica aquí los textos que ve Google
 // ─────────────────────────────────────────────────────────────
 export const metadata = {
-  title: 'Centro de Belleza y Salud | Zaragoza',
+  title: 'Mimarte Estética | Bienestar facial y corporal Zaragoza',
   description: 'Centro de estética en Zaragoza. Tratamientos faciales, corporales, Indiba, depilación láser y más.',
   keywords: ['centro de belleza', 'estética Zaragoza', 'tratamientos faciales', 'Indiba', 'depilación láser'],
   openGraph: {
