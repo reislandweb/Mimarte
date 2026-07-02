@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import '../css/Hero.css' // Conectamos tu hoja de estilos pura
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,10 +20,10 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       // Entrada en cascada al cargar la página
       const tl = gsap.timeline({ delay: 0.8 })
-      tl.from(tagRef.current,  { y: 30, opacity: 1, duration: 0.8, ease: 'power3.out' })
+      tl.from(tagRef.current,  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' })
         .from(h1Ref.current,   { y: 80, opacity: 0, duration: 1.2, ease: 'power4.out' }, '-=0.5')
         .from(paraRef.current, { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
-        .from(ctaRef.current,  { y: 30, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+        .from(ctaRef.current,  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .from(scrollRef.current, { opacity: 0, duration: 0.6 }, '-=0.3')
 
       // Parallax de la imagen de fondo al hacer scroll
@@ -42,66 +43,51 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="inicio" ref={sectionRef}
-      className="section-content relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* ── IMAGEN DE FONDO con parallax
-          Reemplaza /images/hero-bg.jpg con la foto real de tu clienta
-          Tamaño recomendado: 1920x1080px mínimo, formato .webp para rendimiento */}
-      <div ref={bgRef} className="absolute inset-0 scale-110"
-        style={{
-          backgroundImage: 'url(/images/hero-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+    <section id="inicio" ref={sectionRef} className="section-content heroSection">
+      {/* ── IMAGEN DE FONDO con parallax */}
+      <div 
+        ref={bgRef} 
+        className="heroBg"
+        style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
       />
 
-      {/* Overlay degradado — ajusta los colores del gradiente aquí */}
-      <div className="absolute inset-0"
-        style={{ background: 'linear-gradient(to bottom, rgba(214, 105, 50, 0.5) 0%, rgba(26,22,20,0.2) 50%, rgba(253, 253, 253, 0) 100%)' }}
-      />
+      {/* Overlay degradado elegante */}
+      <div className="heroOverlay" />
 
       {/* ── CONTENIDO PRINCIPAL */}
-      <div className="relative section-content text-center px-6 max-w-5xl mx-auto pt-24">
+      <div className="heroContent">
 
-        {/* Subtítulo superior — modifica el texto */}
-        <p ref={tagRef} className="subtitle">
-          Centro de Belleza y Salud · Zaragoza {/* MODIFICA: ciudad o tagline */}
-        </p>
+        {/* Subtítulo superior */}
+        <span ref={tagRef} className="heroTagline">
+          Centro de Belleza y Salud · Zaragoza
+        </span>
 
-        {/* Título principal — modifica el copy */}
-        <h1 ref={h1Ref}
-          className="font-display text-6xl md:text-8xl lg:text-[7rem] font-light text-white leading-[0.9] mb-8"
-        >
+        {/* Título principal */}
+        <h1 ref={h1Ref} className="heroTitle">
           Cuídate.<br />
-          <em className="italic text-primary-500">Merécetelo.</em> {/* MODIFICA: claim principal */}
+          <em>Merécetelo.</em>
         </h1>
 
         {/* Descripción corta */}
-        <p ref={paraRef} className="font-body text-lg md:text-xl text-blue max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+        <p ref={paraRef} className="heroDescription">
           Tratamientos de belleza y bienestar con la mejor tecnología
-          y un cuidado completamente personalizado. {/* MODIFICA: descripción */}
+          y un cuidado completamente personalizado.
         </p>
 
         {/* Botones CTA */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#tratamientos"
-            className="font-body text-xs tracking-widest uppercase bg-primary-500 text-white px-8 py-4 hover:bg-primary-600 transition-colors duration-300"
-          >
+        <div ref={ctaRef} className="heroCtaWrapper">
+          <a href="#tratamientos" className="btnHeroPrimary">
             Ver tratamientos
           </a>
-          <a href="#contacto"
-            className="font-body text-xs tracking-widest uppercase border border-black text-black px-8 py-4 hover:bg-white hover:text-dark transition-colors duration-300"
-          >
+          <a href="#contacto" className="btnHeroSecondary">
             Reservar cita
           </a>
         </div>
       </div>
 
       {/* ── SCROLL HINT animado */}
-      <div ref={scrollRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
-        <span className="font-body text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-14 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
+      <div ref={scrollRef} className="scrollHint">
+        <div className="scrollLine" />
       </div>
     </section>
   )

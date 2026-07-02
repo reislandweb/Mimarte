@@ -1,0 +1,192 @@
+/* src/components/css/Treatments.css */
+
+.treatmentsSection {
+    padding: 128px 24px;
+    width: 100%;
+    background-color: var(--mimarte-bg);
+}
+
+.treatmentsContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Cabecera */
+.treatmentsHeader {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.treatmentsSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.treatmentsTitle {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0;
+}
+
+.treatmentsTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary);
+}
+
+/* Selector de Categorías (Tabs) */
+.treatmentsTabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 56px;
+}
+
+.tabBtn {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--mimarte-text);
+    border: 1px solid var(--mimarte-primary-light);
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tabBtn:hover {
+    border-color: var(--mimarte-primary);
+    color: var(--mimarte-primary-dark);
+}
+
+.tabBtn.active {
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    border-color: var(--mimarte-primary);
+}
+
+/* Rejilla de Tarjetas */
+.treatmentsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .treatmentsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .treatmentsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tarjeta de Servicio Individual */
+.treatmentCard {
+    background-color: var(--mimarte-white);
+    border: 1px solid rgba(195, 154, 131, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+.treatmentCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(26, 22, 20, 0.05);
+    border-color: var(--mimarte-primary-light);
+}
+
+/* Imagen del servicio */
+.treatmentImageWrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--mimarte-bg);
+}
+
+.treatmentImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.treatmentCard:hover .treatmentImage {
+    transform: scale(1.04);
+}
+
+/* Cuerpo de la tarjeta */
+.treatmentBody {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.treatmentCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.treatmentItemTitle {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.treatmentPrice {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--mimarte-primary-dark);
+    white-space: nowrap;
+}
+
+.treatmentCardDesc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mimarte-text);
+    opacity: 0.75;
+    margin: 0 0 24px 0;
+    flex-grow: 1;
+}
+
+/* Enlace/Acción interno */
+.treatmentFooterLink {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease;
+    margin-top: auto;
+}
+
+.treatmentCard:hover .treatmentFooterLink {
+    color: var(--mimarte-primary-dark);
+}

@@ -573,7 +573,7 @@ html,
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
      tab-size: 4; /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-family: var(--font-geist-sans), sans-serif; /* 4 */
   font-feature-settings: normal; /* 5 */
   font-variation-settings: normal; /* 6 */
   -webkit-tap-highlight-color: transparent; /* 7 */
@@ -653,7 +653,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-family: var(--font-geist-mono), monospace; /* 1 */
   font-feature-settings: normal; /* 2 */
   font-variation-settings: normal; /* 3 */
   font-size: 1em; /* 4 */
@@ -929,6 +929,39 @@ video {
 /* Make elements with the HTML hidden attribute stay hidden by default */
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
+}
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
 }
 .fixed {
   position: fixed;
@@ -1252,59 +1285,11 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
 }
-.border-nude-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(230 217 204 / var(--tw-border-opacity, 1));
-}
-.border-nude-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(212 191 172 / var(--tw-border-opacity, 1));
-}
-.border-primary-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(212 105 58 / var(--tw-border-opacity, 1));
-}
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
 }
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
-}
-.bg-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(26 22 20 / var(--tw-bg-opacity, 1));
-}
-.bg-nude-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 237 230 / var(--tw-bg-opacity, 1));
-}
-.bg-nude-100\/80 {
-  background-color: rgb(243 237 230 / 0.8);
-}
-.bg-nude-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(230 217 204 / var(--tw-bg-opacity, 1));
-}
-.bg-nude-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 247 244 / var(--tw-bg-opacity, 1));
-}
-.bg-nude-50\/80 {
-  background-color: rgb(250 247 244 / 0.8);
-}
-.bg-nude-50\/95 {
-  background-color: rgb(250 247 244 / 0.95);
-}
-.bg-nude-900\/90 {
-  background-color: rgb(42 32 28 / 0.9);
-}
-.bg-primary-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 234 220 / var(--tw-bg-opacity, 1));
-}
-.bg-primary-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(212 105 58 / var(--tw-bg-opacity, 1));
 }
 .bg-transparent {
   background-color: transparent;
@@ -1411,12 +1396,6 @@ video {
 .text-center {
   text-align: center;
 }
-.font-body {
-  font-family: var(--font-body), sans-serif;
-}
-.font-display {
-  font-family: var(--font-display), serif;
-}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1491,34 +1470,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
-.text-dark {
-  --tw-text-opacity: 1;
-  color: rgb(26 22 20 / var(--tw-text-opacity, 1));
-}
-.text-dark\/40 {
-  color: rgb(26 22 20 / 0.4);
-}
-.text-dark\/50 {
-  color: rgb(26 22 20 / 0.5);
-}
-.text-dark\/60 {
-  color: rgb(26 22 20 / 0.6);
-}
-.text-dark\/70 {
-  color: rgb(26 22 20 / 0.7);
-}
-.text-primary-300 {
-  --tw-text-opacity: 1;
-  color: rgb(232 173 128 / var(--tw-text-opacity, 1));
-}
-.text-primary-400 {
-  --tw-text-opacity: 1;
-  color: rgb(220 132 73 / var(--tw-text-opacity, 1));
-}
-.text-primary-500 {
-  --tw-text-opacity: 1;
-  color: rgb(212 105 58 / var(--tw-text-opacity, 1));
-}
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -1547,12 +1498,6 @@ video {
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.placeholder-dark\/30::-moz-placeholder {
-  color: rgb(26 22 20 / 0.3);
-}
-.placeholder-dark\/30::placeholder {
-  color: rgb(26 22 20 / 0.3);
 }
 .opacity-0 {
   opacity: 0;
@@ -1609,44 +1554,30 @@ video {
 .duration-700 {
   transition-duration: 700ms;
 }
-.section-content {
-    position: relative;
-    z-index: 10; /* Por encima del canvas Three.js que está en z-index: 0 */
-  }
 
 /* ─────────────────────────────────────────────────────────────
-   VARIABLES CSS GLOBALES
-   Modifica aquí para cambiar fuentes y colores base globalmente
+    VARIABLES CSS GLOBALES (Paleta oficial Mimarte Estética)
 ───────────────────────────────────────────────────────────── */
 :root {
+  /* Fuentes elegantes para estética */
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
-  /* PRIMARY */
-  --primary-100: #faeadc;
-  --primary-200: #f3d0b5;
-  --primary-300: #e8ad80;
-  --primary-400: #dc8449;
-  --primary-500: #d4693a;
-  --primary-600: #c5572e;
-  --primary-700: #a44227;
 
-  /* NUDE */
-  --nude-50:  #faf7f4;
-  --nude-100: #f3ede6;
-  --nude-200: #e6d9cc;
-  --nude-300: #d4bfac;
-  --nude-400: #bc9e87;
-  --nude-500: #a98470;
-  --nude-600: #9b7362;
-  --nude-900: #2a201c;
-
-  /* DARK */
-  --dark: #1a1614;
+  /* Colores reales de Mimarte Estética */
+  --mimarte-bg: #FDFBF7;           /* Fondo crema / lino suave */
+  --mimarte-text: #2F2E2C;         /* Texto principal marrón/gris oscuro */
+  --mimarte-primary: #C39A83;      /* Rosa empolvado corporativo */
+  --mimarte-primary-light: #E6C5B3;/* Rosa claro para hovers o fondos suaves */
+  --mimarte-primary-dark: #A37861; /* Rosa oscuro para títulos destacados */
+  --mimarte-accent: #D4A373;       /* Tono dorado / arena secundario */
+  --mimarte-white: #FFFFFF;        /* Blanco puro para tarjetas */
 }
-
 
 html {
   scroll-behavior: auto; /* Lenis maneja el scroll suave, no el nativo */
+  background-color: var(--mimarte-bg);
+  color: var(--mimarte-text);
+  font-family: var(--font-body);
 }
 
 /* Cursor personalizado — oculta el cursor del sistema en desktop */
@@ -1654,114 +1585,72 @@ html {
   * { cursor: none; }
 }
 
-/* Scrollbar personalizada */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #de8520; }
-::-webkit-scrollbar-thumb { background: #080300; border-radius: 2px; }
-
-/* Utilidad para secciones que van sobre el canvas 3D */
-
-/* SECCION DE HERO */
-.subtitle {
-  font-size: 20px;
-  font-family: sans-serif;
-  color: var(--primary-700);
+/* Scrollbar personalizada adaptada a Mimarte (fina y sutil) */
+::-webkit-scrollbar { 
+  width: 5px; 
+}
+::-webkit-scrollbar-track { 
+  background: var(--mimarte-bg); 
+}
+::-webkit-scrollbar-thumb { 
+  background: var(--mimarte-primary); 
+  border-radius: 30px; 
 }
 
-/*SECCION NOSOTROS*/
+/* 🔒 REGLA DE ORO: Control absoluto de capas sobre las partículas 3D */
+.section-content {
+  position: relative;
+  z-index: 10; /* Los textos y secciones se quedan SIEMPRE por encima del 3D */
+}
 
+/* Forzar que el fondo 3D (canvas) se quede en el z-index 0 o inferior */
+canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1 !important; /* Detrás de .section-content */
+  pointer-events: none; /* Permite que puedas hacer click en los botones de la web */
+}
 .hover\:-translate-y-2:hover {
   --tw-translate-y: -0.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
-.hover\:border-primary-500:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(212 105 58 / var(--tw-border-opacity, 1));
-}
-
-.hover\:bg-nude-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 237 230 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-primary-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(197 87 46 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
-
-.hover\:text-dark:hover {
-  --tw-text-opacity: 1;
-  color: rgb(26 22 20 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-primary-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(220 132 73 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-primary-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(212 105 58 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-primary-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(197 87 46 / var(--tw-text-opacity, 1));
-}
-
 .hover\:text-white\/60:hover {
   color: rgb(255 255 255 / 0.6);
 }
-
 .hover\:shadow-lg:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-
 .hover\:shadow-xl:hover {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-
-.focus\:border-primary-500:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(212 105 58 / var(--tw-border-opacity, 1));
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 .disabled\:opacity-60:disabled {
   opacity: 0.6;
 }
-
 .group:hover .group-hover\:scale-105 {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
-.group:hover .group-hover\:text-primary-500 {
-  --tw-text-opacity: 1;
-  color: rgb(212 105 58 / var(--tw-text-opacity, 1));
-}
-
 @media (min-width: 640px) {
 
   .sm\:grid-cols-2 {
@@ -1772,7 +1661,6 @@ html {
     flex-direction: row;
   }
 }
-
 @media (min-width: 768px) {
 
   .md\:grid-cols-2 {
@@ -1807,7 +1695,6 @@ html {
     line-height: 1.75rem;
   }
 }
-
 @media (min-width: 1024px) {
 
   .lg\:order-1 {
@@ -1842,12 +1729,9 @@ html {
     font-size: 7rem;
   }
 }
-
 @media (min-width: 1280px) {
 
   .xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-
-

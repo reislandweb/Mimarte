@@ -1,0 +1,152 @@
+/* src/components/css/Indiba.css */
+
+.indibaSection {
+    padding: 128px 24px;
+    width: 100%;
+    background-color: var(--mimarte-bg);
+    /* Se integra perfectamente con el fondo de la web */
+}
+
+.indibaContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Distribución en dos columnas */
+.indibaGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .indibaGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+    }
+}
+
+/* Columna de Imagen / Contenedor Visual */
+.indibaVisual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+@media (min-width: 768px) {
+    .indibaVisual {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+.indibaImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.indibaVisual:hover .indibaImage {
+    transform: scale(1.03);
+}
+
+/* Columna de Texto */
+.indibaContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.indibaSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.indibaTitle {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--mimarte-text);
+    margin: 0 0 24px 0;
+}
+
+@media (min-width: 768px) {
+    .indibaTitle {
+        font-size: 48px;
+    }
+}
+
+.indibaTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary);
+}
+
+.indibaDesc {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--mimarte-text);
+    opacity: 0.8;
+    margin: 0 0 32px 0;
+}
+
+/* Beneficios */
+.indibaBenefits {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.indibaBenefitItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.indibaCheck {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--mimarte-primary);
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.indibaBenefitText {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-text);
+    line-height: 1.5;
+}
+
+.indibaBenefitText strong {
+    font-weight: 500;
+    color: var(--mimarte-primary-dark);
+}
+
+/* Botón de Acción */
+.btnIndiba {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 16px 32px;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+}
+
+.btnIndiba:hover {
+    background-color: var(--mimarte-primary-dark);
+}

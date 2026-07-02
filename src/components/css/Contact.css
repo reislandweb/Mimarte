@@ -1,0 +1,289 @@
+/* src/components/css/Contact.css */
+
+.contactSection {
+    padding: 128px 24px;
+    width: 100%;
+}
+
+.contactContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Cabecera */
+.contactHeader {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.contactSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.contactTitle {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0;
+}
+
+.contactTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary);
+}
+
+/* Distribución del Grid */
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+}
+
+@media (min-width: 1024px) {
+    .contactGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Formulario */
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.doubleGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    width: 100%;
+    border: 1px solid var(--mimarte-primary-light);
+    background-color: transparent;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-text);
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.formSelect {
+    background-color: var(--mimarte-white);
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+    outline: none;
+    border-color: var(--mimarte-primary);
+}
+
+.formTextarea {
+    resize: none;
+}
+
+.btnSubmit {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 16px 0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnSubmit:hover:not(:disabled) {
+    background-color: var(--mimarte-primary-dark);
+}
+
+.btnSubmit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.privacyNotice {
+    font-family: var(--font-body);
+    font-size: 11px;
+    text-align: center;
+    color: var(--mimarte-text);
+    opacity: 0.5;
+}
+
+.privacyNotice a {
+    color: var(--mimarte-text);
+    text-decoration: underline;
+}
+
+.privacyNotice a:hover {
+    color: var(--mimarte-primary);
+}
+
+/* Pantalla de Éxito */
+.successWrapper {
+    display: flex;
+    flex-direction: column;
+    items-align: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 0;
+    height: 100%;
+}
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--mimarte-primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--mimarte-primary-dark);
+    font-size: 24px;
+}
+
+.successTitle {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0 0 12px 0;
+}
+
+.successDesc {
+    font-family: var(--font-body);
+    color: var(--mimarte-text);
+    opacity: 0.6;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Bloques de Información de la Derecha */
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.infoBlockTitle {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0 0 24px 0;
+}
+
+.infoDataWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.infoText {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.infoLabel {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    display: block;
+    margin-bottom: 2px;
+    opacity: 0.5;
+}
+
+.infoText a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.infoText a:hover {
+    color: var(--mimarte-primary);
+}
+
+/* Horarios */
+.hoursRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-b: 1px solid var(--mimarte-primary-light);
+    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
+}
+
+.hoursDays {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.6;
+}
+
+.hoursTime {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-text);
+}
+
+/* Redes Sociales */
+.socialsRow {
+    display: flex;
+    gap: 16px;
+}
+
+.socialBtn {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--mimarte-primary-light);
+    padding: 8px 16px;
+    color: var(--mimarte-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.socialBtn:hover {
+    border-color: var(--mimarte-primary);
+    color: var(--mimarte-primary);
+}

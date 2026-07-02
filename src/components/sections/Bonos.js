@@ -4,13 +4,10 @@ import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import '../css/Bonos.css' // Conexión directa a tus estilos puros
 
 gsap.registerPlugin(ScrollTrigger)
 
-// ─────────────────────────────────────────────────────────────
-// BONOS — modifica este array para cambiar precios y contenido
-// featured: true → destaca esa card (fondo oscuro)
-// ─────────────────────────────────────────────────────────────
 const BONOS = [
   {
     name: 'Bono Básico',
@@ -27,7 +24,7 @@ const BONOS = [
     treatment: 'Facial + Corporal',
     price: 229,
     features: ['6 sesiones de 90 min', 'Diagnóstico completo', 'Productos premium', 'Consulta nutricional'],
-    featured: true,   // <- ESTA CARD SE DESTACA
+    featured: true,
     cta: 'El más popular',
   },
   {
@@ -78,72 +75,65 @@ export default function Bonos() {
   }, [])
 
   return (
-    <section id="bonos" className="section-content py-32 px-6 bg-nude-900/90 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto">
+    <section id="bonos" className="section-content bonosSection">
+      <div className="bonosContainer">
 
         {/* ── CABECERA */}
-        <div ref={titleRef} className="text-center mb-20">
-          <span className="font-body text-xs tracking-[0.3em] uppercase text-primary-300 mb-4 block">
+        <div ref={titleRef} className="headerText">
+          <span className="bonosSubtitle">
             Ahorra con nuestros bonos
           </span>
-          <h2 className="font-display text-5xl md:text-6xl font-light text-white">
-            Bonos <em className="italic text-primary-400">especiales</em>
+          <h2 className="bonosTitle">
+            Bonos <em>especiales</em>
           </h2>
-          <p className="font-body text-white/60 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
-            {/* MODIFICA: descripción de bonos */}
+          <p className="bonosDesc">
             Consigue el mejor precio comprometiéndote con tu bienestar. Todos los bonos son nominales e intransferibles.
           </p>
         </div>
 
         {/* ── GRID DE BONOS */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div ref={cardsRef} className="bonosGrid">
           {BONOS.map((bono) => (
-            <div key={bono.name}
-              className={`bono-card flex flex-col p-8 transition-transform duration-300 hover:-translate-y-2 ${
-                bono.featured
-                  ? 'bg-primary-500 text-white'   /* Card destacada */
-                  : 'bg-white text-dark'           /* Cards normales */
-              }`}
+            <div 
+              key={bono.name}
+              className={`bono-card bonoCard ${bono.featured ? 'cardFeatured' : 'cardNormal'}`}
             >
               {bono.featured && (
-                <span className="font-body text-xs tracking-widest uppercase bg-white/20 text-white px-3 py-1 self-start mb-4">
+                <span className="tagPopular">
                   Más popular
                 </span>
               )}
 
-              <p className={`font-body text-xs tracking-widest uppercase mb-1 ${bono.featured ? 'text-white/70' : 'text-primary-500'}`}>
+              <p className={`sessionsTag ${bono.featured ? 'sessionsFeatured' : 'sessionsNormal'}`}>
                 {bono.sessions} sesiones
               </p>
-              <h3 className={`font-display text-2xl font-light mb-1 ${bono.featured ? 'text-white' : 'text-dark'}`}>
+              <h3 className="cardTitle">
                 {bono.name}
               </h3>
-              <p className={`font-body text-xs mb-6 ${bono.featured ? 'text-white/70' : 'text-dark/50'}`}>
+              <p className="cardTreatment">
                 {bono.treatment}
               </p>
 
               {/* Precio */}
-              <div className="mb-6">
-                <span className={`font-display text-5xl font-light ${bono.featured ? 'text-white' : 'text-primary-500'}`}>
+              <div className="priceWrapper">
+                <span className={`priceText ${bono.featured ? 'priceFeatured' : 'priceNormal'}`}>
                   {bono.price}€
                 </span>
               </div>
 
               {/* Features */}
-              <ul className="space-y-2 mb-8 flex-grow">
+              <ul className="featuresList">
                 {bono.features.map(f => (
-                  <li key={f} className={`font-body text-xs flex items-start gap-2 ${bono.featured ? 'text-white/80' : 'text-dark/60'}`}>
-                    <span className={`mt-0.5 flex-shrink-0 ${bono.featured ? 'text-white' : 'text-primary-500'}`}>✓</span>
+                  <li key={f} className={`featureItem ${bono.featured ? 'featureFeatured' : 'featureNormal'}`}>
+                    <span className={`checkIcon ${bono.featured ? 'checkFeatured' : 'checkNormal'}`}>✓</span>
                     {f}
                   </li>
                 ))}
               </ul>
 
-              <a href="#contacto"
-                className={`font-body text-xs tracking-widest uppercase text-center py-3 transition-colors duration-300 ${
-                  bono.featured
-                    ? 'bg-white text-primary-500 hover:bg-nude-100'
-                    : 'bg-primary-500 text-white hover:bg-primary-600'
-                }`}
+              <a 
+                href="#contacto"
+                className={`btnBono ${bono.featured ? 'btnFeatured' : 'btnNormal'}`}
               >
                 {bono.cta}
               </a>
@@ -152,8 +142,8 @@ export default function Bonos() {
         </div>
 
         {/* Nota legal */}
-        <p className="font-body text-xs text-white/40 text-center mt-8">
-          * Los precios no incluyen IVA. Bonos válidos 12 meses desde la fecha de compra. {/* MODIFICA */}
+        <p className="bonosNotice">
+          * Los precios no incluyen IVA. Bonos válidos 12 meses desde la fecha de compra.
         </p>
 
       </div>

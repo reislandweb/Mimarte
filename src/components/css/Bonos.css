@@ -1,0 +1,217 @@
+/* src/components/css/Bonos.css */
+
+.bonosSection {
+    padding: 128px 24px;
+    width: 100%;
+}
+
+.bonosContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Cabecera */
+.headerText {
+    text-center: center;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.bonosSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.bonosTitle {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0;
+}
+
+.bonosTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary);
+}
+
+.bonosDesc {
+    font-family: var(--font-body);
+    color: var(--mimarte-text);
+    opacity: 0.7;
+    margin: 16px auto 0 auto;
+    max-width: 576px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Grid de tarjetas */
+.bonosGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 640px) {
+    .bonosGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .bonosGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Estructura Base de las Cards */
+.bonoCard {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+.bonoCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(195, 154, 131, 0.15);
+}
+
+/* Card Normal (No destacada) */
+.cardNormal {
+    background-color: var(--mimarte-white);
+    color: var(--mimarte-text);
+}
+
+/* Card Destacada (Popular) */
+.cardFeatured {
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    border-color: var(--mimarte-primary);
+}
+
+/* Elementos internos de las tarjetas */
+.tagPopular {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--mimarte-white);
+    padding: 4px 12px;
+    align-self: flex-start;
+    margin-bottom: 16px;
+}
+
+.sessionsTag {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.sessionsNormal { color: var(--mimarte-primary-dark); }
+.sessionsFeatured { color: rgba(255, 255, 255, 0.8); }
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 300;
+    margin: 0 0 4px 0;
+}
+
+.cardTreatment {
+    font-family: var(--font-body);
+    font-size: 12px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+}
+
+/* Precio */
+.priceWrapper {
+    margin-bottom: 24px;
+}
+
+.priceText {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+}
+
+.priceNormal { color: var(--mimarte-primary); }
+.priceFeatured { color: var(--mimarte-white); }
+
+/* Lista de características */
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.featureItem {
+    font-family: var(--font-body);
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.featureNormal { color: rgba(47, 46, 44, 0.75); }
+.featureFeatured { color: rgba(255, 255, 255, 0.9); }
+
+.checkIcon {
+    font-weight: bold;
+}
+.checkNormal { color: var(--mimarte-primary); }
+.checkFeatured { color: var(--mimarte-white); }
+
+/* Botones de acción (CTA) */
+.btnBono {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-center: center;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btnNormal {
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+}
+.btnNormal:hover {
+    background-color: var(--mimarte-primary-dark);
+}
+
+.btnFeatured {
+    background-color: var(--mimarte-white);
+    color: var(--mimarte-primary);
+}
+.btnFeatured:hover {
+    background-color: var(--mimarte-bg);
+}
+
+/* Nota inferior */
+.bonosNotice {
+    font-family: var(--font-body);
+    font-size: 11px;
+    text-align: center;
+    margin-top: 32px;
+    color: var(--mimarte-text);
+    opacity: 0.5;
+}

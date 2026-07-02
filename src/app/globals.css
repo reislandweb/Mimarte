@@ -3,40 +3,28 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   VARIABLES CSS GLOBALES
-   Modifica aquí para cambiar fuentes y colores base globalmente
+    VARIABLES CSS GLOBALES (Paleta oficial Mimarte Estética)
 ───────────────────────────────────────────────────────────── */
 :root {
+  /* Fuentes elegantes para estética */
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
+
+  /* Colores reales de Mimarte Estética */
+  --mimarte-bg: #FDFBF7;           /* Fondo crema / lino suave */
+  --mimarte-text: #2F2E2C;         /* Texto principal marrón/gris oscuro */
+  --mimarte-primary: #C39A83;      /* Rosa empolvado corporativo */
+  --mimarte-primary-light: #E6C5B3;/* Rosa claro para hovers o fondos suaves */
+  --mimarte-primary-dark: #A37861; /* Rosa oscuro para títulos destacados */
+  --mimarte-accent: #D4A373;       /* Tono dorado / arena secundario */
+  --mimarte-white: #FFFFFF;        /* Blanco puro para tarjetas */
 }
-:root {
-  /* PRIMARY */
-  --primary-100: #faeadc;
-  --primary-200: #f3d0b5;
-  --primary-300: #e8ad80;
-  --primary-400: #dc8449;
-  --primary-500: #d4693a;
-  --primary-600: #c5572e;
-  --primary-700: #a44227;
-
-  /* NUDE */
-  --nude-50:  #faf7f4;
-  --nude-100: #f3ede6;
-  --nude-200: #e6d9cc;
-  --nude-300: #d4bfac;
-  --nude-400: #bc9e87;
-  --nude-500: #a98470;
-  --nude-600: #9b7362;
-  --nude-900: #2a201c;
-
-  /* DARK */
-  --dark: #1a1614;
-}
-
 
 html {
   scroll-behavior: auto; /* Lenis maneja el scroll suave, no el nativo */
+  background-color: var(--mimarte-bg);
+  color: var(--mimarte-text);
+  font-family: var(--font-body);
 }
 
 /* Cursor personalizado — oculta el cursor del sistema en desktop */
@@ -44,25 +32,31 @@ html {
   * { cursor: none; }
 }
 
-/* Scrollbar personalizada */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #de8520; }
-::-webkit-scrollbar-thumb { background: #080300; border-radius: 2px; }
-
-/* Utilidad para secciones que van sobre el canvas 3D */
-@layer utilities {
-  .section-content {
-    position: relative;
-    z-index: 10; /* Por encima del canvas Three.js que está en z-index: 0 */
-  }
+/* Scrollbar personalizada adaptada a Mimarte (fina y sutil) */
+::-webkit-scrollbar { 
+  width: 5px; 
+}
+::-webkit-scrollbar-track { 
+  background: var(--mimarte-bg); 
+}
+::-webkit-scrollbar-thumb { 
+  background: var(--mimarte-primary); 
+  border-radius: 30px; 
 }
 
-/* SECCION DE HERO */
-.subtitle {
-  font-size: 20px;
-  font-family: sans-serif;
-  color: var(--primary-700);
+/* 🔒 REGLA DE ORO: Control absoluto de capas sobre las partículas 3D */
+.section-content {
+  position: relative;
+  z-index: 10; /* Los textos y secciones se quedan SIEMPRE por encima del 3D */
 }
 
-/*SECCION NOSOTROS*/
-
+/* Forzar que el fondo 3D (canvas) se quede en el z-index 0 o inferior */
+canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1 !important; /* Detrás de .section-content */
+  pointer-events: none; /* Permite que puedas hacer click en los botones de la web */
+}
