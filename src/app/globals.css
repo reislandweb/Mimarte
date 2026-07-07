@@ -11,43 +11,63 @@
   --font-body: 'DM Sans', sans-serif;
 
   /* Colores reales de Mimarte Estética */
-  --mimarte-bg: #FDFBF7;           /* Fondo crema / lino suave */
-  --mimarte-text: #2F2E2C;         /* Texto principal marrón/gris oscuro */
-  --mimarte-primary: #C39A83;      /* Rosa empolvado corporativo */
-  --mimarte-primary-light: #E6C5B3;/* Rosa claro para hovers o fondos suaves */
-  --mimarte-primary-dark: #A37861; /* Rosa oscuro para títulos destacados */
-  --mimarte-accent: #D4A373;       /* Tono dorado / arena secundario */
-  --mimarte-white: #FFFFFF;        /* Blanco puro para tarjetas */
+  --mimarte-bg: #FDFBF7;
+  /* Fondo crema / lino suave */
+  --mimarte-text: #2F2E2C;
+  /* Texto principal marrón/gris oscuro */
+  --mimarte-primary: #C39A83;
+  /* Rosa empolvado corporativo */
+  --mimarte-primary-light: #E6C5B3;
+  /* Rosa claro para hovers o fondos suaves */
+  --mimarte-primary-dark: #A37861;
+  /* Rosa oscuro para títulos destacados */
+  --mimarte-accent: #D4A373;
+  /* Tono dorado / arena secundario */
+  --mimarte-white: #FFFFFF;
+  /* Blanco puro para tarjetas */
 }
 
 html {
-  scroll-behavior: auto; /* Lenis maneja el scroll suave, no el nativo */
+  scroll-behavior: auto;
+  /* Lenis maneja el scroll suave, no el nativo */
   background-color: var(--mimarte-bg);
   color: var(--mimarte-text);
   font-family: var(--font-body);
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  /* Esto corta de raíz cualquier barra de scroll lateral rebelde */
+}
+
 /* Cursor personalizado — oculta el cursor del sistema en desktop */
 @media (hover: hover) {
-  * { cursor: none; }
+  * {
+    cursor: none;
+  }
 }
 
 /* Scrollbar personalizada adaptada a Mimarte (fina y sutil) */
-::-webkit-scrollbar { 
-  width: 5px; 
+::-webkit-scrollbar {
+  width: 5px;
 }
-::-webkit-scrollbar-track { 
-  background: var(--mimarte-bg); 
+
+::-webkit-scrollbar-track {
+  background: var(--mimarte-bg);
 }
-::-webkit-scrollbar-thumb { 
-  background: var(--mimarte-primary); 
-  border-radius: 30px; 
+
+::-webkit-scrollbar-thumb {
+  background: var(--mimarte-primary);
+  border-radius: 30px;
 }
 
 /* 🔒 REGLA DE ORO: Control absoluto de capas sobre las partículas 3D */
 .section-content {
   position: relative;
-  z-index: 10; /* Los textos y secciones se quedan SIEMPRE por encima del 3D */
+  z-index: 10;
+  /* Los textos y secciones se quedan SIEMPRE por encima del 3D */
 }
 
 /* Forzar que el fondo 3D (canvas) se quede en el z-index 0 o inferior */
@@ -57,6 +77,8 @@ canvas {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1 !important; /* Detrás de .section-content */
-  pointer-events: none; /* Permite que puedas hacer click en los botones de la web */
+  z-index: -1 !important;
+  /* Detrás de .section-content */
+  pointer-events: none;
+  /* Permite que puedas hacer click en los botones de la web */
 }

@@ -1,98 +1,74 @@
-// ─────────────────────────────────────────────────────────────
-// FOOTER — modifica los datos de tu clienta aquí
-// ─────────────────────────────────────────────────────────────
+'use client'
 
-const FOOTER_DATA = {
-  name:    'MIMARTE & ESTETICA',                // MODIFICA: nombre del centro
-  tagline: 'Tu bienestar, nuestra misión',   // MODIFICA: tagline
-  address: 'C/ Ejemplo 00, Zaragoza', // MODIFICA
-  phone:   '976 000 000',                    // MODIFICA
-  email:   'info@tucentro.es',               // MODIFICA
-  year:    new Date().getFullYear(),
-  links: [
-    { label: 'Política de privacidad', href: '/privacidad' },
-    { label: 'Aviso legal',            href: '/aviso-legal' },
-    { label: 'Cookies',                href: '/cookies' },
-  ],
-  socials: [
-    { name: 'IG', href: 'https://www.instagram.com/mimarteestetica.zgz?igsh=d215b2hpOHBvNDJq' },  // MODIFICA
-    { name: 'FB', href: 'https://facebook.com/tucentro' },   // MODIFICA
-  ],
-}
+import '../css/Footer.css' // Enlazamos tus estilos puros libres de Tailwind
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="section-content bg-dark text-white/60 py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-
-          {/* Marca */}
-          <div>
-            <p className="font-display text-3xl font-light text-white tracking-widest uppercase mb-3">
-              {FOOTER_DATA.name}
+    <footer className="footerSection">
+      <div className="footerContainer">
+        
+        {/* ── SECCIÓN PRINCIPAL: COLUMNAS */}
+        <div className="footerGrid">
+          
+          {/* Columna 1: Branding */}
+          <div className="footerBrand">
+            <h2 className="footerLogo">
+              Mimarte<em>.</em>
+            </h2>
+            <p className="footerTagline">
+              Tu centro de confianza en Zaragoza. Espacio dedicado a la alta estética, el bienestar y el cuidado personalizado de tu piel.
             </p>
-            <p className="font-body text-sm text-white/50 leading-relaxed">
-              {FOOTER_DATA.tagline}
-            </p>
           </div>
 
-          {/* Contacto rápido */}
+          {/* Columna 2: Navegación rápida */}
           <div>
-            <p className="font-body text-xs tracking-widest uppercase text-white mb-4">Contacto</p>
-            <div className="space-y-2 font-body text-sm">
-              <p>{FOOTER_DATA.address}</p>
-              <a href={`tel:${FOOTER_DATA.phone.replace(/\s/g,'')}`}
-                className="block hover:text-primary-400 transition-colors">
-                {FOOTER_DATA.phone}
-              </a>
-              <a href={`mailto:${FOOTER_DATA.email}`}
-                className="block hover:text-primary-400 transition-colors">
-                {FOOTER_DATA.email}
-              </a>
-            </div>
+            <h3 className="footerColTitle">Explorar</h3>
+            <ul className="footerList">
+              <li><a href="#inicio" className="footerListLink">Inicio</a></li>
+              <li><a href="#sobre-mi" className="footerListLink">El Centro</a></li>
+              <li><a href="#tratamientos" className="footerListLink">Tratamientos</a></li>
+              <li><a href="#contacto" className="footerListLink">Contacto</a></li>
+            </ul>
           </div>
 
-          {/* Navegación rápida */}
+          {/* Columna 3: Horario */}
           <div>
-            <p className="font-body text-xs tracking-widest uppercase text-white mb-4">Navegación</p>
-            <div className="space-y-2">
-              {['#inicio','#nosotros','#tratamientos','#indiba','#bonos','#productos','#contacto'].map(href => (
-                <a key={href} href={href}
-                  className="font-body text-sm block hover:text-primary-400 transition-colors capitalize">
-                  {href.replace('#', '')}
-                </a>
-              ))}
-            </div>
+            <h3 className="footerColTitle">Horario</h3>
+            <ul className="footerList">
+              <li className="footerInfoText">Lunes a Viernes:</li>
+              <li className="footerInfoText" style={{ fontWeight: '500', marginBottom: '8px' }}>10:00 - 20:00</li>
+              <li className="footerInfoText">Sábados y Domingos:</li>
+              <li className="footerInfoText" style={{ fontWeight: '500' }}>Cerrado</li>
+            </ul>
           </div>
+
+          {/* Columna 4: Ubicación rápida */}
+          <div>
+            <h3 className="footerColTitle">Contacto</h3>
+            <ul className="footerList">
+              <li className="footerInfoText">Zaragoza, España</li>
+              <li><a href="tel:+34900000000" className="footerListLink">976 00 00 00</a></li>
+              <li><a href="mailto:info@mimarteestetica.com" className="footerListLink">info@mimarteestetica.com</a></li>
+            </ul>
+          </div>
+
         </div>
 
-        {/* Barra inferior */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-xs text-white/30">
-            © {FOOTER_DATA.year} {FOOTER_DATA.name}. Todos los derechos reservados.
+        {/* ── BARRA INFERIOR: COPYRIGHT & LEGAL */}
+        <div className="footerBottom">
+          <p className="footerCopy">
+            &copy; {currentYear} Mimarte Estética. Todos los derechos reservados.
           </p>
-
-          {/* Links legales */}
-          <div className="flex gap-6">
-            {FOOTER_DATA.links.map(({ label, href }) => (
-              <a key={href} href={href}
-                className="font-body text-xs text-white/30 hover:text-white/60 transition-colors">
-                {label}
-              </a>
-            ))}
-          </div>
-
-          {/* Redes */}
-          <div className="flex gap-4">
-            {FOOTER_DATA.socials.map(({ name, href }) => (
-              <a key={name} href={href} target="_blank" rel="noopener noreferrer"
-                className="font-body text-xs tracking-widest border border-white/20 px-3 py-1.5 text-white/50 hover:border-primary-500 hover:text-primary-400 transition-colors">
-                {name}
-              </a>
-            ))}
+          <div className="footerLegalLinks">
+            <a href="#politica-privacidad" className="footerLegalLink">Privacidad</a>
+            <a href="#aviso-legal" className="footerLegalLink">Aviso Legal</a>
+            <a href="#cookies" className="footerLegalLink">Cookies</a>
           </div>
         </div>
+
       </div>
     </footer>
   )
-}
+};

@@ -6,6 +6,7 @@
 .aboutSection {
     padding: 128px 24px;
     width: 100%;
+    background-color: transparent;
 }
 
 .container {
@@ -658,7 +659,6 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100%;
 }
 
 /* Imagen de fondo con parallax */
@@ -680,10 +680,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom,
-            rgba(164, 163, 162, 0) 0%,
-            rgba(48, 48, 46, 0.134) 60%,
-            var(--mimarte-bg) 100%);
+    background: transparent;
 }
 
 /* Contenedor del contenido */
@@ -910,7 +907,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    aspect-ratio: 1.5 / 1;
+    aspect-ratio: 1.5 / 1.2;
     transition: all 0.4s ease;
 }
 
@@ -1158,4 +1155,409 @@
 
 .treatmentCard:hover .treatmentFooterLink {
     color: var(--mimarte-primary-dark);
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/CustomCursor.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/CustomCursor.css */
+
+.customCursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--mimarte-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Hace que el cursor cambie sutilmente de color según el fondo, queda espectacular */
+    transition: transform 0.1s ease-out;
+}
+
+/* Clase opcional por si Claudio programó que se agrande al pasar sobre botones */
+.customCursor.hovered {
+    transform: scale(2);
+    background-color: transparent;
+    border: 1px solid var(--mimarte-primary);
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Footer.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Footer.css */
+
+.footerSection {
+    background-color: var(--mimarte-primary-dark); /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    padding: 80px 24px 32px 24px;
+    width: 100%;
+    z-index: 999;
+}
+
+.footerContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Rejilla principal del Footer */
+.footerGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .footerGrid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+/* Columna 1: Branding e Identidad */
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 16px 0;
+    font-weight: 300;
+}
+
+.footerLogo em {
+    font-style: italic;
+    color: var(--mimarte-white);
+}
+
+.footerTagline {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mimarte-white);
+    max-width: 320px;
+    margin: 0;
+}
+
+/* Estilo común para los títulos de las columnas */
+.footerColTitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 24px 0;
+    font-weight: 500;
+}
+
+/* Listas de enlaces e información */
+.footerList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerListLink {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footerListLink:hover {
+    color: var(--mimarte-white);
+    padding-left: 4px; /* Sutil efecto dinámico al pasar el ratón */
+}
+
+/* Textos estáticos de información (Horarios/Contacto) */
+.footerInfoText {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+/* ── BARRA INFERIOR (COPYRIGHT) */
+.footerBottom {
+    border-top: 1px solid rgba(195, 154, 131, 0.1);
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footerBottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footerCopy {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+.footerLegalLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.footerLegalLink {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footerLegalLink:hover {
+    color: var(--mimarte-white);
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Navbar.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Navbar.css */
+
+/* Contenedor principal de la cabecera */
+.navbarHeader {
+    transition: all 500ms ease;
+
+}
+
+/* Estado py-6 por defecto */
+.navbarHeader.notScrolled {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+/* Estado cuando se hace scroll (bg-nude-50/95 backdrop-blur-md shadow-sm py-3) */
+.navbarHeader.isScrolled {
+    background-color: rgba(253, 251, 247, 0.95);
+    /* El tono crema de Mimarte */
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* Caja interior del menú (max-w-7xl mx-auto px-6 flex items-center justify-between) */
+.navbarContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/* Enlace del Logotipo (font-display text-2xl font-light tracking-widest uppercase text-dark) */
+.navbarLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    text-decoration: none;
+}
+
+/* Navegación de escritorio (hidden lg:flex items-center gap-7) */
+.navbarMenuDesktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .navbarMenuDesktop {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+}
+
+/* Enlaces del menú (font-body text-xs tracking-widest uppercase text-dark/70 hover:text-primary-500 transition-colors duration-300) */
+.navLink {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+.navLink:hover {
+    opacity: 1;
+    color: var(--mimarte-primary);
+}
+
+/* Botón de acción Reservar Cita (font-body text-xs tracking-widest uppercase bg-primary-500 text-white px-5 py-2.5 hover:bg-primary-600 transition-colors duration-300) */
+.navCtaButton {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+.navCtaButton:hover {
+    background-color: var(--mimarte-primary-dark);
+}
+
+/* Botón Hamburguesa móvil (lg:hidden p-2) */
+.hamburgerBtn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+}
+
+@media (min-width: 1024px) {
+    .hamburgerBtn {
+        display: none;
+    }
+}
+
+/* Líneas de la hamburguesa (block w-6 h-px bg-dark mb-1.5 transition-all duration-300) */
+.hamburgerLine {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: var(--mimarte-text);
+    transition: all 300ms ease;
+}
+
+.hamburgerLine.top {
+    margin-bottom: 6px;
+}
+
+.hamburgerLine.mid {
+    margin-bottom: 6px;
+}
+
+/* Transformaciones dinámicas de la hamburguesa al abrir */
+.hamburgerLine.top.open {
+    transform: rotate(45deg) translateY(5px) translateX(5px);
+}
+
+.hamburgerLine.mid.open {
+    opacity: 0;
+}
+
+.hamburgerLine.bot.open {
+    transform: rotate(-45deg) translateY(-5px) translateX(5px);
+}
+
+/* ── MENÚ MÓVIL DESPLEGABLE */
+
+/* Contenedor colapsable (lg:hidden overflow-hidden transition-all duration-500) */
+.navbarMenuMobileCollapse {
+    display: block;
+    overflow: hidden;
+    transition: all 500ms ease;
+}
+
+@media (min-width: 1024px) {
+    .navbarMenuMobileCollapse {
+        display: none;
+    }
+}
+
+.navbarMenuMobileCollapse.closed {
+    max-height: 0;
+}
+
+.navbarMenuMobileCollapse.open {
+    max-height: 100vh;
+}
+
+/* Interior del menú móvil (bg-nude-50/98 backdrop-blur-md px-6 py-6 flex flex-col gap-5 border-t border-nude-200) */
+.navbarMenuMobileBody {
+    background-color: rgba(253, 251, 247, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+}
+
+/* Enlaces del menú móvil (font-body text-sm tracking-widest uppercase text-dark/70) */
+.navLinkMobile {
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+/* Botón CTA móvil (font-body text-sm tracking-widest uppercase bg-primary-500 text-white px-5 py-3 text-center) */
+.navCtaButtonMobile {
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Modifica o añade esto en tu Navbar.css */
+.navbarLogo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 110;
+}
+
+.navbarLogoImg {
+    height: 55px;
+    /* Tamaño generoso para que destaque, pero elegante */
+    width: auto;
+    /* Mantiene la proporción perfecta del logo sin deformarlo */
+    transition: transform 0.3s ease;
+}
+
+.navbarLogoImg:hover {
+    transform: scale(1.03);
+    /* Un sutil efecto dinámico al pasar el ratón */
+}
+
+/* Ajuste opcional: si al hacer scroll quieres que se encoja un pelín para que no ocupe tanto */
+.navbarHeader.isScrolled .navbarLogoImg {
+    height: 48px;
 }

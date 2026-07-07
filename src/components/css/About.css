@@ -3,6 +3,7 @@
 .aboutSection {
     padding: 128px 24px;
     width: 100%;
+    background-color: transparent;
 }
 
 .container {
