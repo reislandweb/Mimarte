@@ -1349,22 +1349,27 @@
 
 /* Estado py-6 por defecto */
 .navbarHeader.notScrolled {
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    height: 90px;
+    /* Le fijamos una altura máxima controlada */
+    display: flex;
+    align-items: center;
 }
 
 /* Estado cuando se hace scroll (bg-nude-50/95 backdrop-blur-md shadow-sm py-3) */
 .navbarHeader.isScrolled {
-    background-color: rgba(253, 251, 247, 0.95);
-    /* El tono crema de Mimarte */
-    backdrop-filter: blur(12px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 75px;
+    /* Más compacta al hacer scroll */
+    display: flex;
+    align-items: center;
 }
 
 /* Caja interior del menú (max-w-7xl mx-auto px-6 flex items-center justify-between) */
 .navbarContainer {
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     padding-left: 24px;
@@ -1372,7 +1377,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 /* Enlace del Logotipo (font-display text-2xl font-light tracking-widest uppercase text-dark) */
@@ -1386,9 +1390,40 @@
     text-decoration: none;
 }
 
+/* Modifica o añade esto en tu Navbar.css */
+.navbarLogo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbarLogoImg {
+    height: 15rem;
+    margin-top: -18px;
+    margin-bottom: -18px;
+}
+
+.navbarLogoImg:hover {
+    transform: scale(1.03);
+    /* Un sutil efecto dinámico al pasar el ratón */
+}
+
+/* Ajuste opcional: si al hacer scroll quieres que se encoja un pelín para que no ocupe tanto */
+.navbarHeader.isScrolled .navbarLogoImg {
+
+    height: 15rem;
+    /* Sigue siendo grande, pero se adapta al scroll */
+    margin-top: -18px;
+    margin-bottom: -18px;
+}
+
 /* Navegación de escritorio (hidden lg:flex items-center gap-7) */
 .navbarMenuDesktop {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
 @media (min-width: 1024px) {
@@ -1534,30 +1569,4 @@
     padding: 12px 20px;
     text-align: center;
     text-decoration: none;
-}
-
-/* Modifica o añade esto en tu Navbar.css */
-.navbarLogo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    z-index: 110;
-}
-
-.navbarLogoImg {
-    height: 55px;
-    /* Tamaño generoso para que destaque, pero elegante */
-    width: auto;
-    /* Mantiene la proporción perfecta del logo sin deformarlo */
-    transition: transform 0.3s ease;
-}
-
-.navbarLogoImg:hover {
-    transform: scale(1.03);
-    /* Un sutil efecto dinámico al pasar el ratón */
-}
-
-/* Ajuste opcional: si al hacer scroll quieres que se encoja un pelín para que no ocupe tanto */
-.navbarHeader.isScrolled .navbarLogoImg {
-    height: 48px;
 }

@@ -40,13 +40,9 @@ export default function Navbar() {
       <div className="navbarContainer">
 
         {/* ── LOGO */}
-        <a href="#inicio" className="navbarLogo">
-          MIMARTE ESTETICA
-        </a>
-
       <a href="#inicio" className="navbarLogo">
         <img 
-          src="/public/imagenes/logo.png" 
+          src="/images/logo.png" 
           alt="Logo Mimarte Estética" 
           className="navbarLogoImg"
         />
