@@ -24,6 +24,7 @@
     /* Más compacta al hacer scroll */
     display: flex;
     align-items: center;
+    background-color: var(--mimarte-white);
 }
 
 /* Caja interior del menú (max-w-7xl mx-auto px-6 flex items-center justify-between) */

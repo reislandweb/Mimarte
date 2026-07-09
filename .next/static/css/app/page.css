@@ -1057,26 +1057,52 @@
     }
 }
 
-/* Tarjeta de Servicio Individual */
-.treatmentCard {
-    background-color: var(--mimarte-white);
-    border: 1px solid rgba(195, 154, 131, 0.1);
+/* ── MAQUINARIA EFECTO GIRATORIO 3D (FLIP CARD) */
+.treatmentCardContainer {
+    background-color: transparent;
+    perspective: 1200px;
+    /* Crea el espacio de profundidad 3D */
+    height: 480px;
+    /* Forzamos un alto fijo estandarizado para que el giro sea perfecto */
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    /* Clave para que las dos caras coexistan en 3D */
+}
+
+/* Activación del giro al pasar el ratón */
+.treatmentCardContainer:hover .flipCardInner {
+    transform: rotateY(180deg);
+}
+
+/* Comportamiento base de ambas caras */
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Oculta la cara opuesta al girar */
+    backface-visibility: hidden;
+    border: 1px solid rgba(195, 154, 131, 0.15);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    transition: all 0.4s ease;
 }
 
-.treatmentCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(26, 22, 20, 0.05);
-    border-color: var(--mimarte-primary-light);
+/* ── CARA DELANTERA (FRONT) */
+.cardFront {
+    background-color: var(--mimarte-white);
 }
 
-/* Imagen del servicio */
 .treatmentImageWrapper {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 180px;
+    /* Alto fijo de imagen para balancear la tarjeta */
     overflow: hidden;
     position: relative;
     background-color: var(--mimarte-bg);
@@ -1090,13 +1116,12 @@
     transition: transform 0.6s ease;
 }
 
-.treatmentCard:hover .treatmentImage {
+.treatmentCardContainer:hover .treatmentImage {
     transform: scale(1.04);
 }
 
-/* Cuerpo de la tarjeta */
 .treatmentBody {
-    padding: 32px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1107,12 +1132,12 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .treatmentItemTitle {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 300;
     color: var(--mimarte-text);
     margin: 0;
@@ -1129,15 +1154,16 @@
 
 .treatmentCardDesc {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.6;
     color: var(--mimarte-text);
     opacity: 0.75;
-    margin: 0 0 24px 0;
-    flex-grow: 1;
+    margin: 0;
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
 }
 
-/* Enlace/Acción interno */
 .treatmentFooterLink {
     font-family: var(--font-body);
     font-size: 11px;
@@ -1146,15 +1172,82 @@
     color: var(--mimarte-primary);
     text-decoration: none;
     font-weight: 500;
-    display: inline-flex;
+    margin-top: auto;
+    display: flex;
     align-items: center;
     gap: 4px;
-    transition: color 0.3s ease;
-    margin-top: auto;
 }
 
-.treatmentCard:hover .treatmentFooterLink {
+/* ── CARA TRASERA (BACK) */
+.cardBack {
+    background-color: #faf7f2;
+    /* Un crema sutilmente diferente para contrastar el reverso */
+    transform: rotateY(180deg);
+    /* Colocada del revés por defecto */
+    padding: 45px;
+    justify-content: space-between;
+    border-color: var(--mimarte-primary-light);
+}
+
+.treatmentIncludesTitle {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
     color: var(--mimarte-primary-dark);
+    margin: 0 0 16px 0;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
+    padding-bottom: 8px;
+}
+
+/* Lista de lo que incluye */
+.treatmentIncludesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.treatmentIncludesList li {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-text);
+    opacity: 0.85;
+    position: relative;
+    padding-left: 18px;
+    line-height: 1.4;
+}
+
+/* Viñeta minimalista elegante para la lista */
+.treatmentIncludesList li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--mimarte-primary);
+    font-size: 16px;
+    top: -2px;
+}
+
+/* Botón de reserva en el reverso */
+.treatmentBackBtn {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 16px;
+}
+
+.treatmentBackBtn:hover {
+    background-color: var(--mimarte-primary-dark);
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/CustomCursor.css ***!
@@ -1365,6 +1458,7 @@
     /* Más compacta al hacer scroll */
     display: flex;
     align-items: center;
+    background-color: var(--mimarte-white);
 }
 
 /* Caja interior del menú (max-w-7xl mx-auto px-6 flex items-center justify-between) */
