@@ -152,7 +152,6 @@
 
 /* Cabecera */
 .headerText {
-    text-center: center;
     margin-bottom: 80px;
     text-align: center;
 }
@@ -206,38 +205,61 @@
 
 @media (min-width: 1200px) {
     .bonosGrid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Estructura Base de las Cards */
-.bonoCard {
+/* ── MAQUINARIA EFECTO GIRATORIO 3D (FLIP CARDS) */
+.bonoCardContainer {
+    background-color: transparent;
+    perspective: 1200px;
+    height: 440px;
+    border-radius: 12px;
+    /* Alto fijo estandarizado para que todas giren perfectas */
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Activación del giro al pasar el ratón */
+.bonoCardContainer:hover .flipCardInner {
+    transform: rotateY(180deg);
+}
+
+/* Comportamiento base de ambas caras */
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     padding: 32px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+/* Enlazamos con tus clases de colores originales */
+.cardFront.cardNormal {
+    background-color: var(--mimarte-white);
+    color: var(--mimarte-text);
     border: 1px solid var(--mimarte-primary-light);
 }
 
-.bonoCard:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(195, 154, 131, 0.15);
-}
-
-/* Card Normal (No destacada) */
-.cardNormal {
-    background-color: var(--mimarte-white);
-    color: var(--mimarte-text);
-}
-
-/* Card Destacada (Popular) */
-.cardFeatured {
+.cardFront.cardFeatured {
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
-    border-color: var(--mimarte-primary);
+    border: 1px solid var(--mimarte-primary);
 }
 
-/* Elementos internos de las tarjetas */
+/* ── ELEMENTOS INTERNOS FRONT */
 .tagPopular {
     font-family: var(--font-body);
     font-size: 11px;
@@ -258,8 +280,13 @@
     margin-bottom: 4px;
 }
 
-.sessionsNormal { color: var(--mimarte-primary-dark); }
-.sessionsFeatured { color: rgba(255, 255, 255, 0.8); }
+.sessionsNormal {
+    color: var(--mimarte-primary-dark);
+}
+
+.sessionsFeatured {
+    color: rgba(255, 255, 255, 0.8);
+}
 
 .cardTitle {
     font-family: var(--font-display);
@@ -275,9 +302,8 @@
     opacity: 0.6;
 }
 
-/* Precio */
 .priceWrapper {
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 }
 
 .priceText {
@@ -286,14 +312,18 @@
     font-weight: 300;
 }
 
-.priceNormal { color: var(--mimarte-primary); }
-.priceFeatured { color: var(--mimarte-white); }
+.priceNormal {
+    color: var(--mimarte-primary);
+}
 
-/* Lista de características */
+.priceFeatured {
+    color: var(--mimarte-white);
+}
+
 .featuresList {
     list-style: none;
     padding: 0;
-    margin: 0 0 32px 0;
+    margin: 0 0 10px 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -308,14 +338,88 @@
     gap: 8px;
 }
 
-.featureNormal { color: rgba(47, 46, 44, 0.75); }
-.featureFeatured { color: rgba(255, 255, 255, 0.9); }
+.featureNormal {
+    color: rgba(47, 46, 44, 0.75);
+}
+
+.featureFeatured {
+    color: rgba(255, 255, 255, 0.9);
+}
 
 .checkIcon {
     font-weight: bold;
 }
-.checkNormal { color: var(--mimarte-primary); }
-.checkFeatured { color: var(--mimarte-white); }
+
+.checkNormal {
+    color: var(--mimarte-primary);
+}
+
+.checkFeatured {
+    color: var(--mimarte-white);
+}
+
+/* ── CARA TRASERA (BACK) */
+.cardBack {
+    transform: rotateY(180deg);
+    /* Del revés por defecto */
+    justify-content: space-between;
+}
+
+/* Colores dinámicos del reverso según si es destacado o no */
+.cardBack.cardNormal {
+    background-color: #faf7f2;
+    color: var(--mimarte-text);
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+.cardBack.cardFeatured {
+    background-color: var(--mimarte-primary-dark);
+    color: var(--mimarte-white);
+    border: 1px solid var(--mimarte-primary-dark);
+}
+
+.backTermsTitle {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0 0 16px 0;
+    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
+    padding-bottom: 8px;
+}
+
+.cardBack.cardFeatured .backTermsTitle {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.termsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.termsList li {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.85;
+    position: relative;
+    padding-left: 16px;
+}
+
+.termsList li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--mimarte-primary);
+}
+
+.cardBack.cardFeatured .termsList li::before {
+    color: var(--mimarte-white);
+}
 
 /* Botones de acción (CTA) */
 .btnBono {
@@ -323,17 +427,19 @@
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-center: center;
     text-align: center;
     padding: 12px 0;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: auto;
 }
 
 .btnNormal {
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
 }
+
 .btnNormal:hover {
     background-color: var(--mimarte-primary-dark);
 }
@@ -342,6 +448,7 @@
     background-color: var(--mimarte-white);
     color: var(--mimarte-primary);
 }
+
 .btnFeatured:hover {
     background-color: var(--mimarte-bg);
 }
@@ -830,6 +937,150 @@
     50% {
         opacity: 1;
     }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/MapAndReviews.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/MapAndReviews.css */
+
+.mapReviewsSection {
+    padding: 80px 24px;
+    background-color: var(--mimarte-white);
+    width: 100%;
+    border-top: 1px solid rgba(195, 154, 131, 0.1);
+}
+
+.mapReviewsContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .mapReviewsContainer {
+        grid-template-columns: 1fr 1fr;
+        /* Mitad reseñas, mitad mapa */
+    }
+}
+
+/* ── BLOQUE RESEÑAS */
+.reviewsBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewsSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 12px;
+}
+
+.reviewsTitle {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0 0 32px 0;
+}
+
+/* Contenedor del Carrusel */
+.carouselWrapper {
+    position: relative;
+    height: 180px;
+    /* Alto fijo controlado para las opiniones */
+    width: 100%;
+    overflow: hidden;
+}
+
+.reviewCard {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(30px);
+    /* Entran desde la derecha */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+/* Reseña activa en pantalla */
+.reviewCard.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.starsRow {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.reviewText {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mimarte-text);
+    font-style: italic;
+    opacity: 0.85;
+    margin: 0 0 16px 0;
+}
+
+.reviewAuthor {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--mimarte-primary-dark);
+    margin: 0;
+}
+
+/* Puntos de navegación */
+.carouselDots {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--mimarte-primary-light);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.dothtml.dotActive {
+    background-color: var(--mimarte-primary);
+    width: 20px;
+    /* Se estira la bolita activa de forma moderna */
+    border-radius: 4px;
+}
+
+/* ── BLOQUE MAPA */
+.mapBlock {
+    width: 100%;
+    height: 350px;
+    /* Alto del minimapa */
+    border-radius: 12px;
+    /* Ajustado con tu border-radius favorito */
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(195, 154, 131, 0.08);
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+.googleMapIframe {
+    filter: grayscale(0.2) contrast(1);
+    /* Un filtro sutil para que no choque con la estética pastel */
 }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Products.css ***!
