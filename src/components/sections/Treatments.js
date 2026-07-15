@@ -113,48 +113,48 @@ const SERVICES = {
       includes: ['Tratamiento corporal no invasivo que utiliza cámaras de aire con compresión secuencial programada para favorecer el drenaje linfático y mejorar la circulación. Ayuda a reducir la retención de líquidos, aliviar la sensación de pesadez y mejorar el bienestar general. Ideal para piernas cansadas, hinchazón o como complemento de tratamientos corporales. Tras la sesión, el cuerpo se siente más ligero y desinflamado.'] 
     },
     { 
-      title: ' ', 
-      price: '40€', 
-      desc: '', 
+      title: 'RF Corporal', 
+      price: '49,00€', 
+      desc: 'Tratamiento no invasivo que utiliza energía de radiofrecuencia para estimular la producción natural de colágeno y elastina, ayudando a mejorar la firmeza, el tono y la elasticidad de la piel. Su acción profunda actúa sobre la flacidez, dejando una piel más tersa y con un aspecto rejuvenecido. Es ideal para zonas como abdomen, brazos, glúteos y piernas.', 
       img: '/images/services/corp-5.jpg',
-      includes: ['', '', '', '', ''] 
+      includes: ['Diagnóstico corporal', 'Apertura de canales linfáticos', 'Aplicación de radiofrecuencia corporal', 'Masaje manual para estimular y reafirmar', 'Cierre de canales linfáticos'] 
     },
     { 
-      title: ' ', 
-      price: '40€', 
-      desc: '', 
+      title: 'Vacumterapia', 
+      price: '40,00€', 
+      desc: 'Tratamiento corporal no invasivo que combina vacumterapia y radiofrecuencia para ayudar a moldear el contorno, suavizar la celulitis y mejorar la firmeza de la piel. La succión controlada activa la circulación y la radiofrecuencia aporta calor reafirmante, estimulando colágeno y elastina para una piel más lisa, tersa y uniforme.', 
       img: '/images/services/corp-6.jpg',
-      includes: ['', '', '', '', ''] 
+      includes: ['Diagnóstico corporal personalizado', 'Apertura de canales linfáticos', 'Aplicación de aparatología', 'Masaje manual',] 
     },
     { 
-      title: ' ', 
-      price: '40€', 
-      desc: '', 
+      title: 'Vendas frías', 
+      price: '48,00€', 
+      desc: 'Las vendas frías son un tratamiento corporal que aporta un efecto frío inmediato, ayudando a reducir la hinchazón, mejorar la circulación y favorecer el drenaje. Son ideales para aliviar la sensación de pesadez, especialmente en piernas cansadas, y contribuyen a una piel más firme y fresca desde la primera sesión.', 
       img: '/images/services/corp-7.jpg',
       includes: ['', '', '', '', ''] 
     },
   ],
   estetica: [
     { 
-      title: 'Manicura Completa Mimarte', 
-      price: '25€', 
-      desc: 'Cuidado meticuloso de uñas y cutículas con esmaltado de alta duración e hidratación final.', 
+      title: 'Espalda Serena', 
+      price: '25,00€', 
+      desc: 'Disfrutá de un momento de calma y desconexión para revitalizar tu cuerpo, dejándote llevar por la experiencia de relajación total.', 
       img: '/images/services/est-1.jpg',
-      includes: ['Limado y forma de uña', 'Retirada de cutículas', 'Exfoliación de manos', 'Esmaltado semipermanente', 'Aceite nutritivo final'] 
+      includes: ['Alivia el estrés y la tensión muscular en la zona de la espalda', 'Mejora la circulación sanguínea y linfática', ' Reduce contracturas y rigidez en el cuello y hombros', 'Relaja profundamente el cuerpo y la mente', 'Promueve un estado general de bienestar'] 
     },
     { 
-      title: 'Pedicura Spa Rejuvenecedora', 
-      price: '35€', 
-      desc: 'Tratamiento completo de pies con baño relajante, exfoliación y masaje regenerador.', 
+      title: 'Piernas Ligeras', 
+      price: '30,00€', 
+      desc: 'Este masaje ayuda a mejorar la circulación, reducir la hinchazón y aliviar la sensación de pesadez en las piernas.Mediante movimientos firmes y rítmicos, se favorece el flujo sanguíneo, se reduce la retención de líquidos y se relaja la tensión muscular.', 
       img: '/images/services/est-2.jpg',
-      includes: ['Baño con sales relajantes', 'Eliminación de durezas', 'Exfoliación profunda', 'Masaje podal hidratante', 'Esmaltado a color de larga duración'] 
+      includes: ['Valoración inicial', 'Aplicación de aceites esenciales', 'Apertura de canales linfáticos', 'Masaje circulatorio manual', 'Cierre de canales linfáticos'] 
     },
     { 
-      title: 'Diseño de Mirada', 
-      price: '20€', 
-      desc: 'Estudio de visagismo con depilación de cejas y tinte o lifting de pestañas para realzar tu expresión.', 
+      title: 'Relajación Corporal', 
+      price: '45,00€', 
+      desc: 'Sumerge tu cuerpo y mente en un estado profundo de relajación ', 
       img: '/images/services/est-3.jpg',
-      includes: ['Estudio de la forma del rostro', 'Depilación con pinza/cera baja fusión', 'Tinte definidor de cejas', 'Nutrición de vello final', 'Péinado y fijación'] 
+      includes: ['El masaje de relajación profunda de 1 hora combina movimientos suaves y envolventes con aromaterapia y aceites esenciales, ayudando a liberar tensiones musculares, reducir el estrés y devolver el equilibrio a cuerpo y mente. Diseñado para inducir un estado de calma profunda, es ideal si necesitas desconectar, relajar el sistema nervioso y recuperar la sensación de bienestar y armonía.'] 
     }
   ]
 }

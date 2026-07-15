@@ -8,13 +8,19 @@ import '../css/Bonos.css' // Conexión directa a tus estilos puros
 
 gsap.registerPlugin(ScrollTrigger)
 
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🛠️ GUÍA PARA MODIFICAR LOS BONOS:
+// - Para MODIFICAR: Cambia los campos de texto o precios de los bonos actuales.
+// - Para MODIFICAR EL REVERSO: Cambia o añade strings dentro del array 'terms' de cada bono.
+// ──────────────────────────────────────────────────────────────────────────────────────
 const BONOS = [
   {
     name: 'Bono Básico',
-    sessions: 3,
-    treatment: 'Tratamiento Facial',
-    price: 129,
-    features: ['3 sesiones de 60 min', 'Diagnóstico de piel gratis', 'Productos incluidos'],
+    sessions: 4,
+    treatment: 'Maderoterapia corporal',
+    price: 189,
+    features: ['4 sesiones de 60 min', 'Diagnóstico de piel gratis', 'Productos incluidos'],
+    terms: ['Validez de 12 meses', 'Sujeto a cita previa', 'Cancelaciones con 24h de antelación', 'Uso exclusivo individual'], // <-- Edita las condiciones traseras aquí
     featured: false,
     cta: 'Reservar',
   },
@@ -24,15 +30,17 @@ const BONOS = [
     treatment: 'Facial + Corporal',
     price: 229,
     features: ['6 sesiones de 90 min', 'Diagnóstico completo', 'Productos premium', 'Consulta nutricional'],
+    terms: ['Validez de 12 meses', 'Incluye parking gratuito', 'Prioridad en reservas de fin de semana', 'No acumulable a otras ofertas'],
     featured: true,
-    cta: 'El más popular',
+    cta: 'Reservar',
   },
   {
-    name: 'Bono Indiba',
+    name: 'Bono Premium',
     sessions: 5,
     treatment: 'Tratamiento Indiba',
     price: 349,
     features: ['5 sesiones de 60 min', 'Protocolo personalizado', 'Seguimiento mensual', 'Resultados garantizados'],
+    terms: ['Validez de 6 meses (recomendado)', 'Plan de sesiones continuadas', 'Seguimiento fotográfico de evolución', 'Financiación disponible en centro'],
     featured: false,
     cta: 'Reservar',
   },
@@ -42,6 +50,27 @@ const BONOS = [
     treatment: 'Depilación Láser',
     price: 199,
     features: ['6 sesiones por zona', 'Todas las fototipos', 'Revisión gratuita', 'Sin dolor'],
+    terms: ['Válido para zona a elegir', 'Rasurado previo obligatorio en casa', 'Intervalos de 6-8 semanas por sesión', 'Sujeto a valoración médica inicial'],
+    featured: false,
+    cta: 'Reservar',
+  },
+  {
+    name: 'Bono Láser',
+    sessions: 6,
+    treatment: 'Depilación Láser',
+    price: 199,
+    features: ['6 sesiones por zona', 'Todas las fototipos', 'Revisión gratuita', 'Sin dolor'],
+    terms: ['Válido para zona a elegir', 'Rasurado previo obligatorio en casa', 'Intervalos de 6-8 semanas por sesión', 'Sujeto a valoración médica inicial'],
+    featured: false,
+    cta: 'Reservar',
+  },
+  {
+    name: 'Bono Láser',
+    sessions: 6,
+    treatment: 'Depilación Láser',
+    price: 199,
+    features: ['6 sesiones por zona', 'Todas las fototipos', 'Revisión gratuita', 'Sin dolor'],
+    terms: ['Válido para zona a elegir', 'Rasurado previo obligatorio en casa', 'Intervalos de 6-8 semanas por sesión', 'Sujeto a valoración médica inicial'],
     featured: false,
     cta: 'Reservar',
   },
@@ -52,11 +81,11 @@ export default function Bonos() {
   const cardsRef = useRef(null)
 
   useEffect(() => {
-    const cards = cardsRef.current?.querySelectorAll('.bono-card')
-    if (!cards) return
+    const containers = cardsRef.current?.querySelectorAll('.bonoCardContainer')
+    if (!containers) return
 
     const ctx = gsap.context(() => {
-      gsap.from(cards, {
+      gsap.from(containers, {
         y: 60,
         opacity: 0,
         scale: 0.95,
@@ -91,52 +120,72 @@ export default function Bonos() {
           </p>
         </div>
 
-        {/* ── GRID DE BONOS */}
+        {/* ── GRID DE BONOS 3D (FLIP CARDS) */}
         <div ref={cardsRef} className="bonosGrid">
           {BONOS.map((bono) => (
-            <div 
-              key={bono.name}
-              className={`bono-card bonoCard ${bono.featured ? 'cardFeatured' : 'cardNormal'}`}
-            >
-              {bono.featured && (
-                <span className="tagPopular">
-                  Más popular
-                </span>
-              )}
+            <div key={bono.name} className="bonoCardContainer">
+              <div className="flipCardInner">
+                
+                {/* ── CARA DELANTERA (FRONT) */}
+                <div className={`cardFront bonoCard ${bono.featured ? 'cardFeatured' : 'cardNormal'}`}>
+                  {bono.featured && (
+                    <span className="tagPopular">
+                      Más popular
+                    </span>
+                  )}
 
-              <p className={`sessionsTag ${bono.featured ? 'sessionsFeatured' : 'sessionsNormal'}`}>
-                {bono.sessions} sesiones
-              </p>
-              <h3 className="cardTitle">
-                {bono.name}
-              </h3>
-              <p className="cardTreatment">
-                {bono.treatment}
-              </p>
+                  <p className={`sessionsTag ${bono.featured ? 'sessionsFeatured' : 'sessionsNormal'}`}>
+                    {bono.sessions} sesiones
+                  </p>
+                  <h3 className="cardTitle">
+                    {bono.name}
+                  </h3>
+                  <p className="cardTreatment">
+                    {bono.treatment}
+                  </p>
 
-              {/* Precio */}
-              <div className="priceWrapper">
-                <span className={`priceText ${bono.featured ? 'priceFeatured' : 'priceNormal'}`}>
-                  {bono.price}€
-                </span>
+                  {/* Precio */}
+                  <div className="priceWrapper">
+                    <span className={`priceText ${bono.featured ? 'priceFeatured' : 'priceNormal'}`}>
+                      {bono.price}€
+                    </span>
+                  </div>
+
+                  {/* Features */}
+                  <ul className="featuresList">
+                    {bono.features.map(f => (
+                      <li key={f} className={`featureItem ${bono.featured ? 'featureFeatured' : 'featureNormal'}`}>
+                        <span className={`checkIcon ${bono.featured ? 'checkFeatured' : 'checkNormal'}`}>✓</span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <span className={`btnBono ${bono.featured ? 'btnFeatured' : 'btnNormal'}`}>
+                    Ver condiciones →
+                  </span>
+                </div>
+
+                {/* ── CARA TRASERA (BACK) */}
+                <div className={`cardBack ${bono.featured ? 'cardFeatured' : 'cardNormal'}`}>
+                  <div>
+                    <h4 className="backTermsTitle">Condiciones</h4>
+                    <ul className="termsList">
+                      {bono.terms && bono.terms.map((term, index) => (
+                        <li key={index}>{term}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <a 
+                    href="#contacto"
+                    className={`btnBono ${bono.featured ? 'btnFeatured' : 'btnNormal'}`}
+                  >
+                    {bono.featured ? 'Comprar Bono' : bono.cta}
+                  </a>
+                </div>
+
               </div>
-
-              {/* Features */}
-              <ul className="featuresList">
-                {bono.features.map(f => (
-                  <li key={f} className={`featureItem ${bono.featured ? 'featureFeatured' : 'featureNormal'}`}>
-                    <span className={`checkIcon ${bono.featured ? 'checkFeatured' : 'checkNormal'}`}>✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <a 
-                href="#contacto"
-                className={`btnBono ${bono.featured ? 'btnFeatured' : 'btnNormal'}`}
-              >
-                {bono.cta}
-              </a>
             </div>
           ))}
         </div>

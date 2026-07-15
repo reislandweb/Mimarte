@@ -7,6 +7,7 @@ import Treatments      from '@/components/sections/Treatments'
 import Bonos           from '@/components/sections/Bonos'
 import Products        from '@/components/sections/Products'
 import Contact         from '@/components/sections/Contact'
+import MapAndReviews from '@/components/sections/MapAndReviews'
 import Footer          from '@/components/ui/Footer'
 
 
@@ -30,7 +31,7 @@ export default function Home() {
         <Products />
         <Contact />
       </main>
-
+      <MapAndReviews />
       <Footer />
     </>
   )
