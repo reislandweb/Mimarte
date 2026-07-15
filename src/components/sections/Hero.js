@@ -84,11 +84,6 @@ export default function Hero() {
           </a>
         </div>
       </div>
-
-      {/* ── SCROLL HINT animado */}
-      <div ref={scrollRef} className="scrollHint">
-        <div className="scrollLine" />
-      </div>
     </section>
   )
 }

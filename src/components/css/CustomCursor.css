@@ -1,0 +1,22 @@
+/* src/components/css/CustomCursor.css */
+
+.customCursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--mimarte-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Hace que el cursor cambie sutilmente de color según el fondo, queda espectacular */
+    transition: transform 0.1s ease-out;
+}
+
+/* Clase opcional por si Claudio programó que se agrande al pasar sobre botones */
+.customCursor.hovered {
+    transform: scale(2);
+    background-color: transparent;
+    border: 1px solid var(--mimarte-primary);
+}

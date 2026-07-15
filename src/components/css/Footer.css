@@ -1,0 +1,151 @@
+/* src/components/css/Footer.css */
+
+.footerSection {
+    background-color: var(--mimarte-primary-dark); /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    padding: 80px 24px 32px 24px;
+    width: 100%;
+    z-index: 999;
+}
+
+.footerContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Rejilla principal del Footer */
+.footerGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .footerGrid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+/* Columna 1: Branding e Identidad */
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 16px 0;
+    font-weight: 300;
+}
+
+.footerLogo em {
+    font-style: italic;
+    color: var(--mimarte-white);
+}
+
+.footerTagline {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mimarte-white);
+    max-width: 320px;
+    margin: 0;
+}
+
+/* Estilo común para los títulos de las columnas */
+.footerColTitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 24px 0;
+    font-weight: 500;
+}
+
+/* Listas de enlaces e información */
+.footerList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerListLink {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footerListLink:hover {
+    color: var(--mimarte-white);
+    padding-left: 4px; /* Sutil efecto dinámico al pasar el ratón */
+}
+
+/* Textos estáticos de información (Horarios/Contacto) */
+.footerInfoText {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+/* ── BARRA INFERIOR (COPYRIGHT) */
+.footerBottom {
+    border-top: 1px solid rgba(195, 154, 131, 0.1);
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footerBottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footerCopy {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+.footerLegalLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.footerLegalLink {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footerLegalLink:hover {
+    color: var(--mimarte-white);
+}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import '../css/Navbar.css' // Conectamos directamente tu CSS Puro
 
 // ─────────────────────────────────────────────────────────────
 // LINKS DEL MENÚ — modifica aquí para añadir/quitar páginas
@@ -34,53 +35,49 @@ export default function Navbar() {
 
   return (
     <header ref={navRef} style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50 }}
-      className={`transition-all duration-500 ${scrolled ? 'bg-nude-50/95 backdrop-blur-md shadow-sm py-3' : 'py-6'}`}
+      className={`navbarHeader ${scrolled ? 'isScrolled' : 'notScrolled'}`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="navbarContainer">
 
-        {/* ── LOGO — cambia el texto por el nombre de tu clienta */}
-        <a href="#inicio" className="font-display text-2xl font-light tracking-widest uppercase text-dark">
-          MIMARTE ESTETICA {/* MODIFICA: nombre del centro */}
-        </a>
+        {/* ── LOGO */}
+      <a href="#inicio" className="navbarLogo">
+        <img 
+          src="/images/logo.png" 
+          alt="Logo Mimarte Estética" 
+          className="navbarLogoImg"
+        />
+      </a>
 
         {/* ── MENÚ DESKTOP */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="navbarMenuDesktop">
           {LINKS.map(({ label, href }) => (
-            <a key={href} href={href}
-              className="font-body text-xs tracking-widest uppercase text-dark/70 hover:text-primary-500 transition-colors duration-300"
-            >
+            <a key={href} href={href} className="navLink">
               {label}
             </a>
           ))}
-          {/* Botón CTA — cambia el texto y color con la clase bg-primary-500 en tailwind.config */}
-          <a href="#contacto"
-            className="font-body text-xs tracking-widest uppercase bg-primary-500 text-white px-5 py-2.5 hover:bg-primary-600 transition-colors duration-300"
-          >
+          {/* Botón CTA */}
+          <a href="#contacto" className="navCtaButton">
             Reservar cita
           </a>
         </nav>
 
         {/* ── HAMBURGER MOBILE */}
-        <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menú">
-          <span className={`block w-6 h-px bg-dark mb-1.5 transition-all duration-300 ${open ? 'rotate-45 translate-y-2.5' : ''}`} />
-          <span className={`block w-6 h-px bg-dark mb-1.5 transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-px bg-dark transition-all duration-300 ${open ? '-rotate-45 -translate-y-2.5' : ''}`} />
+        <button className="hamburgerBtn" onClick={() => setOpen(!open)} aria-label="Menú">
+          <span className={`hamburgerLine top ${open ? 'open' : ''}`} />
+          <span className={`hamburgerLine mid ${open ? 'open' : ''}`} />
+          <span className={`hamburgerLine bot ${open ? 'open' : ''}`} />
         </button>
       </div>
 
       {/* ── MENÚ MOBILE */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-500 ${open ? 'max-h-screen' : 'max-h-0'}`}>
-        <nav className="bg-nude-50/98 backdrop-blur-md px-6 py-6 flex flex-col gap-5 border-t border-nude-200">
+      <div className={`navbarMenuMobileCollapse ${open ? 'open' : 'closed'}`}>
+        <nav className="navbarMenuMobileBody">
           {LINKS.map(({ label, href }) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}
-              className="font-body text-sm tracking-widest uppercase text-dark/70"
-            >
+            <a key={href} href={href} onClick={() => setOpen(false)} className="navLinkMobile">
               {label}
             </a>
           ))}
-          <a href="#contacto" onClick={() => setOpen(false)}
-            className="font-body text-sm tracking-widest uppercase bg-primary-500 text-white px-5 py-3 text-center"
-          >
+          <a href="#contacto" onClick={() => setOpen(false)} className="navCtaButtonMobile">
             Reservar cita
           </a>
         </nav>
