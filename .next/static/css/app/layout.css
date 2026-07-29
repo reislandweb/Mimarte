@@ -986,22 +986,22 @@ video {
 :root {
   /* Fuentes elegantes para estética */
   --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body: 'DM Sans', montserrat;
 
   /* Colores reales de Mimarte Estética */
-  --mimarte-bg: #FDFBF7;
+  --mimarte-bg: #faf8f4;
   /* Fondo crema / lino suave */
-  --mimarte-text: #2F2E2C;
+  --mimarte-text: #black;
   /* Texto principal marrón/gris oscuro */
-  --mimarte-primary: #C39A83;
+  --mimarte-primary: #38a3a5;
   /* Rosa empolvado corporativo */
-  --mimarte-primary-light: #E6C5B3;
+  --mimarte-primary-light: #57cc99;
   /* Rosa claro para hovers o fondos suaves */
-  --mimarte-primary-dark: #A37861;
+  --mimarte-primary-dark: #38a3a5;
   /* Rosa oscuro para títulos destacados */
-  --mimarte-accent: #D4A373;
+  --mimarte-accent: #38a3a5;
   /* Tono dorado / arena secundario */
-  --mimarte-white: #FFFFFF;
+  --mimarte-white: #faf8f4;
   /* Blanco puro para tarjetas */
 }
 
@@ -1009,7 +1009,7 @@ html {
   scroll-behavior: auto;
   /* Lenis maneja el scroll suave, no el nativo */
   background-color: var(--mimarte-bg);
-  color: var(--mimarte-text);
+  color: var(--mimarte-pr);
   font-family: var(--font-body);
 }
 

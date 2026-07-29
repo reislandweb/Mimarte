@@ -13,7 +13,6 @@ const LINKS = [
   { label: 'Tratamientos', href: '#tratamientos' },
   { label: 'Bonos',        href: '#bonos' },
   { label: 'Productos',    href: '#productos' },
-  { label: 'Contacto',     href: '#contacto' },
 ]
 
 export default function Navbar() {
@@ -57,7 +56,7 @@ export default function Navbar() {
           ))}
           {/* Botón CTA */}
           <a href="#contacto" className="navCtaButton">
-            Reservar cita
+            Contacto
           </a>
         </nav>
 
@@ -78,7 +77,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="#contacto" onClick={() => setOpen(false)} className="navCtaButtonMobile">
-            Reservar cita
+            Contacto
           </a>
         </nav>
       </div>

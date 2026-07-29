@@ -754,6 +754,14 @@
     border-color: var(--mimarte-primary);
     color: var(--mimarte-primary);
 }
+
+.socialIcon {
+    width: 4rem;
+    height: 4rem;
+    -o-object-fit: contain;
+       object-fit: contain;
+    display: block;
+}
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Hero.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
@@ -1696,7 +1704,9 @@
 /* Contenedor principal de la cabecera */
 .navbarHeader {
     transition: all 500ms ease;
-
+    position: relative;
+    /* Asegura referencia para el menú desplegable */
+    width: 100%;
 }
 
 /* Estado py-6 por defecto */
@@ -1704,23 +1714,22 @@
     padding-top: 4px !important;
     padding-bottom: 4px !important;
     height: 90px;
-    /* Le fijamos una altura máxima controlada */
     display: flex;
     align-items: center;
 }
 
-/* Estado cuando se hace scroll (bg-nude-50/95 backdrop-blur-md shadow-sm py-3) */
+/* Estado cuando se hace scroll */
 .navbarHeader.isScrolled {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     height: 75px;
-    /* Más compacta al hacer scroll */
     display: flex;
     align-items: center;
     background-color: var(--mimarte-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Caja interior del menú (max-w-7xl mx-auto px-6 flex items-center justify-between) */
+/* Caja interior del menú */
 .navbarContainer {
     width: 100%;
     max-width: 1280px;
@@ -1732,49 +1741,45 @@
     justify-content: space-between;
 }
 
-/* Enlace del Logotipo (font-display text-2xl font-light tracking-widest uppercase text-dark) */
-.navbarLogo {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mimarte-text);
-    text-decoration: none;
-}
-
-/* Modifica o añade esto en tu Navbar.css */
+/* Enlace del Logotipo */
 .navbarLogo {
     display: flex;
     align-items: center;
     text-decoration: none;
     padding: 0;
     margin: 0;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    z-index: 60;
+    /* Asegura que el logo no quede tapado */
 }
 
 .navbarLogoImg {
     height: 15rem;
     margin-top: -18px;
     margin-bottom: -18px;
+    transition: transform 300ms ease;
 }
 
 .navbarLogoImg:hover {
     transform: scale(1.03);
-    /* Un sutil efecto dinámico al pasar el ratón */
 }
 
-/* Ajuste opcional: si al hacer scroll quieres que se encoja un pelín para que no ocupe tanto */
 .navbarHeader.isScrolled .navbarLogoImg {
-
-    height: 15rem;
-    /* Sigue siendo grande, pero se adapta al scroll */
+    height: 12rem;
+    /* Ligera adaptación en scroll para no saturar */
     margin-top: -18px;
     margin-bottom: -18px;
 }
 
-/* Navegación de escritorio (hidden lg:flex items-center gap-7) */
+/* ── NAVEGACIÓN DE ESCRITORIO */
 .navbarMenuDesktop {
-    display: flex;
+    display: none;
+    /* Oculto por defecto en móvil */
     align-items: center;
     gap: 28px;
 }
@@ -1782,12 +1787,10 @@
 @media (min-width: 1024px) {
     .navbarMenuDesktop {
         display: flex;
-        align-items: center;
-        gap: 28px;
     }
 }
 
-/* Enlaces del menú (font-body text-xs tracking-widest uppercase text-dark/70 hover:text-primary-500 transition-colors duration-300) */
+/* Enlaces del menú desktop */
 .navLink {
     font-family: var(--font-body);
     font-size: 12px;
@@ -1804,7 +1807,7 @@
     color: var(--mimarte-primary);
 }
 
-/* Botón de acción Reservar Cita (font-body text-xs tracking-widest uppercase bg-primary-500 text-white px-5 py-2.5 hover:bg-primary-600 transition-colors duration-300) */
+/* Botón Contacto Desktop */
 .navCtaButton {
     font-family: var(--font-body);
     font-size: 12px;
@@ -1821,13 +1824,17 @@
     background-color: var(--mimarte-primary-dark);
 }
 
-/* Botón Hamburguesa móvil (lg:hidden p-2) */
+/* ── BOTÓN HAMBURGUESA MÓVIL */
 .hamburgerBtn {
     background: transparent;
     border: none;
     padding: 8px;
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 60;
 }
 
 @media (min-width: 1024px) {
@@ -1836,12 +1843,13 @@
     }
 }
 
-/* Líneas de la hamburguesa (block w-6 h-px bg-dark mb-1.5 transition-all duration-300) */
+/* Líneas de la hamburguesa (Subidas a 2px de grosor para que destaquen) */
 .hamburgerLine {
     display: block;
-    width: 24px;
-    height: 1px;
-    background-color: var(--mimarte-text);
+    width: 26px;
+    height: 2px;
+    /* Aumentado de 1px a 2px para dar visibilidad */
+    background-color: var(--mimarte-primary);
     transition: all 300ms ease;
 }
 
@@ -1853,9 +1861,9 @@
     margin-bottom: 6px;
 }
 
-/* Transformaciones dinámicas de la hamburguesa al abrir */
+/* Transformaciones dinámicas al abrir (Forman una 'X' perfecta) */
 .hamburgerLine.top.open {
-    transform: rotate(45deg) translateY(5px) translateX(5px);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburgerLine.mid.open {
@@ -1863,16 +1871,20 @@
 }
 
 .hamburgerLine.bot.open {
-    transform: rotate(-45deg) translateY(-5px) translateX(5px);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ── MENÚ MÓVIL DESPLEGABLE */
-
-/* Contenedor colapsable (lg:hidden overflow-hidden transition-all duration-500) */
 .navbarMenuMobileCollapse {
     display: block;
+    position: absolute;
+    top: 100%;
+    /* Despliega justo debajo del header */
+    left: 0;
+    width: 100%;
     overflow: hidden;
-    transition: all 500ms ease;
+    transition: max-height 500ms ease-in-out, opacity 300ms ease;
+    z-index: 50;
 }
 
 @media (min-width: 1024px) {
@@ -1883,13 +1895,18 @@
 
 .navbarMenuMobileCollapse.closed {
     max-height: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .navbarMenuMobileCollapse.open {
-    max-height: 100vh;
+    max-height: 400px;
+    /* Suficiente espacio para los 6 ítems */
+    opacity: 1;
+    pointer-events: auto;
 }
 
-/* Interior del menú móvil (bg-nude-50/98 backdrop-blur-md px-6 py-6 flex flex-col gap-5 border-t border-nude-200) */
+/* Interior del menú móvil */
 .navbarMenuMobileBody {
     background-color: rgba(253, 251, 247, 0.98);
     backdrop-filter: blur(12px);
@@ -1897,21 +1914,30 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    align-items: center;
+    /* Alineación central impecable */
+    border-t: 1px solid rgba(195, 154, 131, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Enlaces del menú móvil (font-body text-sm tracking-widest uppercase text-dark/70) */
+/* Enlaces del menú móvil */
 .navLinkMobile {
     font-family: var(--font-body);
     font-size: 14px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--mimarte-text);
-    opacity: 0.7;
+    opacity: 0.8;
     text-decoration: none;
+    transition: color 300ms ease;
 }
 
-/* Botón CTA móvil (font-body text-sm tracking-widest uppercase bg-primary-500 text-white px-5 py-3 text-center) */
+.navLinkMobile:hover {
+    color: var(--mimarte-primary);
+    opacity: 1;
+}
+
+/* Botón CTA móvil */
 .navCtaButtonMobile {
     font-family: var(--font-body);
     font-size: 14px;
@@ -1919,7 +1945,8 @@
     text-transform: uppercase;
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
-    padding: 12px 20px;
+    padding: 12px 28px;
     text-align: center;
     text-decoration: none;
+    width: auto;
 }
