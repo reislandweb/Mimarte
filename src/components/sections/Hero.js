@@ -3,13 +3,14 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import '../css/Hero.css' // Conectamos tu hoja de estilos pura
+import '../css/Hero.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
   const sectionRef = useRef(null)
   const bgRef      = useRef(null)
+  const logoRef    = useRef(null)
   const tagRef     = useRef(null)
   const h1Ref      = useRef(null)
   const paraRef    = useRef(null)
@@ -18,15 +19,16 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrada en cascada al cargar la página
+      // Entrada en cascada con el logo grande
       const tl = gsap.timeline({ delay: 0.8 })
-      tl.from(tagRef.current,  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' })
+      tl.from(logoRef.current, { x: -50, opacity: 0, duration: 1, ease: 'power3.out' })
+        .from(tagRef.current,  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .from(h1Ref.current,   { y: 80, opacity: 0, duration: 1.2, ease: 'power4.out' }, '-=0.5')
         .from(paraRef.current, { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
         .from(ctaRef.current,  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .from(scrollRef.current, { opacity: 0, duration: 0.6 }, '-=0.3')
 
-      // Parallax de la imagen de fondo al hacer scroll
+      // Parallax de la imagen de fondo
       gsap.to(bgRef.current, {
         yPercent: 25,
         ease: 'none',
@@ -51,39 +53,42 @@ export default function Hero() {
         style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
       />
 
-      {/* Overlay degradado elegante */}
       <div className="heroOverlay" />
 
-      {/* ── CONTENIDO PRINCIPAL */}
-      <div className="heroContent">
+      {/* ── CONTENIDO PRINCIPAL CENTRADO ── */}
+        <div className="heroContentSingle">
 
-        {/* Subtítulo superior */}
-        <span ref={tagRef} className="heroTagline">
-          Centro de Belleza y Salud · Zaragoza
-        </span>
+          {/* Subtítulo superior */}
+          <span ref={tagRef} className="heroTagline">
+            Centro de Belleza y Salud · Zaragoza
+          </span>
 
-        {/* Título principal */}
-        <h1 ref={h1Ref} className="heroTitle">
-          Cuídate.<br />
-          <em>Merécetelo.</em>
-        </h1>
+          {/* Logotipo en sustitución del h1 "Cuídate. Merécetelo" */}
+          <div ref={h1Ref} className="heroBrandWrapper">
+            <img 
+              src="/images/logo.png" 
+              alt="Mimarte Estética Logo" 
+              className="heroBrandLogo"
+            />
+          </div>
 
-        {/* Descripción corta */}
-        <p ref={paraRef} className="heroDescription">
-          Tratamientos de belleza y bienestar con la mejor tecnología
-          y un cuidado completamente personalizado.
-        </p>
+          {/* Descripción corta */}
+          <p ref={paraRef} className="heroDescription">
+            Tratamientos de belleza y bienestar con la mejor tecnología
+            y un cuidado completamente personalizado.
+          </p>
 
-        {/* Botones CTA */}
-        <div ref={ctaRef} className="heroCtaWrapper">
-          <a href="#tratamientos" className="btnHeroPrimary">
-            Ver tratamientos
-          </a>
-          <a href="#contacto" className="btnHeroSecondary">
-            Reservar cita
-          </a>
+          {/* Botones CTA */}
+          <div ref={ctaRef} className="heroCtaWrapper">
+            <a href="#tratamientos" className="btnHeroPrimary">
+              Ver tratamientos
+            </a>
+            <a href="#contacto" className="btnHeroSecondary">
+              Reservar cita
+            </a>
+          </div>
+
         </div>
-      </div>
     </section>
   )
 }

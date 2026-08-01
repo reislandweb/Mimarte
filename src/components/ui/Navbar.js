@@ -2,11 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import '../css/Navbar.css' // Conectamos directamente tu CSS Puro
+import '../css/Navbar.css'
 
-// ─────────────────────────────────────────────────────────────
-// LINKS DEL MENÚ — modifica aquí para añadir/quitar páginas
-// ─────────────────────────────────────────────────────────────
 const LINKS = [
   { label: 'Inicio',       href: '#inicio' },
   { label: 'Nosotros',     href: '#nosotros' },
@@ -21,7 +18,6 @@ export default function Navbar() {
   const [open,     setOpen]     = useState(false)
 
   useEffect(() => {
-    // Animación de entrada al cargar la página
     gsap.fromTo(navRef.current,
       { y: -80, opacity: 1 },
       { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
@@ -38,14 +34,14 @@ export default function Navbar() {
     >
       <div className="navbarContainer">
 
-        {/* ── LOGO */}
-      <a href="#inicio" className="navbarLogo">
-        <img 
-          src="/images/logo.png" 
-          alt="Logo Mimarte Estética" 
-          className="navbarLogoImg"
-        />
-      </a>
+        {/* ── LOGO (Visible solo en Scroll gracias al CSS) */}
+        <a href="#inicio" className="navbarLogo">
+          <img 
+            src="/images/logo.png" 
+            alt="Logo Mimarte Estética" 
+            className="navbarLogoImg"
+          />
+        </a>
 
         {/* ── MENÚ DESKTOP */}
         <nav className="navbarMenuDesktop">
@@ -54,7 +50,6 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          {/* Botón CTA */}
           <a href="#contacto" className="navCtaButton">
             Contacto
           </a>
@@ -68,7 +63,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* ── MENÚ MOBILE */}
+      {/* ── MENÚ MÓVIL DESPLEGABLE */}
       <div className={`navbarMenuMobileCollapse ${open ? 'open' : 'closed'}`}>
         <nav className="navbarMenuMobileBody">
           {LINKS.map(({ label, href }) => (

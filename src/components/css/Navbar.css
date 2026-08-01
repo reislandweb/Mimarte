@@ -1,10 +1,7 @@
-/* src/components/css/Navbar.css */
-
 /* Contenedor principal de la cabecera */
 .navbarHeader {
     transition: all 500ms ease;
     position: relative;
-    /* Asegura referencia para el menú desplegable */
     width: 100%;
 }
 
@@ -38,6 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* Distribuye espacio entre logo y menú */
+    position: relative;
 }
 
 /* Enlace del Logotipo */
@@ -47,49 +46,63 @@
     text-decoration: none;
     padding: 0;
     margin: 0;
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mimarte-text);
     z-index: 60;
-    /* Asegura que el logo no quede tapado */
 }
 
+/* ─────────────────────────────────────────────────────────────
+LÓGICA DEL LOGO DE NAVEGACIÓN (Oculto arriba, visible en Scroll)
+   ───────────────────────────────────────────────────────────── */
 .navbarLogoImg {
-    height: 15rem;
-    margin-top: -18px;
-    margin-bottom: -18px;
-    transition: transform 300ms ease;
+    display: none !important;
+    transition: opacity 300ms ease, height 300ms ease;
+}
+
+.navbarHeader.isScrolled .navbarLogoImg {
+    display: block !important;
+    height: 13rem;
+    width: auto;
+    margin: 0;
+    animation: fadeInLogo 400ms ease forwards;
 }
 
 .navbarLogoImg:hover {
     transform: scale(1.03);
 }
 
-.navbarHeader.isScrolled .navbarLogoImg {
-    height: 12rem;
-    /* Ligera adaptación en scroll para no saturar */
-    margin-top: -18px;
-    margin-bottom: -18px;
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ── NAVEGACIÓN DE ESCRITORIO */
 .navbarMenuDesktop {
     display: none;
-    /* Oculto por defecto en móvil */
     align-items: center;
     gap: 28px;
+    transition: all 400ms ease;
 }
 
 @media (min-width: 1024px) {
     .navbarMenuDesktop {
         display: flex;
     }
+
+    .navbarHeader.notScrolled .navbarMenuDesktop {
+        margin: 0 auto;
+    }
+
+    .navbarHeader.isScrolled .navbarMenuDesktop {
+        margin-left: auto;
+    }
 }
 
-/* Enlaces del menú desktop */
 .navLink {
     font-family: var(--font-body);
     font-size: 12px;
@@ -106,7 +119,6 @@
     color: var(--mimarte-primary);
 }
 
-/* Botón Contacto Desktop */
 .navCtaButton {
     font-family: var(--font-body);
     font-size: 12px;
@@ -142,12 +154,10 @@
     }
 }
 
-/* Líneas de la hamburguesa (Subidas a 2px de grosor para que destaquen) */
 .hamburgerLine {
     display: block;
     width: 26px;
     height: 2px;
-    /* Aumentado de 1px a 2px para dar visibilidad */
     background-color: var(--mimarte-primary);
     transition: all 300ms ease;
 }
@@ -160,7 +170,6 @@
     margin-bottom: 6px;
 }
 
-/* Transformaciones dinámicas al abrir (Forman una 'X' perfecta) */
 .hamburgerLine.top.open {
     transform: translateY(8px) rotate(45deg);
 }
@@ -178,7 +187,6 @@
     display: block;
     position: absolute;
     top: 100%;
-    /* Despliega justo debajo del header */
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -200,12 +208,10 @@
 
 .navbarMenuMobileCollapse.open {
     max-height: 400px;
-    /* Suficiente espacio para los 6 ítems */
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Interior del menú móvil */
 .navbarMenuMobileBody {
     background-color: rgba(253, 251, 247, 0.98);
     backdrop-filter: blur(12px);
@@ -214,12 +220,10 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    /* Alineación central impecable */
-    border-t: 1px solid rgba(195, 154, 131, 0.15);
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Enlaces del menú móvil */
 .navLinkMobile {
     font-family: var(--font-body);
     font-size: 14px;
@@ -236,7 +240,6 @@
     opacity: 1;
 }
 
-/* Botón CTA móvil */
 .navCtaButtonMobile {
     font-family: var(--font-body);
     font-size: 14px;
