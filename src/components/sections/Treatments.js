@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import "../css/Treatments.css"; // Importación de tus estilos puros
+import "../css/Treatments.css";
 
-// ── CONFIGURACIÓN DE WHATSAPP ──────────────────────────────────────────────
 const WHATSAPP_PHONE = "34641882041";
 
 const getWhatsAppLink = (treatmentTitle) => {
@@ -18,13 +17,6 @@ const CATEGORIES = [
   { id: "estetica", label: "Masajes" },
 ];
 
-// ──────────────────────────────────────────────────────────────────────────────────────
-// 🛠️ GUÍA PARA MODIFICAR LOS TRATAMIENTOS:
-// - Para MODIFICAR: Cambia los textos entre comillas de 'title', 'price', 'desc', 'img'.
-// - Para AÑADIR la lista trasera: Modifica los textos dentro del array de 'includes'.
-// - Para AGREGAR uno nuevo: Copia un bloque entero entre llaves { ... }, pon una coma al final del anterior y pégalo.
-// - Para QUITAR uno: Borra el bloque entre llaves { ... } que ya no quieras.
-// ──────────────────────────────────────────────────────────────────────────────────────
 const SERVICES = {
   facial: [
     {
@@ -39,12 +31,12 @@ const SERVICES = {
         "Mascarilla específica según necesidades",
         "Masaje de estimulación o relajación del óvalo facial",
         "Aplicación de crema y protección solar adaptados a la piel",
-      ], // <-- Edita lo que incluye aquí
+      ],
     },
     {
       title: "Dermapen Antimanchas",
       price: "80€",
-      desc: "El Dermapen antimanchas es un tratamiento facial progresivo y seguro diseñado para tratar hiperpigmentaciones, melasma, manchas solares y cicatrices post acné, ayudando a unificar el tono de la piel y devolverle luminosidad. Mediante microneedling, se potencia la penetración de viales específicos de Skinderma, seleccionados según las necesidades de la piel, con activos despigmentantes que estimulan la renovación cutánea y ayudan a aclarar las zonas oscuras de forma gradual y natural.",
+      desc: "El Dermapen antimanchas es un tratamiento facial progresivo y seguro diseñado para tratar hiperpigmentaciones, melasma, manchas solares y cicatrices post acné, ayudando a unificar el tono de la piel y devolverle luminosidad.",
       img: "/images/services/facial-2.jpg",
       includes: [
         "Diagnostico facial",
@@ -58,7 +50,7 @@ const SERVICES = {
     {
       title: "Dermapen Regenerador",
       price: "75€",
-      desc: "El Dermapen restaurador es un tratamiento facial que estimula la regeneración natural de la piel, ayudando a mejorar la firmeza, suavizar líneas de expresión y afinar la textura. Mediante microneedling, se favorece la penetración de activos concentrados de Skinderma, seleccionados según las necesidades específicas de la piel (hidratación, regeneración, antiaging, luminosidad). Esto potencia la renovación cutánea, mejora poros y marcas, y deja la piel más lisa, uniforme y radiante.",
+      desc: "El Dermapen restaurador es un tratamiento facial que estimula la regeneración natural de la piel, ayudando a mejorar la firmeza, suavizar líneas de expresión y afinar la textura.",
       img: "/images/services/facial-2.jpg",
       includes: [
         "Diagnóstico facial personalizado",
@@ -89,13 +81,12 @@ const SERVICES = {
         "Mejora la elasticidad y suavidad de la piel",
         "Atenúa las arrugas por deshidratación",
         "Aporta efecto piel más rellena y jugosa",
-        "",
       ],
     },
     {
       title: "Lumina C – Tratamiento Iluminador",
       price: "70,00€",
-      desc: "Un tratamiento facial energizante e iluminador que combina vitamina C de nueva generación con potentes antioxidantes como granada y açaí, diseñado para revitalizar la piel apagada y devolverle su luminosidad natural. Actúa ayudando a proteger la piel frente al estrés oxidativo, mejorar el tono y aportar un efecto buena cara inmediato, dejando el rostro visiblemente más fresco, uniforme y rejuvenecido.",
+      desc: "Un tratamiento facial energizante e iluminador que combina vitamina C de nueva generación con potentes antioxidantes como granada y açaí, diseñado para revitalizar la piel apagada y devolverle su luminosidad natural.",
       img: "/images/services/facial-5.jpg",
       includes: [
         "Aporta luminosidad inmediata al rostro",
@@ -108,7 +99,7 @@ const SERVICES = {
     {
       title: "OxyBalance Facial",
       price: "75,00€",
-      desc: "Un tratamiento facial detox y oxigenante diseñado para revitalizar y equilibrar la piel expuesta al estrés, la contaminación y el ritmo urbano. Su combinación de activos antioxidantes y prebióticos ayuda a proteger la piel frente a la polución ambiental, favorecer su oxigenación natural y restaurar su equilibrio, dejando el rostro más fresco, luminoso y saludable.",
+      desc: "Un tratamiento facial detox y oxigenante diseñado para revitalizar y equilibrar la piel expuesta al estrés, la contaminación y el ritmo urbano.",
       img: "/images/services/facial-6.jpg",
       includes: [
         "Ayuda a purificar la piel y eliminar toxinas acumuladas",
@@ -121,7 +112,7 @@ const SERVICES = {
     {
       title: "Retinol Repair Facial",
       price: "70,00€",
-      desc: "Un tratamiento facial intensivo diseñado para reparar y renovar la piel en profundidad, ayudando a mejorar los signos visibles del envejecimiento. Su potente complejo con retinol favorece la renovación celular, mejora la textura de la piel y suaviza líneas de expresión, dejando el rostro más firme, uniforme y rejuvenecido",
+      desc: "Un tratamiento facial intensivo diseñado para reparar y renovar la piel en profundidad, ayudando a mejorar los signos visibles del envejecimiento.",
       img: "/images/services/facial-7.jpg",
       includes: [
         "Estimula la renovación celular",
@@ -133,7 +124,7 @@ const SERVICES = {
     {
       title: "RF Facial",
       price: "75€",
-      desc: "Tratamiento facial  no invasivo que estimula la producción natural de colágeno y elastina, ayudando a mejorar la firmeza, la textura y la luminosidad de la piel. Ideal para suavizar líneas finas y mantener un rostro más terso y rejuvenecido, sin agujas ni tiempo de recuperación.",
+      desc: "Tratamiento facial no invasivo que estimula la producción natural de colágeno y elastina, ayudando a mejorar la firmeza, la textura y la luminosidad de la piel.",
       img: "/images/services/facial-9.jpg",
       includes: [
         "Diagnóstico facial",
@@ -179,9 +170,14 @@ const SERVICES = {
     {
       title: "Maderoterapia Corporal",
       price: "50,00€",
-      desc: "Tratamiento natural y remodelante que ayuda a reducir la celulitis, activar la circulación y reafirmar la piel. Se realiza con instrumentos de madera especialmente diseñados para trabajar el tejido en profundidad, favoreciendo el drenaje de líquidos, el moldeado corporal y la mejora de la textura de la piel. Ideal si buscas definir la silueta, sentirte más ligera y notar el cuerpo más firme, liso y uniforme desde las primeras sesiones.",
+      desc: "Tratamiento natural y remodelante que ayuda a reducir la celulitis, activar la circulación y reafirmar la piel.",
       img: "/images/services/corp-3.jpg",
-      includes: ["", "", "", "", ""],
+      includes: [
+        "Remodelación corporal",
+        "Activación circulatoria",
+        "Reducción de celulitis",
+        "Efecto drenante y reafirmante",
+      ],
     },
     {
       title: "Presoterapia",
@@ -195,7 +191,7 @@ const SERVICES = {
     {
       title: "RF Corporal",
       price: "49,00€",
-      desc: "Tratamiento no invasivo que utiliza energía de radiofrecuencia para estimular la producción natural de colágeno y elastina, ayudando a mejorar la firmeza, el tono y la elasticidad de la piel. Su acción profunda actúa sobre la flacidez, dejando una piel más tersa y con un aspecto rejuvenecido. Es ideal para zonas como abdomen, brazos, glúteos y piernas.",
+      desc: "Tratamiento no invasivo que utiliza energía de radiofrecuencia para estimular la producción natural de colágeno y elastina.",
       img: "/images/services/corp-5.jpg",
       includes: [
         "Diagnóstico corporal",
@@ -208,7 +204,7 @@ const SERVICES = {
     {
       title: "Vacumterapia",
       price: "40,00€",
-      desc: "Tratamiento corporal no invasivo que combina vacumterapia y radiofrecuencia para ayudar a moldear el contorno, suavizar la celulitis y mejorar la firmeza de la piel. La succión controlada activa la circulación y la radiofrecuencia aporta calor reafirmante, estimulando colágeno y elastina para una piel más lisa, tersa y uniforme.",
+      desc: "Tratamiento corporal no invasivo que combina vacumterapia y radiofrecuencia para ayudar a moldear el contorno, suavizar la celulitis y mejorar la firmeza de la piel.",
       img: "/images/services/corp-6.jpg",
       includes: [
         "Diagnóstico corporal personalizado",
@@ -220,9 +216,14 @@ const SERVICES = {
     {
       title: "Vendas frías",
       price: "48,00€",
-      desc: "Las vendas frías son un tratamiento corporal que aporta un efecto frío inmediato, ayudando a reducir la hinchazón, mejorar la circulación y favorecer el drenaje. Son ideales para aliviar la sensación de pesadez, especialmente en piernas cansadas, y contribuyen a una piel más firme y fresca desde la primera sesión.",
+      desc: "Las vendas frías son un tratamiento corporal que aporta un efecto frío inmediato, ayudando a reducir la hinchazón, mejorar la circulación y favorecer el drenaje.",
       img: "/images/services/corp-7.jpg",
-      includes: ["", "", "", "", ""],
+      includes: [
+        "Efecto frío drenante",
+        "Reducción de pesadez",
+        "Estimulación circulatoria",
+        "Efecto reafirmante",
+      ],
     },
   ],
   estetica: [
@@ -242,7 +243,7 @@ const SERVICES = {
     {
       title: "Piernas Ligeras",
       price: "30,00€",
-      desc: "Este masaje ayuda a mejorar la circulación, reducir la hinchazón y aliviar la sensación de pesadez en las piernas.Mediante movimientos firmes y rítmicos, se favorece el flujo sanguíneo, se reduce la retención de líquidos y se relaja la tensión muscular.",
+      desc: "Este masaje ayuda a mejorar la circulación, reducir la hinchazón y aliviar la sensación de pesadez en las piernas.",
       img: "/images/services/est-2.jpg",
       includes: [
         "Valoración inicial",
@@ -255,7 +256,7 @@ const SERVICES = {
     {
       title: "Relajación Corporal",
       price: "45,00€",
-      desc: "Sumerge tu cuerpo y mente en un estado profundo de relajación ",
+      desc: "Sumerge tu cuerpo y mente en un estado profundo de relajación",
       img: "/images/services/est-3.jpg",
       includes: [
         "El masaje de relajación profunda de 1 hora combina movimientos suaves y envolventes con aromaterapia y aceites esenciales, ayudando a liberar tensiones musculares, reducir el estrés y devolver el equilibrio a cuerpo y mente. Diseñado para inducir un estado de calma profunda, es ideal si necesitas desconectar, relajar el sistema nervioso y recuperar la sensación de bienestar y armonía.",
@@ -286,7 +287,7 @@ export default function Treatments() {
           </h2>
         </div>
 
-        {/* ── BOTONES DE FILTRO (TABS) */}
+        {/* ── TABS */}
         <div ref={tabsRef} className="treatmentsTabs">
           {CATEGORIES.map((cat) => (
             <button
@@ -299,12 +300,12 @@ export default function Treatments() {
           ))}
         </div>
 
-        {/* ── REJILLA DE TARJETAS 3D (FLIP CARDS) */}
+        {/* ── REJILLA TARJETAS */}
         <div ref={gridRef} className="treatmentsGrid">
           {SERVICES[activeTab].map((service, idx) => (
             <div key={`${activeTab}-${idx}`} className="treatmentCardContainer">
               <div className="flipCardInner">
-                {/* ── CARA DELANTERA (FRONT) */}
+                {/* FRONT */}
                 <div className="cardFront">
                   <div className="treatmentImageWrapper">
                     <img
@@ -324,11 +325,11 @@ export default function Treatments() {
                   </div>
                 </div>
 
-                {/* ── CARA TRASERA (BACK) */}
+                {/* BACK */}
                 <div className="cardBack">
                   <div>
                     <h4 className="treatmentIncludesTitle">
-                      ¿QUE INCLUYE LA SESION?
+                      ¿QUÉ INCLUYE LA SESIÓN?
                     </h4>
                     <ul className="treatmentIncludesList">
                       {service.includes &&
@@ -337,14 +338,25 @@ export default function Treatments() {
                         ))}
                     </ul>
                   </div>
-                  <a
-                    href={getWhatsAppLink(service.title)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="treatmentBackBtn"
-                  >
-                    Reservar cita
-                  </a>
+
+                  {/* ── CONTENEDOR DE BOTONES ── */}
+                  <div className="cardActionButtons">
+                    <a href="#contacto" className="treatmentBackBtn">
+                      + info
+                    </a>
+                    <a
+                      href={getWhatsAppLink(service.title)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="treatmentBackBtn"
+                    >
+                      Reservar cita
+                    </a>
+
+                    {/*<a href="#zonas-corporales" className="treatmentBackBtn">
+                      Ver zonas de aplicación y tiempos
+                    </a>*/}
+                  </div>
                 </div>
               </div>
             </div>

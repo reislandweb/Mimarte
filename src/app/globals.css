@@ -9,22 +9,14 @@
   /* Fuentes elegantes para estética */
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', montserrat;
-
   /* Colores reales de Mimarte Estética */
   --mimarte-bg: #faf8f4;
-  /* Fondo crema / lino suave */
   --mimarte-text: #black;
-  /* Texto principal marrón/gris oscuro */
   --mimarte-primary: #38a3a5;
-  /* Rosa empolvado corporativo */
   --mimarte-primary-light: #57cc99;
-  /* Rosa claro para hovers o fondos suaves */
   --mimarte-primary-dark: #38a3a5;
-  /* Rosa oscuro para títulos destacados */
   --mimarte-accent: #38a3a5;
-  /* Tono dorado / arena secundario */
   --mimarte-white: #faf8f4;
-  /* Blanco puro para tarjetas */
 }
 
 html {

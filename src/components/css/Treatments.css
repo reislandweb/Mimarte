@@ -266,21 +266,26 @@
     top: -2px;
 }
 
-/* Botón de reserva en el reverso */
+/* Contenedor de los dos botones en la cara trasera */
+.cardActionButtons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Botón Principal (Reservar cita - WhatsApp) */
 .treatmentBackBtn {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background-color: var(--mimarte-primary);
-    color: var(--mimarte-white);
-    padding: 12px 20px;
+    flex: 1.5;
     text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    margin-top: 16px;
+    font-size: 17px;
+    padding: 9px;
+    border: 1px solid var(--mimarte-primary);
+    color: var(--mimarte-text);
+    border-radius: 12px;
 }
 
 .treatmentBackBtn:hover {
+    transform: translateY(3px);
     background-color: var(--mimarte-primary-dark);
 }

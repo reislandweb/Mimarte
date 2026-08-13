@@ -79,8 +79,7 @@
 .heroDescription {
     font-family: var(--font-body);
     font-size: 15px;
-    color: var(--mimarte-text);
-    opacity: 0.85;
+    color: var(--mimarte-primary-dark);
     max-width: 90%;
     margin: 16px 0 24px 0;
     font-weight: 300;
@@ -188,21 +187,24 @@
     }
 
     .heroTagline {
-        font-size: 14px;
+        font-size: 20px;
         letter-spacing: 0.3em;
         margin-left: 13rem;
-        margin-bottom: -21rem;
+        margin-bottom: -23rem;
     }
 
     .heroBrandLogo {
-        width: 120%;
+        position: relative;
+        width: 170%;
         max-width: 120rem;
+        top: -9rem;
     }
 
     .heroDescription {
         font-size: 20px;
-        max-width: 672px;
-        margin-top: -11rem;
+        max-width: 700px;
+        margin-top: -30rem;
+        margin-right: -20px;
         margin-bottom: 20px;
         line-height: 1.6;
     }
