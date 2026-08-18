@@ -1408,14 +1408,14 @@
 }
 
 .productsContainer {
-    max-width: 1280px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 /* Cabecera de la sección */
 .productsHeader {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
 }
 
 .productsSubtitle {
@@ -1441,89 +1441,91 @@
     color: var(--mimarte-primary);
 }
 
-/* Grid de Marcas / Productos */
-.productsGrid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 40px;
-}
-
-@media (min-width: 768px) {
-    .productsGrid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .productsGrid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-    }
-}
-
-/* Tarjeta de Producto / Logo */
-.productCard {
-    border: 1px solid rgba(195, 154, 131, 0.15);
+/* Tarjeta principal de información de marcas */
+.productsCard {
+    border: 1px solid rgba(195, 154, 131, 0.2);
     background-color: var(--mimarte-bg);
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 50px 40px;
+    border-radius: 12px;
     text-align: center;
-    aspect-ratio: 1.5 / 1.2;
     transition: all 0.4s ease;
 }
 
-.productCard:hover {
+.productsCard:hover {
     border-color: var(--mimarte-primary);
     background-color: var(--mimarte-white);
     box-shadow: 0 10px 30px rgba(26, 22, 20, 0.04);
 }
 
-/* Contenedor de la imagen/logo */
-.productImageWrapper {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.productsTextContent {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.productsMainText {
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--mimarte-text);
     margin-bottom: 20px;
 }
 
-.productImage {
-    max-width: 80%;
-    max-height: 100%;
-    -o-object-fit: contain;
-       object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.4s ease;
+.productsMainText strong {
+    color: var(--mimarte-primary-dark);
+    font-weight: 600;
 }
 
-.productCard:hover .productImage {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-/* Textos de la tarjeta */
-.productName {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--mimarte-text);
-    margin: 0 0 8px 0;
-}
-
-.productDesc {
+.productsSecondaryText {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 1.6;
     color: var(--mimarte-text);
-    opacity: 0.6;
+    opacity: 0.8;
+    font-style: italic;
     margin: 0;
-    line-height: 1.4;
+}
+
+.productsSecondaryText strong {
+    color: var(--mimarte-primary-dark);
+    font-style: normal;
+}
+
+/* Badges decorativos de las marcas */
+.productsLogos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+}
+
+.brandBadge {
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    font-weight: 400;
+    color: var(--mimarte-primary-dark);
+}
+
+.brandDivider {
+    color: var(--mimarte-primary);
+    opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+    .productsSection {
+        padding: 80px 16px;
+    }
+
+    .productsCard {
+        padding: 32px 20px;
+    }
+
+    .productsTitle {
+        font-size: 36px;
+    }
 }
 /*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Treatments.css ***!
@@ -1626,9 +1628,8 @@
 .treatmentCardContainer {
     background-color: transparent;
     perspective: 1200px;
-    /* Crea el espacio de profundidad 3D */
-    height: 480px;
-    /* Forzamos un alto fijo estandarizado para que el giro sea perfecto */
+    height: 530px;
+    /* Altura optimizada para que todo encaje con holgura */
 }
 
 .flipCardInner {
@@ -1638,10 +1639,9 @@
     text-align: left;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
-    /* Clave para que las dos caras coexistan en 3D */
 }
 
-/* Activación del giro al pasar el ratón */
+/* Giro al pasar el ratón */
 .treatmentCardContainer:hover .flipCardInner {
     transform: rotateY(180deg);
 }
@@ -1652,11 +1652,12 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    /* Oculta la cara opuesta al girar */
     backface-visibility: hidden;
-    border: 1px solid rgba(195, 154, 131, 0.15);
+    border: 1px solid rgba(195, 154, 131, 0.18);
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* ── CARA DELANTERA (FRONT) */
@@ -1664,13 +1665,16 @@
     background-color: var(--mimarte-white);
 }
 
+/* Imagen con tamaño estandarizado y perfectamente centrada */
 .treatmentImageWrapper {
     width: 100%;
-    height: 180px;
-    /* Alto fijo de imagen para balancear la tarjeta */
+    height: 200px;
     overflow: hidden;
     position: relative;
     background-color: var(--mimarte-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .treatmentImage {
@@ -1678,6 +1682,9 @@
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
+    /* Cambia a 'contain' si prefieres ver bordes y la foto 100% integra sin recorte */
+    -o-object-position: center;
+       object-position: center;
     transition: transform 0.6s ease;
 }
 
@@ -1685,139 +1692,294 @@
     transform: scale(1.04);
 }
 
-.treatmentBody {
-    padding: 24px;
+.cardFrontBody {
+    padding: 22px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    justify-content: space-between;
 }
 
 .treatmentCardHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 16px;
+    gap: 10px;
     margin-bottom: 12px;
 }
 
 .treatmentItemTitle {
     font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 19px;
+    font-weight: 400;
     color: var(--mimarte-text);
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
+}
+
+.treatmentDuration {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--mimarte-primary-dark);
+    white-space: nowrap;
+    background-color: rgba(195, 154, 131, 0.12);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Lista de Beneficios */
+.benefitsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.benefitItem {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    color: var(--mimarte-text);
+    opacity: 0.85;
+    line-height: 1.35;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.checkIcon {
+    color: var(--mimarte-primary);
+    font-weight: bold;
+}
+
+/* Precio */
+.priceBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    padding-top: 10px;
+}
+
+.priceLabel {
+    font-family: var(--font-body);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
 }
 
 .treatmentPrice {
     font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: 600;
     color: var(--mimarte-primary-dark);
-    white-space: nowrap;
 }
 
-.treatmentCardDesc {
-    font-family: var(--font-body);
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--mimarte-text);
-    opacity: 0.75;
-    margin: 0;
+.flipHint {
     display: block;
-    overflow: visible;
-    -webkit-line-clamp: unset;
-}
-
-.treatmentFooterLink {
     font-family: var(--font-body);
     font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-align: center;
     color: var(--mimarte-primary);
-    text-decoration: none;
-    font-weight: 500;
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    margin-top: 8px;
+    opacity: 0.8;
 }
 
 /* ── CARA TRASERA (BACK) */
 .cardBack {
     background-color: #faf7f2;
-    /* Un crema sutilmente diferente para contrastar el reverso */
     transform: rotateY(180deg);
-    /* Colocada del revés por defecto */
-    padding: 45px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border-color: var(--mimarte-primary-light);
 }
 
-.treatmentIncludesTitle {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--mimarte-primary-dark);
-    margin: 0 0 16px 0;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
-    padding-bottom: 8px;
-}
-
-/* Lista de lo que incluye */
-.treatmentIncludesList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.cardBackContent {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    flex-grow: 1;
 }
 
-.treatmentIncludesList li {
+.backTitle {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--mimarte-text);
+    margin: 0 0 4px 0;
+}
+
+/* SUBTÍTULO DESTACADO EN NEGRITA */
+.backSubtitle {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    /* Letra negrita */
+    color: var(--mimarte-primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(195, 154, 131, 0.25);
+    padding-bottom: 4px;
+}
+
+.idealForText {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    color: var(--mimarte-primary-dark);
+    background-color: rgba(195, 154, 131, 0.08);
+    padding: 6px 10px;
+    border-left: 3px solid var(--mimarte-primary);
+    margin: 0 0 10px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.treatmentFullDesc {
     font-family: var(--font-body);
     font-size: 13px;
+    line-height: 1.55;
     color: var(--mimarte-text);
     opacity: 0.85;
-    position: relative;
-    padding-left: 18px;
-    line-height: 1.4;
+    margin: 0;
 }
 
-/* Viñeta minimalista elegante para la lista */
-.treatmentIncludesList li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--mimarte-primary);
-    font-size: 16px;
-    top: -2px;
+.packsBox {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background-color: rgba(195, 154, 131, 0.12);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-/* Contenedor de los dos botones en la cara trasera */
+.packsTitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--mimarte-primary-dark);
+    text-transform: uppercase;
+}
+
+.packsText {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--mimarte-text);
+    font-weight: 500;
+}
+
+/* Botones en la cara trasera */
 .cardActionButtons {
     display: flex;
     gap: 10px;
     width: 100%;
     margin-top: auto;
+    padding-top: 14px;
 }
 
-/* Botón Principal (Reservar cita - WhatsApp) */
 .treatmentBackBtn {
-    flex: 1.5;
+    text-decoration: none;
     text-align: center;
-    font-size: 17px;
-    padding: 9px;
-    border: 1px solid var(--mimarte-primary);
-    color: var(--mimarte-text);
-    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 9px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-.treatmentBackBtn:hover {
-    transform: translateY(3px);
+.treatmentBackBtn.primary {
+    flex: 2;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    border: 1px solid var(--mimarte-primary);
+}
+
+.treatmentBackBtn.primary:hover {
     background-color: var(--mimarte-primary-dark);
+    border-color: var(--mimarte-primary-dark);
+}
+
+.treatmentBackBtn.secondary {
+    flex: 1;
+    background-color: transparent;
+    color: var(--mimarte-text);
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+.treatmentBackBtn.secondary:hover {
+    border-color: var(--mimarte-primary);
+    color: var(--mimarte-primary-dark);
+}
+
+/* ── TARJETA ESTRELLA / TRATAMIENTO PREMIUM (DORADO) ── */
+
+/* Borde y sombra dorada sutil en la tarjeta container */
+.treatmentCardContainer.featured {
+    position: relative;
+}
+
+/* Badge o etiqueta "Tratamiento Estrella" en la esquina */
+.treatmentCardContainer.featured::before {
+    content: '★ ESTRELLA';
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: linear-gradient(135deg, #d4af37, #f3e5ab);
+    color: #3a2e10;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Cara Delantera y Trasera con borde y fondo dorado prémium */
+.goldCard .cardFront,
+.goldCard .cardBack {
+    border: 1.5px solid #d4af37 !important;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.12);
+}
+
+/* Fondo ligeramente cálido para la cara delantera dorada */
+.goldCard .cardFront {
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf7 100%);
+}
+
+/* Fondo para la cara trasera dorada */
+.goldCard .cardBack {
+    background: linear-gradient(180deg, #fdfbf7 0%, #f7f0e3 100%);
+    border-color: #d4af37 !important;
+}
+
+/* Detalles del texto y títulos en dorado elegante */
+.goldCard .treatmentItemTitle,
+.goldCard .backTitle {
+    color: #2c220e;
+}
+
+.goldCard .treatmentPrice {
+    color: #a37c1e;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+/* Botón principal reservado para tarjetas doradas */
+.goldCard .treatmentBackBtn.primary {
+    background: linear-gradient(135deg, #c59b27, #a37c1e);
+    border-color: #a37c1e;
+    color: #ffffff;
+}
+
+.goldCard .treatmentBackBtn.primary:hover {
+    background: linear-gradient(135deg, #a37c1e, #846212);
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/CustomCursor.css ***!
