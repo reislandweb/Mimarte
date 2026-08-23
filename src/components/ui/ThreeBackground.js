@@ -23,8 +23,8 @@ gsap.registerPlugin(ScrollTrigger)
 const PARTICLE_COUNT  = 2200
 const PARTICLE_SIZE   = 0.12
 const SPHERE_RADIUS   = 1.8    // radio esfera principal
-const SPHERE_RADIUS_2 = 1.9    // radio esfera final (más pequeña)
-const EXPLOSION_FORCE = 15      // fuerza de la explosión
+const SPHERE_RADIUS_2 = 1.8    // radio esfera final (más pequeña)
+const EXPLOSION_FORCE = 10      // fuerza de la explosión
 
 // Colores por fase (hex 0xRRGGBB) — ajusta a la paleta de tu clienta
 const COLOR_CHAOS     = 0xA8120B  // nude cálido

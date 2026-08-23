@@ -287,3 +287,10 @@
     border-color: var(--mimarte-primary);
     color: var(--mimarte-primary);
 }
+
+.socialIcon {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    display: block;
+}

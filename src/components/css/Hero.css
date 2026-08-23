@@ -1,5 +1,6 @@
 /* src/components/css/Hero.css */
 
+/* Contenedor principal de la sección */
 .heroSection {
     position: relative;
     min-height: 100vh;
@@ -21,7 +22,7 @@
     background-position: center;
 }
 
-/* Capa de overlay sutil para garantizar legibilidad */
+/* Capa overlay sutil */
 .heroOverlay {
     position: absolute;
     top: 0;
@@ -31,82 +32,71 @@
     background: transparent;
 }
 
-/* Contenedor del contenido */
-.heroContent {
+/* ==========================================
+   1. ESTILOS BASE (MÓVIL / TABLET)
+   ========================================== */
+
+.heroContentSingle {
     position: relative;
-    text-align: center;
-    padding: 96px 24px 0 24px;
-    max-width: 1024px;
+    z-index: 2;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
+    padding: 100px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .heroTagline {
     font-family: var(--font-body);
-    font-size: 12px;
-    letter-spacing: 0.3em;
+    font-size: 11px;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--mimarte-primary-dark);
-    margin-bottom: 24px;
+    margin: 0 0 12px 0;
     display: block;
+    white-space: nowrap;
 }
 
-.heroTitle {
-    font-family: var(--font-display);
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 32px;
-    color: var(--mimarte-text);
+.heroBrandWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-@media (min-width: 768px) {
-    .heroTitle {
-        font-size: 80px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .heroTitle {
-        font-size: 104px;
-    }
-}
-
-.heroTitle em {
-    font-style: italic;
-    color: var(--mimarte-primary);
+.heroBrandLogo {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
 }
 
 .heroDescription {
     font-family: var(--font-body);
-    font-size: 18px;
-    color: var(--mimarte-text);
-    opacity: 0.85;
-    max-width: 672px;
-    margin: 0 auto 40px auto;
+    font-size: 15px;
+    color: var(--mimarte-primary-dark);
+    max-width: 90%;
+    margin: 16px 0 24px 0;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-@media (min-width: 768px) {
-    .heroDescription {
-        font-size: 20px;
-    }
-}
-
-/* Botones de acción */
 .heroCtaWrapper {
+    margin-top: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
     justify-content: center;
+    gap: 12px;
+    width: 100%;
 }
 
-@media (min-width: 640px) {
-    .heroCtaWrapper {
-        flex-direction: row;
-    }
-}
-
+/* Botones */
 .btnHeroPrimary {
     font-family: var(--font-body);
     font-size: 12px;
@@ -117,6 +107,8 @@
     padding: 16px 32px;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    width: auto;
+    text-align: center;
 }
 
 .btnHeroPrimary:hover {
@@ -133,6 +125,8 @@
     padding: 16px 32px;
     text-decoration: none;
     transition: all 0.3s ease;
+    width: auto;
+    text-align: center;
 }
 
 .btnHeroSecondary:hover {
@@ -177,5 +171,47 @@
 
     50% {
         opacity: 1;
+    }
+}
+
+
+/* ==========================================
+   2. ESTILOS DESKTOP (MANTIENE TUS MEDIDAS)
+   ========================================== */
+
+@media (min-width: 1024px) {
+    .heroContentSingle {
+        max-width: 900px;
+        margin: 20rem 0 0 0;
+        padding: 0;
+    }
+
+    .heroTagline {
+        font-size: 20px;
+        letter-spacing: 0.3em;
+        margin-left: 13rem;
+        margin-bottom: -23rem;
+    }
+
+    .heroBrandLogo {
+        position: relative;
+        width: 170%;
+        max-width: 120rem;
+        top: -9rem;
+    }
+
+    .heroDescription {
+        font-size: 20px;
+        max-width: 700px;
+        margin-top: -30rem;
+        margin-right: -20px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .heroCtaWrapper {
+        margin-top: 10px;
+        flex-direction: row;
+        gap: 20px;
     }
 }

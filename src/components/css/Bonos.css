@@ -323,3 +323,8 @@
     color: var(--mimarte-text);
     opacity: 0.5;
 }
+
+.btnInfo:hover {
+    border: 1px solid #000000;
+
+}

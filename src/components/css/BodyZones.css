@@ -1,0 +1,261 @@
+.zonesSection {
+    background-color: var(--mimarte-bg-soft, #fdfbf7);
+    padding: 80px 20px;
+}
+
+.zonesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.zonesHeader {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.zonesSubtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--mimarte-primary, #cbb29a);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.zonesTitle {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+}
+
+.zonesTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary, #cbb29a);
+}
+
+.zonesDesc {
+    max-width: 650px;
+    margin: 15px auto 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.zonesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .zonesGrid {
+        grid-template-columns: 1fr 1.1fr;
+    }
+}
+
+/* ── MAPA INTERACTIVO ── */
+.zonesInteractiveWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    background: #fff;
+}
+
+.baseImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.interactiveHint {
+    font-size: 13px;
+    color: #888;
+    margin-top: 12px;
+}
+
+/* Hotspots (Puntos interactivos) */
+.hotspotDot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #e67e22;
+    /* Tono naranja acorde a la imagen */
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+}
+
+.hotspotDot:hover,
+.hotspotDot.active {
+    background-color: #d35400;
+    transform: translate(-50%, -50%) scale(1.3);
+    z-index: 3;
+}
+
+/* Efecto de pulso en los puntos */
+.dotPulse {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid #e67e22;
+    animation: pulse 2s infinite;
+    opacity: 0.6;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+/* Tooltip al pasar el cursor sobre el punto */
+.dotTooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.hotspotDot:hover .dotTooltip {
+    opacity: 1;
+}
+
+/* ── DERECHA: TARJETA DE INFORMACIÓN DE SESIONES ── */
+.zonesInfoCard {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0e8e0;
+}
+
+.timeHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.timeBadge {
+    background: #f4ece4;
+    color: var(--mimarte-primary, #b3977d);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.badgeGold {
+    background: #e67e22;
+    color: #fff;
+}
+
+.timeBlock h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+.timeDesc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.zonesPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.zonePill {
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.zonePill:hover,
+.zonePill.selected {
+    background: var(--mimarte-primary, #cbb29a);
+    color: #fff;
+    border-color: var(--mimarte-primary, #cbb29a);
+}
+
+.zonesDivider {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 25px 0;
+}
+
+.examplesBox {
+    background: #faf8f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.examplesTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.examplesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: #666;
+}
+
+.warningBox {
+    background: #fff8f5;
+    border-left: 3px solid #e67e22;
+    padding: 12px;
+    font-size: 13px;
+    color: #775544;
+    line-height: 1.4;
+}

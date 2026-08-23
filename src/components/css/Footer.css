@@ -1,7 +1,8 @@
 /* src/components/css/Footer.css */
 
 .footerSection {
-    background-color: var(--mimarte-primary-dark); /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
+    background-color: var(--mimarte-primary-dark);
+    /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
     border-top: 1px solid rgba(195, 154, 131, 0.15);
     padding: 80px 24px 32px 24px;
     width: 100%;
@@ -95,7 +96,8 @@
 
 .footerListLink:hover {
     color: var(--mimarte-white);
-    padding-left: 4px; /* Sutil efecto dinámico al pasar el ratón */
+    padding-left: 4px;
+    /* Sutil efecto dinámico al pasar el ratón */
 }
 
 /* Textos estáticos de información (Horarios/Contacto) */
@@ -148,4 +150,10 @@
 
 .footerLegalLink:hover {
     color: var(--mimarte-white);
+}
+
+/* FORZAR TAMAÑO MÁS GRANDE DE LA BURBUJA DE CHATBASE */
+#chatbase-bubble-button {
+    transform: scale(1.5) !important;
+    transform-origin: bottom right !important;
 }
