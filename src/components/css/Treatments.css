@@ -1,83 +1,72 @@
 /* src/components/css/Treatments.css */
 
 .treatmentsSection {
-    padding: 128px 24px;
+    padding: 80px 20px;
+    background-color: #faf7f4;
     width: 100%;
-    background-color: var(--mimarte-bg);
 }
 
 .treatmentsContainer {
-    max-width: 1280px;
+    max-width: 1140px;
     margin: 0 auto;
 }
 
-/* Cabecera */
 .treatmentsHeader {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 40px;
 }
 
 .treatmentsSubtitle {
-    font-family: var(--font-body);
     font-size: 12px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--mimarte-primary-dark);
-    margin-bottom: 16px;
+    color: #b89335;
+    font-weight: 600;
     display: block;
+    margin-bottom: 8px;
 }
 
 .treatmentsTitle {
-    font-family: var(--font-display);
-    font-size: 48px;
+    font-size: 36px;
+    color: #2b2b2b;
     font-weight: 300;
-    color: var(--mimarte-text);
     margin: 0;
 }
 
-.treatmentsTitle em {
-    font-style: italic;
-    color: var(--mimarte-primary);
-}
-
-/* Selector de Categorías (Tabs) */
+/* Categorías */
 .treatmentsTabs {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 56px;
+    margin-bottom: 40px;
 }
 
 .tabBtn {
-    font-family: var(--font-body);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: transparent;
-    color: var(--mimarte-text);
-    border: 1px solid var(--mimarte-primary-light);
-    padding: 12px 24px;
+    background: #ffffff;
+    color: #666;
+    border: 1px solid #e2d8cd;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.tabBtn:hover {
-    border-color: var(--mimarte-primary);
-    color: var(--mimarte-primary-dark);
-}
-
+.tabBtn:hover,
 .tabBtn.active {
-    background-color: var(--mimarte-primary);
-    color: var(--mimarte-white);
-    border-color: var(--mimarte-primary);
+    background: #c59b27;
+    color: #ffffff;
+    border-color: #c59b27;
+    box-shadow: 0 4px 12px rgba(197, 155, 39, 0.25);
 }
 
-/* Rejilla de Tarjetas */
+/* Grid */
 .treatmentsGrid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
 }
 
 @media (min-width: 768px) {
@@ -92,12 +81,12 @@
     }
 }
 
-/* ── MAQUINARIA EFECTO GIRATORIO 3D (FLIP CARD) */
-.treatmentCardContainer {
+/* ── FLIP CARD ENGINE (3D) ── */
+.flipCardContainer {
     background-color: transparent;
-    perspective: 1200px;
-    height: 530px;
-    /* Altura optimizada para que todo encaje con holgura */
+    height: 420px;
+    /* Aumentamos la altura para acomodar las fotos adecuadamente */
+    perspective: 1000px;
 }
 
 .flipCardInner {
@@ -105,16 +94,15 @@
     width: 100%;
     height: 100%;
     text-align: left;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
 }
 
-/* Giro al pasar el ratón */
-.treatmentCardContainer:hover .flipCardInner {
+.flipCardContainer:hover .flipCardInner {
     transform: rotateY(180deg);
 }
 
-/* Comportamiento base de ambas caras */
+/* Estilos comunes Cara Delantera / Trasera */
 .cardFront,
 .cardBack {
     position: absolute;
@@ -122,329 +110,242 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border: 1px solid rgba(195, 154, 131, 0.18);
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
+    border: 1px solid #eee6dd;
+    background: #ffffff;
+    box-sizing: border-box;
     overflow: hidden;
 }
 
-/* ── CARA DELANTERA (FRONT) */
+/* ── CARA DELANTERA CON FOTO ── */
 .cardFront {
-    background-color: var(--mimarte-white);
+    justify-content: space-between;
 }
 
-/* Imagen con tamaño estandarizado y perfectamente centrada */
-.treatmentImageWrapper {
+.cardImgWrapper {
     width: 100%;
-    height: 200px;
+    height: 140px;
+    background-color: #f4efe9;
     overflow: hidden;
     position: relative;
-    background-color: var(--mimarte-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.treatmentImage {
+.cardImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Cambia a 'contain' si prefieres ver bordes y la foto 100% integra sin recorte */
     object-position: center;
-    transition: transform 0.6s ease;
+    transition: transform 0.4s ease;
 }
 
-.treatmentCardContainer:hover .treatmentImage {
-    transform: scale(1.04);
+.flipCardContainer:hover .cardImg {
+    transform: scale(1.05);
 }
 
 .cardFrontBody {
-    padding: 22px;
+    padding: 18px 20px 16px 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-between;
 }
 
-.treatmentCardHeader {
+.frontHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
-    margin-bottom: 12px;
 }
 
-.treatmentItemTitle {
-    font-family: var(--font-display);
-    font-size: 19px;
-    font-weight: 400;
-    color: var(--mimarte-text);
+.cardTitle {
+    font-size: 18px;
+    color: #2c2c2c;
     margin: 0;
+    font-weight: 500;
     line-height: 1.25;
 }
 
-.treatmentDuration {
-    font-family: var(--font-body);
-    font-size: 11px;
-    color: var(--mimarte-primary-dark);
+.cardPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #b89335;
     white-space: nowrap;
-    background-color: rgba(195, 154, 131, 0.12);
-    padding: 4px 8px;
-    border-radius: 4px;
 }
 
-/* Lista de Beneficios */
-.benefitsList {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 12px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.cardMeta {
+    font-size: 11.5px;
+    color: #888;
+    margin-top: 4px;
+    display: block;
 }
 
-.benefitItem {
-    font-family: var(--font-body);
-    font-size: 12.5px;
-    color: var(--mimarte-text);
-    opacity: 0.85;
-    line-height: 1.35;
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
+.benefitsBox {
+    background-color: #fcf8f0;
+    border-left: 3px solid #d4af37;
+    padding: 8px 10px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
 }
 
-.checkIcon {
-    color: var(--mimarte-primary);
-    font-weight: bold;
-}
-
-/* Precio */
-.priceBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(195, 154, 131, 0.15);
-    padding-top: 10px;
-}
-
-.priceLabel {
-    font-family: var(--font-body);
-    font-size: 11px;
+.benefitsLabel {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #8e6d19;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.6;
+    margin-bottom: 2px;
 }
 
-.treatmentPrice {
-    font-family: var(--font-body);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--mimarte-primary-dark);
+.benefitsText {
+    font-size: 12px;
+    color: #555;
+    margin: 0;
+    line-height: 1.35;
 }
 
 .flipHint {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 11px;
-    text-align: center;
-    color: var(--mimarte-primary);
-    margin-top: 8px;
-    opacity: 0.8;
-}
-
-/* ── CARA TRASERA (BACK) */
-.cardBack {
-    background-color: #faf7f2;
-    transform: rotateY(180deg);
-    padding: 26px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    border-color: var(--mimarte-primary-light);
+    align-items: center;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #f0e9e1;
+    padding-top: 8px;
 }
 
-.cardBackContent {
-    display: flex;
-    flex-direction: column;
+/* ── CARA TRASERA ── */
+.cardBack {
+    transform: rotateY(180deg);
+    background: #fdfbf8;
+    border-color: #e6dacd;
+    padding: 24px;
 }
 
 .backTitle {
-    font-family: var(--font-display);
-    font-size: 21px;
-    font-weight: 400;
-    color: var(--mimarte-text);
-    margin: 0 0 4px 0;
-}
-
-/* SUBTÍTULO DESTACADO EN NEGRITA */
-.backSubtitle {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 700;
-    /* Letra negrita */
-    color: var(--mimarte-primary-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
-    border-bottom: 1px solid rgba(195, 154, 131, 0.25);
-    padding-bottom: 4px;
-}
-
-.idealForText {
-    font-family: var(--font-body);
-    font-size: 12.5px;
-    color: var(--mimarte-primary-dark);
-    background-color: rgba(195, 154, 131, 0.08);
-    padding: 6px 10px;
-    border-left: 3px solid var(--mimarte-primary);
+    font-size: 17px;
+    color: #2c2c2c;
     margin: 0 0 10px 0;
-    border-radius: 0 4px 4px 0;
+    border-bottom: 1px solid #ebd9c8;
+    padding-bottom: 8px;
+    font-weight: 600;
 }
 
-.treatmentFullDesc {
-    font-family: var(--font-body);
+.scrollDesc {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 14px;
+    padding-right: 4px;
+}
+
+.fullDesc {
     font-size: 13px;
     line-height: 1.55;
-    color: var(--mimarte-text);
-    opacity: 0.85;
-    margin: 0;
+    color: #555;
+    margin: 0 0 12px 0;
 }
 
-.packsBox {
-    margin-top: 12px;
+.bonoNoticeBox {
+    background: #f7ede0;
+    border: 1px dashed #d4af37;
     padding: 8px 10px;
-    background-color: rgba(195, 154, 131, 0.12);
     border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    font-size: 11.5px;
 }
 
-.packsTitle {
-    font-family: var(--font-body);
-    font-size: 11px;
+.bonoNoticeTitle {
+    display: block;
     font-weight: 700;
-    color: var(--mimarte-primary-dark);
-    text-transform: uppercase;
+    color: #8e6d19;
 }
 
-.packsText {
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: var(--mimarte-text);
-    font-weight: 500;
+.bonoNoticeDetails {
+    color: #444;
 }
 
-/* Botones en la cara trasera */
-.cardActionButtons {
+/* Acciones Cara Trasera (+ INFO + Reservar) */
+.cardBackActions {
     display: flex;
     gap: 10px;
-    width: 100%;
-    margin-top: auto;
-    padding-top: 14px;
 }
 
-.treatmentBackBtn {
-    text-decoration: none;
-    text-align: center;
-    font-family: var(--font-body);
-    font-size: 12.5px;
-    font-weight: 500;
-    padding: 9px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.treatmentBackBtn.primary {
+.bookBtn {
     flex: 2;
-    background-color: var(--mimarte-primary);
-    color: var(--mimarte-white);
-    border: 1px solid var(--mimarte-primary);
+    text-align: center;
+    background: #2c2c2c;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.3s ease;
 }
 
-.treatmentBackBtn.primary:hover {
-    background-color: var(--mimarte-primary-dark);
-    border-color: var(--mimarte-primary-dark);
+.bookBtn:hover {
+    background: #b89335;
 }
 
-.treatmentBackBtn.secondary {
+.infoBtn {
     flex: 1;
-    background-color: transparent;
-    color: var(--mimarte-text);
-    border: 1px solid var(--mimarte-primary-light);
+    text-align: center;
+    background: transparent;
+    color: #b89335;
+    border: 1.5px solid #b89335;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.treatmentBackBtn.secondary:hover {
-    border-color: var(--mimarte-primary);
-    color: var(--mimarte-primary-dark);
-}
-
-/* ── TARJETA ESTRELLA / TRATAMIENTO PREMIUM (DORADO) ── */
-
-/* Borde y sombra dorada sutil en la tarjeta container */
-.treatmentCardContainer.featured {
-    position: relative;
-}
-
-/* Badge o etiqueta "Tratamiento Estrella" en la esquina */
-.treatmentCardContainer.featured::before {
-    content: '★ ESTRELLA';
-    position: absolute;
-    top: -10px;
-    right: 16px;
-    background: linear-gradient(135deg, #d4af37, #f3e5ab);
-    color: #3a2e10;
-    font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border-radius: 12px;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
-}
-
-/* Cara Delantera y Trasera con borde y fondo dorado prémium */
-.goldCard .cardFront,
-.goldCard .cardBack {
-    border: 1.5px solid #d4af37 !important;
-    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.12);
-}
-
-/* Fondo ligeramente cálido para la cara delantera dorada */
-.goldCard .cardFront {
-    background: linear-gradient(180deg, #ffffff 0%, #fffdf7 100%);
-}
-
-/* Fondo para la cara trasera dorada */
-.goldCard .cardBack {
-    background: linear-gradient(180deg, #fdfbf7 0%, #f7f0e3 100%);
-    border-color: #d4af37 !important;
-}
-
-/* Detalles del texto y títulos en dorado elegante */
-.goldCard .treatmentItemTitle,
-.goldCard .backTitle {
-    color: #2c220e;
-}
-
-.goldCard .treatmentPrice {
-    color: #a37c1e;
-    font-size: 19px;
-    font-weight: 700;
-}
-
-/* Botón principal reservado para tarjetas doradas */
-.goldCard .treatmentBackBtn.primary {
-    background: linear-gradient(135deg, #c59b27, #a37c1e);
-    border-color: #a37c1e;
+.infoBtn:hover {
+    background: #b89335;
     color: #ffffff;
 }
 
-.goldCard .treatmentBackBtn.primary:hover {
-    background: linear-gradient(135deg, #a37c1e, #846212);
+/* ── TARJETA ORO (TRATAMIENTOS ESTRELLA) ── */
+.flipCardContainer.goldCard .cardFront,
+.flipCardContainer.goldCard .cardBack {
+    background: linear-gradient(145deg, #ffffff 0%, #fffdf4 100%);
+    border: 2px solid #d4af37;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.goldBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+    color: #2d2105;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+.goldCard .cardTitle {
+    color: #1a160d;
+    font-weight: 600;
+}
+
+.goldCard .cardPrice {
+    color: #9e7916;
+    font-size: 19px;
+}
+
+.goldCard .bookBtn {
+    background: linear-gradient(135deg, #d4af37 0%, #b89335 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.goldCard .bookBtn:hover {
+    background: linear-gradient(135deg, #b89335 0%, #8e6d19 100%);
 }

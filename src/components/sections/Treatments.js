@@ -1,361 +1,219 @@
 "use client";
 
 import { useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import "../css/Treatments.css";
 
 const WHATSAPP_PHONE = "34641882041";
 
 const getWhatsAppLink = (treatmentTitle) => {
-  const message = `¡Hola! Me gustaría reservar cita para el tratamiento: *${treatmentTitle}*.\n\n¿Qué días y horas tenéis disponibles?`;
+  const message = `¡Hola! Me gustaría pedir información/cita para: *${treatmentTitle}*.`;
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 };
 
 const CATEGORIES = [
-  { id: "facial", label: "Faciales" },
-  { id: "corporal", label: "Corporales y Masajes" },
-  { id: "bonos", label: "Packs y Bonos ⭐" },
+  { id: "faciales", label: "FACIALES" },
+  { id: "corporales", label: "CORPORALES" },
+  { id: "masajes", label: "MASAJES" },
 ];
 
 const SERVICES = {
-  facial: [
+  faciales: [
     {
       title: "Higiene Facial",
-      subtitle: "Limpieza y Salud Cutánea",
-      price: "45€",
-      duration: "45-60 min",
-      img: "/images/services/facial-1.jpg",
-      benefits: [
-        "Elimina impurezas y células muertas",
-        "Devuelve luminosidad y equilibrio",
-        "Preparación ideal para otros protocolos",
-      ],
-      idealFor: "Todo tipo de pieles, piel apagada o poros obstruidos.",
-      desc: "Una piel limpia es el primer paso para una piel saludable. Eliminamos impurezas, células muertas y exceso de grasa para devolver luminosidad, frescura y equilibrio a tu piel. Ideal como tratamiento de mantenimiento o preparación.",
+      price: "45 €",
+      img: "/images/services/higiene-facial.jpg", // 📸 ESPACIO PARA FOTO
+      benefits:
+        "Limpia en profundidad, elimina células muertas y devuelve luminosidad y equilibrio a tu piel.",
+      desc: "Una piel limpia es el primer paso para una piel saludable. Eliminamos impurezas, células muertas y exceso de grasa para devolver luminosidad, frescura y equilibrio a tu piel. Ideal como tratamiento de mantenimiento o como preparación para otros protocolos faciales.",
     },
     {
       title: "Dermolimpieza Avanzada",
-      subtitle: "Higiene Profunda y Ultrasónica",
-      price: "59€",
-      duration: "60 min",
-      img: "/images/services/facial-3.jpg",
-      benefits: [
-        "Extracción manual y espátula ultrasónica",
-        "Desobstruye poros e impurezas eficazmente",
-        "Piel fresca, equilibrada y muy luminosa",
-      ],
-      idealFor: "Todo tipo de pieles que busquen una limpieza profunda.",
-      desc: "Tratamiento de higiene facial profunda y personalizada que combina extracción manual y espátula ultrasónica para limpiar la piel de forma eficaz y respetuosa, preparándola para potenciar tratamientos posteriores.",
+      price: "59 €",
+      img: "/images/services/dermolimpieza.jpg",
+      benefits:
+        "Higiene profunda con extracción manual y espátula ultrasónica sin agredir la piel.",
+      desc: "Nuestra Dermolimpieza Avanzada es un tratamiento de higiene facial profunda y personalizada que combina extracción manual y espátula ultrasónica para limpiar la piel, desobstruir los poros y eliminar impurezas de forma eficaz y respetuosa. El resultado es una piel más fresca, equilibrada, luminosa y preparada para potenciar cualquier tratamiento posterior.",
     },
     {
-      title: "Lumina C – Iluminador",
-      subtitle: "Acción Antioxidante y Vitalidad",
-      price: "70€",
-      duration: "50 min",
-      img: "/images/services/facial-5.jpg",
-      benefits: [
-        "Aporta luminosidad e hidratación",
-        "Protege frente al envejecimiento prematuro",
-        "Rostro fresco, uniforme y radiante",
-      ],
-      idealFor: "Mantener una piel luminosa, hidratada y llena de vitalidad.",
-      desc: "Tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro.",
+      title: "Lumina C – Tratamiento Iluminador",
+      price: "70 €",
+      img: "/images/services/lumina-c.jpg",
+      benefits:
+        "Acción antioxidante, máxima luminosidad e hidratación profunda frente al envejecimiento.",
+      desc: "Lumina C es un tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro. El resultado es un rostro más fresco, uniforme y naturalmente radiante.",
     },
     {
       title: "Retinol Repair",
-      subtitle: "Renovación y Antimanchas",
-      price: "70€",
-      duration: "50 min",
-      img: "/images/services/facial-7.jpg",
-      benefits: [
-        "Atenúa la apariencia de manchas",
-        "Favorece la renovación celular",
-        "Mejora firmeza, luminosidad y textura",
-      ],
-      idealFor: "Pieles con manchas, falta de firmeza o textura irregular.",
-      desc: "Tratamiento facial manual a base de retinol que favorece la renovación de la piel, disminuye la apariencia de manchas y mejora la firmeza para dejar un aspecto visiblemente más joven.",
+      price: "70 €",
+      img: "/images/services/retinol-repair.jpg",
+      benefits:
+        "Atenúa manchas, favorece la renovación celular y mejora la firmeza del rostro.",
+      desc: "Tratamiento facial manual a base de retinol que favorece la renovación de la piel, ayuda a disminuir la apariencia de las manchas y mejora la firmeza y luminosidad del rostro. Su acción reparadora deja la piel más uniforme, suave y revitalizada, con un aspecto visiblemente más joven y saludable.",
     },
     {
-      title: "Hyaluronic Hidratación",
-      subtitle: "Nutrición e Hidratación Profunda",
-      price: "70€",
-      duration: "50 min",
-      img: "/images/services/facial-4.jpg",
-      benefits: [
-        "Hidratación profunda y duradera",
-        "Mejora la elasticidad y suavidad",
-        "Aporta confort y vitalidad al rostro",
-      ],
-      idealFor: "Pieles deshidratadas, secas o con falta de confort.",
-      desc: "Tratamiento facial intensivo con ácido hialurónico que proporciona una hidratación intensa, mejora la elasticidad y devuelve confort y suavidad a la piel.",
+      title: "Hyaluronic – Hidratación Profunda",
+      price: "70 €",
+      img: "/images/services/hyaluronic.jpg",
+      benefits:
+        "Hidratación intensa y duradera, recupera la elasticidad y aporta confort inmediato.",
+      desc: "Tratamiento facial intensivo con ácido hialurónico que proporciona una hidratación intensa, mejora la elasticidad y devuelve confort a la piel. Su acción nutritiva ayuda a mantener un rostro más suave, luminoso y revitalizado, con un aspecto fresco y saludable.",
     },
     {
-      title: "Oxibalance Detox",
-      subtitle: "Oxigenante y Anti-Polución",
-      price: "75€",
-      duration: "50 min",
-      img: "/images/services/facial-6.jpg",
-      benefits: [
-        "Protege del estrés y contaminación",
-        "Activos antioxidantes y prebióticos",
-        "Restaura el equilibrio natural cutáneo",
-      ],
-      idealFor: "Pieles expuestas a la contaminación urbana o estrés diario.",
-      desc: "Diseñado para revitalizar y equilibrar la piel frente al estrés diario. Su combinación de prebióticos y antioxidantes favorece la oxigenación natural y restaura su salud.",
+      title: "Oxibalance – Detox y Oxigenante",
+      price: "75 €",
+      img: "/images/services/oxibalance.jpg",
+      benefits:
+        "Protege frente a la contaminación, oxigena el tejido y restaura el equilibrio natural.",
+      desc: "Tratamiento facial detox y oxigenante diseñado para revitalizar y equilibrar la piel frente al estrés diario y la contaminación ambiental. Su combinación de activos antioxidantes y prebióticos ayuda a proteger la piel de las agresiones externas, favorece su oxigenación natural y restaura su equilibrio, dejando el rostro más fresco, uniforme y saludable.",
     },
     {
       title: "Tratamiento Antiacné",
-      subtitle: "Seborregulador + Fototerapia LED",
-      price: "85€",
-      duration: "60 min",
-      packs: "Bono 4 ses: 310€ | Bono 8 ses: 552€",
-      img: "/images/services/facial-8.jpg",
-      benefits: [
-        "Regula el exceso de sebo",
-        "Reduce granitos y comedones",
-        "Estimula la regeneración cutánea",
-      ],
-      idealFor: "Pieles acneicas, con exceso de grasa e imperfecciones.",
-      desc: "Protocolo específico purificante y seborregulador combinado con fototerapia LED para calmar la piel, controlar el sebo y reducir imperfecciones. Disponible en bonos de 4 y 8 sesiones.",
+      price: "85 €",
+      img: "/images/services/antiacne.jpg",
+      benefits:
+        "Regula el exceso de sebo, calma la piel y reduce la aparición de granitos con LED.",
+      desc: "Tratamiento facial específico para pieles con tendencia acneica, exceso de grasa e imperfecciones. Combina un protocolo purificante y seborregulador con fototerapia LED para ayudar a calmar la piel, controlar el exceso de sebo y reducir la aparición de granitos y comedones.",
+      hasBonoLink: true,
+      bonoInfo: "Bono 4 sesiones: 310 € | Bono 8 sesiones: 552 €",
     },
     {
-      title: "Dermapen Restaurador",
-      subtitle: "Microagujas y Activos Personalizados",
-      price: "80€",
+      title: "Radiofrecuencia Facial Mimarte",
+      price: "78 €",
       duration: "60 min",
-      img: "/images/services/facial-2.jpg",
-      benefits: [
-        "Induce la penetración profunda de activos",
-        "Trata manchas, arrugas o marcas de acné",
-        "Sesiones 100% personalizadas",
-      ],
-      idealFor:
-        "Tratar marcas, cicatrices de acné, manchas y rejuvenecimiento.",
-      desc: "Tratamiento facial que utiliza microagujas para favorecer la penetración de activos específicos seleccionados según tus necesidades (hidratación, manchas, antiedad o marcas).",
+      isGold: true, // ⭐ TRATAMIENTO ESTRELLA (ORO)
+      img: "/images/services/rf-mimarte.jpg",
+      benefits:
+        "Reafirmación integral, valoración, doble limpieza, presoterapia ocular y Masaje Mimarte.",
+      desc: "Nuestro tratamiento premium de reafirmación y bienestar. La Radiofrecuencia Facial Mimarte combina la eficacia de la radiofrecuencia con un protocolo exclusivo diseñado para cuidar tu piel de forma integral. Incluye valoración personalizada, doble limpieza, aplicación de sérum de ácido hialurónico, presoterapia ocular y el exclusivo Masaje Mimarte, potenciando la firmeza, la luminosidad y la regeneración de la piel mientras disfrutas de una experiencia de relajación y bienestar.",
     },
     {
-      title: "Radiofrecuencia Facial Mimarte ⭐",
-      subtitle: "Reafirmación y Bienestar Premium",
-      price: "78€",
-      duration: "60 min",
-      packs: "Bono 4 ses: 290€ | Bono 8 ses: 520€",
-      img: "/images/services/facial-9.jpg",
-      benefits: [
-        "Valoración + doble limpieza + hialurónico",
-        "Incluye presoterapia ocular",
-        "Exclusivo Masaje Mimarte estimulante",
-      ],
-      idealFor:
-        "Reafirmación profunda combinada con una experiencia relajante.",
-      desc: "Nuestro tratamiento premium. Combina la eficacia de la radiofrecuencia con valoración, sérum de ácido hialurónico, presoterapia ocular y el Masaje Mimarte para potenciar firmeza y luminosidad.",
-    },
-    {
-      title: "RF Total Face",
-      subtitle: "Reafirmante Facial Completo",
-      price: "65€",
+      title: "Radiofrecuencia Facial Total Face",
+      price: "65 €",
       duration: "45 min",
-      packs: "Bono 4 ses: 240€ | Bono 8 ses: 460€",
-      img: "/images/services/facial-9.jpg",
-      benefits: [
-        "Estimula colágeno y elastina",
-        "Mejora firmeza y calidad de la piel",
-        "Mantenimiento ideal de RF Mimarte",
-      ],
-      idealFor: "Tratamiento específico de reafirmación en todo el rostro.",
-      desc: "Tratamiento reafirmante de rostro completo enfocado en estimular la producción natural de colágeno y elastina para mejorar la firmeza y elasticidad.",
+      img: "/images/services/rf-total-face.jpg",
+      benefits:
+        "Estimula la producción de colágeno y elastina para mejorar la firmeza global del rostro.",
+      desc: "Tratamiento reafirmante de rostro completo enfocado en estimular la producción de colágeno y elastina para mejorar la firmeza, la elasticidad y la calidad de la piel. Una opción ideal para mantener los resultados de la Radiofrecuencia Facial Mimarte o como tratamiento específico de reafirmación facial.",
     },
     {
-      title: "RF Zonas Específicas",
-      subtitle: "Mirada / Surco / Cuello y Escote",
-      price: "Desde 40€",
-      duration: "20 - 30 min",
-      img: "/images/services/facial-9.jpg",
-      benefits: [
-        "Mirada Perfecta (40€ / 20 min)",
-        "Surco Nasogeniano (40€ / 20 min)",
-        "Cuello y Escote (45€ / 30 min)",
-      ],
-      idealFor: "Tratar zonas focalizadas que han perdido firmeza.",
-      desc: "Tratamientos localizados para reafirmar áreas concretas: atenúa bolsas y ojeras en los ojos, suaviza el surco nasogeniano o reafirma la piel de cuello y escote.",
+      title: "Radiofrecuencia Mirada Perfecta",
+      price: "40 €",
+      duration: "20 min",
+      img: "/images/services/rf-mirada.jpg",
+      benefits:
+        "Suaviza líneas de expresión, disminuye bolsas y ojeras en el contorno de ojos.",
+      desc: "Tratamiento específico para el contorno de ojos que ayuda a reafirmar la piel, suavizar las líneas de expresión y mejorar el aspecto de bolsas y ojeras, consiguiendo una mirada más fresca y descansada.",
+    },
+    {
+      title: "Radiofrecuencia Surco Nasogeniano",
+      price: "40 €",
+      duration: "20 min",
+      img: "/images/services/rf-surco.jpg",
+      benefits:
+        "Reafirma la zona peribucal y difumina el rictus y líneas de expresión.",
+      desc: "Tratamiento localizado que mejora la firmeza de la piel alrededor de la boca, ayudando a suavizar el surco nasogeniano y las líneas de expresión de esta zona.",
+    },
+    {
+      title: "Radiofrecuencia Cuello y Escote",
+      price: "45 €",
+      duration: "30 min",
+      img: "/images/services/rf-cuello.jpg",
+      benefits:
+        "Recupera la elasticidad y firmeza en la piel delicada del cuello y escote.",
+      desc: "Tratamiento específico para reafirmar la piel del cuello y escote, mejorando su elasticidad y contribuyendo a mantener un aspecto más firme y uniforme.",
+    },
+    {
+      title: "Dermapen",
+      price: "80 €",
+      img: "/images/services/dermapen.jpg",
+      benefits:
+        "Microagujas para la penetración profunda de activos (antiedad, manchas o cicatrices).",
+      desc: "Tratamiento facial que utiliza microagujas para favorecer la penetración de activos específicos en la piel, seleccionados de forma personalizada según sus necesidades y los objetivos del tratamiento. Ya sea para aportar hidratación, combatir los signos del envejecimiento, tratar manchas o mejorar cicatrices y marcas de acné.",
     },
   ],
-  corporal: [
+  corporales: [
     {
       title: "Radiofrecuencia Corporal",
-      subtitle: "Reafirmación y Remodelación",
-      price: "49€ / 75€",
+      price: "49 € / 75 €",
       duration: "30 min / 50 min",
-      packs:
-        "30m: 4 ses (180€) - 8 ses (340€) | 50m: 4 ses (280€) - 8 ses (547€)",
-      img: "/images/services/corp-5.jpg",
-      benefits: [
-        "Mejora la firmeza en zonas con flacidez",
-        "Reduce la apariencia de la celulitis",
-        "Actúa sobre adiposidad localizada",
-      ],
-      idealFor: "Reafirmar y remodelar áreas corporales específicas.",
-      desc: "Tratamiento enfocado en reafirmar, remodelar y mejorar el aspecto de la piel por zonas. Incluye asesoría corporal personalizada antes de comenzar.",
+      img: "/images/services/rf-corporal.jpg",
+      benefits:
+        "Reafirma zonas con flacidez, reduce la celulitis y actúa sobre grasa localizada.",
+      desc: "Tratamiento corporal enfocado en reafirmar, remodelar y mejorar el aspecto de la piel. Se trabaja de forma localizada por zonas, adaptando cada sesión a las necesidades y objetivos de cada persona. Antes de comenzar, realizamos siempre una asesoría corporal personalizada.",
     },
     {
       title: "Cavitación",
-      subtitle: "Ultrasonidos Reductores",
-      price: "45€",
+      price: "45 €",
       duration: "30 min",
-      packs: "Pack 4 ses: 165€ | Pack 8 ses: 310€",
-      img: "/images/services/corp-1.jpg",
-      benefits: [
-        "Moviliza la grasa acumulada",
-        "Remodela el contorno corporal",
-        "Complemento ideal para celulitis",
-      ],
-      idealFor: "Moldear y definir zonas específicas con grasa localizada.",
-      desc: "Utiliza ultrasonidos sobre la grasa acumulada en zonas específicas, favoreciendo su movilización y posterior eliminación. Técnica enfocada en moldear la figura.",
+      img: "/images/services/cavitacion.jpg",
+      benefits:
+        "Ultrasonidos focalizados para reducir grasa localizada y moldear la silueta.",
+      desc: "Tratamiento corporal localizado que utiliza ultrasonidos para actuar sobre la grasa acumulada en zonas específicas, favoreciendo su movilización y posterior eliminación por el organismo. Está especialmente indicado para mejorar la adiposidad localizada y remodelar el contorno corporal.",
     },
     {
       title: "Vacumterapia",
-      subtitle: "Succión Controlada y Drenaje",
-      price: "45€ / 65€",
+      price: "45 € / 65 €",
       duration: "30 min / 45 min",
-      packs:
-        "30m: 4 ses (165€) - 8 ses (310€) | 45m: 4 ses (240€) - 8 ses (460€)",
-      img: "/images/services/corp-6.jpg",
-      benefits: [
-        "Favorece el drenaje linfático",
-        "Elimina líquidos retenidos",
-        "Moldea abdomen, piernas y glúteos",
-      ],
-      idealFor: "Tratar la celulitis y retención de líquidos.",
-      desc: "Masaje mediante succión controlada para movilizar tejidos, favorecer el drenaje y trabajar el contorno corporal en abdomen, piernas y glúteos.",
+      img: "/images/services/vacumterapia.jpg",
+      benefits:
+        "Drenaje linfático profundo, eliminación de líquidos y moldeado de abdomen/glúteos.",
+      desc: "Tratamiento corporal que utiliza un masaje mediante succión controlada para movilizar los tejidos, favorecer el drenaje y trabajar de forma localizada el contorno corporal. Especialmente indicado para mejorar la celulitis y la retención de líquidos.",
     },
     {
       title: "Maderoterapia",
-      subtitle: "Técnica Natural Reafirmante",
-      price: "50€",
+      price: "50 €",
       duration: "60 min",
-      packs: "Pack 4 ses: 189€ | Pack 8 ses: 360€",
-      img: "/images/services/corp-3.jpg",
-      benefits: [
-        "Mejora la apariencia de la celulitis",
-        "Activa circulación y firmeza",
-        "Libera tensión y relaja la musculatura",
-      ],
-      idealFor: "Remodelar la silueta y liberar carga muscular.",
-      desc: "Tratamiento corporal manual realizado con elementos anatómicos de madera para movilizar tejidos, activar circulación y remodelar la silueta.",
-    },
-    {
-      title: "Presoterapia",
-      subtitle: "Drenaje y Sensación de Ligereza",
-      price: "27€",
-      duration: "30 min",
-      packs: "Bono Especial 6 sesiones: 150€",
-      img: "/images/services/corp-4.jpg",
-      benefits: [
-        "Estimula la circulación de retorno",
-        "Alivia piernas pesadas y cansadas",
-        "Favorece la eliminación de toxinas",
-      ],
-      idealFor: "Retención de líquidos y descongestión de piernas.",
-      desc: "Compresión neumática secuencial que estimula el sistema linfático y venoso, aportando una descongestión inmediata y ligereza a las extremidades.",
-    },
-    {
-      title: "Masaje Cuerpo Entero",
-      subtitle: "Relajante con Aceites Esenciales",
-      price: "49€",
-      duration: "60 min",
-      img: "/images/services/est-3.jpg",
-      benefits: [
-        "Libera tensiones acumuladas",
-        "Favorece relajación física y mental",
-        "Experiencia envolvente de bienestar",
-      ],
-      idealFor: "Regalarte una pausa y desconectar del ritmo diario.",
-      desc: "Un masaje pensado para recuperar el equilibrio. Mediante maniobras suaves y aceites esenciales, trabajamos todo el cuerpo para aliviar tensión y estrés.",
-    },
-    {
-      title: "Masaje de Espalda",
-      subtitle: "Relajante Localizado",
-      price: "35€",
-      duration: "30 min",
-      img: "/images/services/est-1.jpg",
-      benefits: [
-        "Libera tensión muscular acumulada",
-        "Alivia sobrecarga en cuello y hombros",
-        "Proporciona descanso inmediato",
-      ],
-      idealFor: "Sobrecarga cervical, dorsal o estrés diario.",
-      desc: "Masaje enfocado en liberar las tensiones en espalda, cuello y hombros. Disminuye la sensación de sobrecarga para recuperar el bienestar.",
-    },
-    {
-      title: "Masaje Circulatorio Piernas",
-      subtitle: "Drenante y Tonificante",
-      price: "35€",
-      duration: "30 min",
-      img: "/images/services/est-2.jpg",
-      benefits: [
-        "Favorece la circulación sanguínea",
-        "Moviliza líquidos retenidos",
-        "Sensación de piernas ligeras",
-      ],
-      idealFor: "Sensación de pesadez, hinchazón o piernas cansadas.",
-      desc: "Maniobras específicas que activan la circulación y movilizan líquidos, proporcionando ligereza y descanso a tus piernas de forma inmediata.",
+      img: "/images/services/maderoterapia.jpg",
+      benefits:
+        "Remodelación corporal manual con madera, activa la circulación y libera tensión.",
+      desc: "Tratamiento corporal manual realizado con diferentes elementos de madera que ayuda a movilizar tejidos, mejorar la circulación y favorecer la remodelación corporal. Sus maniobras también ayudan a liberar tensión y relajar la musculatura.",
     },
   ],
-  bonos: [
+  masajes: [
     {
-      title: "Bono Facial Glow ✨",
-      subtitle: "Programa de 2 Sesiones",
-      price: "115€",
-      duration: "2 Sesiones",
-      img: "/images/services/facial-5.jpg",
-      benefits: [
-        "1ª Sesión: Dermolimpieza Avanzada",
-        "2ª Sesión: Tratamiento Personalizado a elegir",
-        "A elegir entre: Lumina C, Hyaluronic, Retinol u Oxibalance",
-      ],
-      idealFor: "Preparar la piel para eventos o conseguir un cambio radiante.",
-      desc: "Diseñado para preparar la piel y potenciar resultados. Combina una higiene profunda inicial con un tratamiento específico según lo que tu piel necesite.",
+      title: "Masaje Relajante Cuerpo Entero",
+      price: "49 €",
+      duration: "60 min",
+      img: "/images/services/masaje-cuerpo.jpg",
+      benefits:
+        "Libera tensiones acumuladas y favorece un estado de relajación física y mental profunda.",
+      desc: "Un masaje pensado para regalarte una pausa y recuperar el equilibrio entre cuerpo y mente. Mediante maniobras relajantes y el uso de aceites esenciales, trabajamos todo el cuerpo para aliviar la tensión acumulada y favorecer un estado de relajación profunda.",
     },
     {
-      title: "Bono Facial Deluxe 👑",
-      subtitle: "Programa Completo de 3 Sesiones",
-      price: "179€",
-      duration: "3 Sesiones",
-      img: "/images/services/facial-9.jpg",
-      benefits: [
-        "Opción A: 1 Dermolimpieza + 2 Faciales Personalizados",
-        "Opción B: 1 Dermolimpieza + 1 Facial + 1 RF Mimarte",
-        "Elige entre Lumina C, Hyaluronic, Retinol u Oxibalance",
-      ],
-      idealFor: "Un cuidado intensivo completo para resultados duraderos.",
-      desc: "La experiencia facial definitiva. Tres sesiones estratégicamente combinadas para limpiar, tratar y/o reafirmar tu rostro con la máxima efectividad.",
+      title: "Masaje Relajante de Espalda",
+      price: "35 €",
+      duration: "30 min",
+      img: "/images/services/masaje-espalda.jpg",
+      benefits:
+        "Alivia la sobrecarga muscular en espalda, cuello y hombros generada por el estrés.",
+      desc: "Masaje localizado pensado para liberar las tensiones acumuladas en espalda, cuello y hombros como consecuencia del estrés y el ritmo diario. Mediante maniobras relajantes, ayudamos a disminuir la sensación de sobrecarga muscular y recuperar el bienestar.",
+    },
+    {
+      title: "Masaje Circulatorio de Piernas",
+      price: "35 €",
+      duration: "30 min",
+      img: "/images/services/masaje-piernas.jpg",
+      benefits:
+        "Favorece la circulación, reduce la pesadez y moviliza líquidos retenidos.",
+      desc: "Masaje específico de piernas realizado mediante maniobras que favorecen la circulación y ayudan a movilizar los líquidos retenidos. Ideal para aliviar la sensación de pesadez y tensión, proporcionando unas piernas más ligeras y descansadas.",
     },
   ],
 };
 
 export default function Treatments() {
-  const [activeTab, setActiveTab] = useState("facial");
-
-  const titleRef = useScrollReveal({ direction: "up" });
-  const tabsRef = useScrollReveal({ direction: "up", delay: 0.1 });
-  const gridRef = useScrollReveal({
-    direction: "up",
-    delay: 0.2,
-    duration: 0.8,
-  });
+  const [activeTab, setActiveTab] = useState("faciales");
 
   return (
-    <section id="tratamientos" className="section-content treatmentsSection">
+    <section id="tratamientos" className="treatmentsSection">
       <div className="treatmentsContainer">
-        {/* ── CABECERA */}
-        <div ref={titleRef} className="treatmentsHeader">
-          <span className="treatmentsSubtitle">Nuestra Carta</span>
-          <h2 className="treatmentsTitle">
-            Servicios de <em>bienestar</em>
-          </h2>
+        {/* Cabecera */}
+        <div className="treatmentsHeader">
+          <span className="treatmentsSubtitle">NUESTROS SERVICIOS</span>
+          <h2 className="treatmentsTitle">Tratamientos y Bienestar</h2>
         </div>
 
-        {/* ── TABS */}
-        <div ref={tabsRef} className="treatmentsTabs">
+        {/* Categorías */}
+        <div className="treatmentsTabs">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
@@ -367,96 +225,83 @@ export default function Treatments() {
           ))}
         </div>
 
-        {/* ── REJILLA TARJETAS */}
-        <div ref={gridRef} className="treatmentsGrid">
+        {/* Grid de Tarjetas 3D */}
+        <div className="treatmentsGrid">
           {SERVICES[activeTab].map((service, idx) => (
-            <div key={`${activeTab}-${idx}`} className="treatmentCardContainer">
+            <div
+              key={`${activeTab}-${idx}`}
+              className={`flipCardContainer ${service.isGold ? "goldCard" : ""}`}
+            >
               <div className="flipCardInner">
-                {/* ── DELANTE (FRONT) */}
+                {/* ── CARA DELANTERA ── */}
                 <div className="cardFront">
-                  <div className="treatmentImageWrapper">
+                  {service.isGold && (
+                    <div className="goldBadge">★ Tratamiento Estrella</div>
+                  )}
+
+                  {/* Espacio para Foto */}
+                  <div className="cardImgWrapper">
                     <img
                       src={service.img}
                       alt={service.title}
-                      className="treatmentImage"
+                      className="cardImg"
                       loading="lazy"
                     />
                   </div>
 
                   <div className="cardFrontBody">
-                    <div>
-                      <div className="treatmentCardHeader">
-                        <h3 className="treatmentItemTitle">{service.title}</h3>
-                        {service.duration && (
-                          <span className="treatmentDuration">
-                            ⏱ {service.duration}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Lista de beneficios */}
-                      <ul className="benefitsList">
-                        {service.benefits.map((benefit, bIdx) => (
-                          <li key={bIdx} className="benefitItem">
-                            <span className="checkIcon">✓</span> {benefit}
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="frontHeader">
+                      <h3 className="cardTitle">{service.title}</h3>
+                      <span className="cardPrice">{service.price}</span>
                     </div>
 
-                    {/* Precio y pista para girar */}
-                    <div>
-                      <div className="priceBox">
-                        <span className="priceLabel">Precio</span>
-                        <span className="treatmentPrice">{service.price}</span>
-                      </div>
+                    {service.duration && (
+                      <span className="cardMeta">
+                        ⏱ Duración: {service.duration}
+                      </span>
+                    )}
 
-                      <span className="flipHint">Ver detalles completos ↺</span>
+                    <div className="benefitsBox">
+                      <span className="benefitsLabel">Beneficios clave:</span>
+                      <p className="benefitsText">{service.benefits}</p>
+                    </div>
+
+                    <div className="flipHint">
+                      <span>Pasa el ratón o toca para ver descripción</span>
+                      <span className="rotateIcon">🔄</span>
                     </div>
                   </div>
                 </div>
 
-                {/* ── DETRÁS (BACK) */}
+                {/* ── CARA TRASERA ── */}
                 <div className="cardBack">
-                  <div className="cardBackContent">
-                    <h4 className="backTitle">{service.title}</h4>
+                  <h4 className="backTitle">{service.title}</h4>
 
-                    {/* Subtítulo destacado en negrita */}
-                    {service.subtitle && (
-                      <span className="backSubtitle">{service.subtitle}</span>
-                    )}
+                  <div className="scrollDesc">
+                    <p className="fullDesc">{service.desc}</p>
 
-                    {/* Ideal para */}
-                    {service.idealFor && (
-                      <p className="idealForText">
-                        <strong>Ideal para:</strong> {service.idealFor}
-                      </p>
-                    )}
-
-                    {/* Descripción completa */}
-                    <p className="treatmentFullDesc">{service.desc}</p>
-
-                    {/* Precios de Bonos si existen */}
-                    {service.packs && (
-                      <div className="packsBox">
-                        <span className="packsTitle">Ahorra con Bonos:</span>
-                        <span className="packsText">{service.packs}</span>
+                    {service.hasBonoLink && (
+                      <div className="bonoNoticeBox">
+                        <span className="bonoNoticeTitle">Opción en Bono:</span>
+                        <span className="bonoNoticeDetails">
+                          {service.bonoInfo}
+                        </span>
                       </div>
                     )}
                   </div>
 
-                  {/* Botones de acción */}
-                  <div className="cardActionButtons">
-                    <a href="#contacto" className="treatmentBackBtn secondary">
-                      + info
-                    </a>
+                  {/* Botones duales: Reservar y + Info */}
+                  <div className="cardBackActions">
                     <a
                       href={getWhatsAppLink(service.title)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="treatmentBackBtn primary"
+                      className="bookBtn"
                     >
-                      Reservar
+                      Reservar Cita
+                    </a>
+                    <a href="#contacto" className="infoBtn">
+                      + Info
                     </a>
                   </div>
                 </div>
