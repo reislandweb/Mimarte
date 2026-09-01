@@ -28,7 +28,6 @@ export default function Home() {
         <About />
         <Treatments />
         <Bonos />
-        <BodyZones />
         <Products />
         <Contact />
       </main>

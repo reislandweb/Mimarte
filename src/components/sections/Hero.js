@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const sectionRef = useRef(null);
   const bgRef = useRef(null);
-  const logoRef = useRef(null);
   const tagRef = useRef(null);
   const h1Ref = useRef(null);
   const paraRef = useRef(null);
@@ -19,19 +18,14 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrada en cascada con el logo grande
+      // Entrada en cascada manteniendo los tiempos
       const tl = gsap.timeline({ delay: 0.8 });
-      tl.from(logoRef.current, {
-        x: -50,
+      tl.from(tagRef.current, {
+        y: 30,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
         ease: "power3.out",
       })
-        .from(
-          tagRef.current,
-          { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.6",
-        )
         .from(
           h1Ref.current,
           { y: 80, opacity: 0, duration: 1.2, ease: "power4.out" },
@@ -82,12 +76,12 @@ export default function Hero() {
 
       {/* ── CONTENIDO PRINCIPAL CENTRADO ── */}
       <div className="heroContentSingle">
-        {/* Subtítulo superior */}
+        {/* Subtítulo superior 
         <span ref={tagRef} className="heroTagline">
           CENTRO DE BELLEZA Y BIENESTAR
-        </span>
+        </span>*/}
 
-        {/* Logotipo en sustitución del h1 "Cuídate. Merécetelo" */}
+        {/* Logotipo */}
         <div ref={h1Ref} className="heroBrandWrapper">
           <img
             src="/images/logo.png"
@@ -96,10 +90,10 @@ export default function Hero() {
           />
         </div>
 
-        {/* Descripción corta */}
-        <p ref={paraRef} className="heroDescription">
-          TU MOMENTO PARA MIMARTE
-        </p>
+        {/* Frase destacada con nueva jerarquía y estilizado */}
+        <h2 ref={paraRef} className="heroHighlightPhrase">
+          TU MOMENTO PARA <span>MIMARTE</span>
+        </h2>
 
         {/* Botones CTA */}
         <div ref={ctaRef} className="heroCtaWrapper">

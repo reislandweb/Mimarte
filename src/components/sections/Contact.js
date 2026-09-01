@@ -260,11 +260,6 @@ ${form.message || "Sin mensaje adicional"}`;
                     icon: "/icons/whatsapp.png",
                   },
                   {
-                    name: "TikTok",
-                    href: "https://TikTok.com/mimarteestetica.zgz",
-                    icon: "/icons/tik-tok.png",
-                  },
-                  {
                     name: "Instagram",
                     href: "https://www.instagram.com/mimarteestetica.zgz",
                     icon: "/icons/instagram.png",

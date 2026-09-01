@@ -191,7 +191,7 @@
 
 .benefitsLabel {
     display: block;
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 700;
     color: #8e6d19;
     text-transform: uppercase;
@@ -199,7 +199,7 @@
 }
 
 .benefitsText {
-    font-size: 12px;
+    font-size: 16px;
     color: #555;
     margin: 0;
     line-height: 1.35;
