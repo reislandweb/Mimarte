@@ -13,7 +13,8 @@
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-cols: 1fr;
+    grid-template-columns: 1fr;
+    /* Corregido */
     gap: 64px;
     align-items: center;
 }
@@ -55,11 +56,20 @@
 .description {
     font-family: var(--font-body);
     color: var(--mimarte-text);
-    opacity: 0.85;
+    opacity: 0.9;
     line-height: 1.8;
     margin-bottom: 40px;
-    text-align: justify;
-    font-size: 16px;
+    text-align: left;
+    /* Alineación más elegante que justify */
+    font-size: 19px;
+}
+
+.description p {
+    margin-bottom: 16px;
+}
+
+.description p:last-child {
+    margin-bottom: 0;
 }
 
 /* Bloque de estadísticas */
@@ -90,7 +100,7 @@
     line-height: 1.3;
 }
 
-/* Bloque de la Imagen con sus decoraciones */
+/* Bloque de la Imagen con Degradado en el Contorno */
 .imageWrapper {
     position: relative;
     width: 100%;
@@ -99,22 +109,26 @@
 .imageFrame {
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    background-color: var(--mimarte-primary-light);
+    background-color: transparent;
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%);
 }
 
 .imageSrc {
     width: 100%;
     height: 100%;
-    transition: transform 0.7s ease;
+    transition: transform 0.7s ease, filter 0.7s ease;
     background-size: cover;
     background-position: center;
+    filter: brightness(0.98) contrast(1.02);
 }
 
 .imageSrc:hover {
     transform: scale(1.05);
+    filter: brightness(1.02) contrast(1.05);
 }
 
-/* Cuadrados decorativos geométricos */
+/* Elementos decorativos suavizados tras el degradado */
 .decoLine {
     position: absolute;
     bottom: -24px;
@@ -123,6 +137,7 @@
     height: 192px;
     border: 1px solid var(--mimarte-primary-light);
     z-index: -1;
+    opacity: 0.5;
 }
 
 .decoBox {
@@ -134,6 +149,7 @@
     background-color: var(--mimarte-bg);
     border: 1px solid var(--mimarte-primary-light);
     z-index: -1;
+    opacity: 0.5;
 }
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/BodyZones.css ***!
@@ -754,7 +770,8 @@
 
 .contactSubtitle {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--mimarte-primary-dark);
@@ -765,13 +782,15 @@
 .contactTitle {
     font-family: var(--font-display);
     font-size: 48px;
-    font-weight: 300;
+    font-weight: 500;
+    /* Letras de título más marcadas */
     color: var(--mimarte-text);
     margin: 0;
 }
 
 .contactTitle em {
     font-style: italic;
+    font-weight: 600;
     color: var(--mimarte-primary);
 }
 
@@ -806,13 +825,16 @@
     gap: 16px;
 }
 
+/* Etiquetas del formulario resaltadas */
 .formLabel {
     font-family: var(--font-body);
     font-size: 12px;
-    letter-spacing: 0.1em;
+    font-weight: 600;
+    /* Texto visible y nítido */
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--mimarte-text);
-    opacity: 0.6;
+    opacity: 0.9;
     margin-bottom: 8px;
 }
 
@@ -820,13 +842,14 @@
 .formSelect,
 .formTextarea {
     width: 100%;
-    border: 1px solid var(--mimarte-primary-light);
+    border: 1.5px solid var(--mimarte-primary-light);
     background-color: transparent;
     padding: 12px 16px;
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 15px;
     color: var(--mimarte-text);
-    transition: border-color 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
     box-sizing: border-box;
 }
 
@@ -839,6 +862,7 @@
 .formTextarea:focus {
     outline: none;
     border-color: var(--mimarte-primary);
+    box-shadow: 0 0 8px rgba(56, 163, 165, 0.2);
 }
 
 .formTextarea {
@@ -848,19 +872,24 @@
 .btnSubmit {
     width: 100%;
     font-family: var(--font-body);
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
     padding: 16px 0;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(56, 163, 165, 0.25);
 }
 
 .btnSubmit:hover:not(:disabled) {
     background-color: var(--mimarte-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(56, 163, 165, 0.35);
 }
 
 .btnSubmit:disabled {
@@ -870,14 +899,15 @@
 
 .privacyNotice {
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     color: var(--mimarte-text);
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .privacyNotice a {
-    color: var(--mimarte-text);
+    color: var(--mimarte-primary-dark);
+    font-weight: 600;
     text-decoration: underline;
 }
 
@@ -889,7 +919,6 @@
 .successWrapper {
     display: flex;
     flex-direction: column;
-    items-align: center;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -913,7 +942,7 @@
 .successTitle {
     font-family: var(--font-display);
     font-size: 32px;
-    font-weight: 300;
+    font-weight: 500;
     color: var(--mimarte-text);
     margin: 0 0 12px 0;
 }
@@ -921,8 +950,8 @@
 .successDesc {
     font-family: var(--font-body);
     color: var(--mimarte-text);
-    opacity: 0.6;
-    font-size: 14px;
+    opacity: 0.85;
+    font-size: 15px;
     margin: 0;
 }
 
@@ -935,40 +964,48 @@
 
 .infoBlockTitle {
     font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 26px;
+    font-weight: 500;
     color: var(--mimarte-text);
     margin: 0 0 24px 0;
+    border-bottom: 2px solid var(--mimarte-primary-light);
+    padding-bottom: 8px;
+    display: inline-block;
 }
 
 .infoDataWrapper {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+}
+
+/* Subtítulos de información resaltados */
+.infoLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    /* Negrita clara */
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    display: block;
+    margin-bottom: 4px;
 }
 
 .infoText {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 500;
     color: var(--mimarte-text);
-    opacity: 0.8;
+    opacity: 1;
+    /* Texto 100% visible sin desvanecidos */
     line-height: 1.6;
 }
 
-.infoLabel {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mimarte-text);
-    display: block;
-    margin-bottom: 2px;
-    opacity: 0.5;
-}
-
 .infoText a {
-    color: inherit;
+    color: var(--mimarte-text);
     text-decoration: none;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
@@ -981,24 +1018,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    border-b: 1px solid var(--mimarte-primary-light);
-    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(195, 154, 131, 0.25);
 }
 
 .hoursDays {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--mimarte-text);
-    opacity: 0.6;
 }
 
 .hoursTime {
     font-family: var(--font-body);
     font-size: 14px;
-    color: var(--mimarte-text);
+    font-weight: 600;
+    color: var(--mimarte-primary-dark);
 }
 
 /* Redes Sociales */
@@ -1009,19 +1046,23 @@
 
 .socialBtn {
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    border: 1px solid var(--mimarte-primary-light);
-    padding: 8px 16px;
+    border: 1.5px solid var(--mimarte-primary-light);
+    padding: 10px 20px;
     color: var(--mimarte-text);
     text-decoration: none;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .socialBtn:hover {
     border-color: var(--mimarte-primary);
-    color: var(--mimarte-primary);
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    transform: translateY(-2px);
 }
 
 .socialIcon {
@@ -1035,6 +1076,7 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Hero.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
 /* src/components/css/Hero.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
 
 /* Contenedor principal de la sección */
 .heroSection {
@@ -1075,56 +1117,82 @@
 .heroContentSingle {
     position: relative;
     z-index: 2;
-    max-width: 100%;
     width: 100%;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 100px 20px 40px 20px;
+    padding: 80px 20px 40px 20px;
+    /* Ajustado para dar espacio al menú superior */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.heroTagline {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--mimarte-primary-dark);
-    margin: 0 0 12px 0;
-    display: block;
-    white-space: nowrap;
-}
-
 .heroBrandWrapper {
+    position: relative;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0;
-    padding: 0;
+}
+
+/* Halo sutil de luz tras el logo para darle volumen */
+.heroBrandWrapper::before {
+    display: none;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
 }
 
 .heroBrandLogo {
-    width: 100%;
-    max-width: 280px;
+    width: 150%;
+    max-width: 150vw;
     height: auto;
+    display: block;
     -o-object-fit: contain;
        object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
+    /* Resplandor dorado elegante sobre la imagen */
+    filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.3));
+    transition: filter 0.4s ease;
 }
 
-.heroDescription {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--mimarte-primary-dark);
-    max-width: 90%;
-    margin: 16px 0 24px 0;
-    font-weight: 300;
-    line-height: 1.5;
+.heroBrandLogo:hover {
+    filter: drop-shadow(0 6px 28px rgba(212, 175, 55, 0.5));
+}
+
+.heroHighlightPhrase {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #38a3a5;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: -4rem 0 24px 0;
+    /* Espaciado proporcional con el logo */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.heroHighlightPhrase span {
+    font-style: italic;
+    font-weight: 600;
+    /* Degradado de oro metálico para la palabra MIMARTE */
+    background: #D4AF37;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35));
 }
 
 .heroCtaWrapper {
-    margin-top: 0;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1133,7 +1201,7 @@
     width: 100%;
 }
 
-/* Botones */
+/* Botones con bordes suavizados y resplandor */
 .btnHeroPrimary {
     font-family: var(--font-body);
     font-size: 12px;
@@ -1142,14 +1210,18 @@
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
     padding: 16px 32px;
+    border-radius: 30px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     width: auto;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(56, 163, 165, 0.3);
 }
 
 .btnHeroPrimary:hover {
     background-color: var(--mimarte-primary-dark);
+    box-shadow: 0 6px 22px rgba(56, 163, 165, 0.5);
+    transform: translateY(-2px);
 }
 
 .btnHeroSecondary {
@@ -1160,21 +1232,24 @@
     border: 1px solid var(--mimarte-text);
     color: var(--mimarte-text);
     padding: 16px 32px;
+    border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease;
     width: auto;
     text-align: center;
+    backdrop-filter: blur(4px);
 }
 
 .btnHeroSecondary:hover {
     background-color: var(--mimarte-text);
     color: var(--mimarte-bg);
+    transform: translateY(-2px);
 }
 
 /* Indicador de Scroll inferior */
 .scrollHint {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1194,7 +1269,7 @@
 
 .scrollLine {
     width: 1px;
-    height: 56px;
+    height: 40px;
     background: linear-gradient(to bottom, var(--mimarte-text) 50%, transparent);
     animation: pulse 2s infinite;
 }
@@ -1211,43 +1286,29 @@
     }
 }
 
-
 /* ==========================================
-   2. ESTILOS DESKTOP (MANTIENE TUS MEDIDAS)
+   2. ESTILOS DESKTOP
    ========================================== */
 
 @media (min-width: 1024px) {
     .heroContentSingle {
-        max-width: 900px;
-        margin: 20rem 0 0 0;
-        padding: 0;
-    }
-
-    .heroTagline {
-        font-size: 20px;
-        letter-spacing: 0.3em;
-        margin-left: 13rem;
-        margin-bottom: -23rem;
+        padding-top: 20px;
+        /* Eleva todo el contenido centrándolo en pantalla */
     }
 
     .heroBrandLogo {
-        position: relative;
-        width: 170%;
-        max-width: 120rem;
-        top: -9rem;
+        /* Mantiene tus proporciones exactas */
+        max-width: 100rem;
+        width: 120vw;
+        margin: -25rem 0 28px 0;
     }
 
-    .heroDescription {
-        font-size: 20px;
-        max-width: 700px;
-        margin-top: -30rem;
-        margin-right: -20px;
-        margin-bottom: 20px;
-        line-height: 1.6;
+    .heroHighlightPhrase {
+        font-size: 2.2rem;
+        margin: -20rem 0 28px 0;
     }
 
     .heroCtaWrapper {
-        margin-top: 10px;
         flex-direction: row;
         gap: 20px;
     }
@@ -1724,7 +1785,7 @@
 
 .benefitsLabel {
     display: block;
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 700;
     color: #8e6d19;
     text-transform: uppercase;
@@ -1732,7 +1793,7 @@
 }
 
 .benefitsText {
-    font-size: 12px;
+    font-size: 16px;
     color: #555;
     margin: 0;
     line-height: 1.35;

@@ -1,4 +1,5 @@
 /* src/components/css/Hero.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
 
 /* Contenedor principal de la sección */
 .heroSection {
@@ -39,55 +40,81 @@
 .heroContentSingle {
     position: relative;
     z-index: 2;
-    max-width: 100%;
     width: 100%;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 100px 20px 40px 20px;
+    padding: 80px 20px 40px 20px;
+    /* Ajustado para dar espacio al menú superior */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.heroTagline {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--mimarte-primary-dark);
-    margin: 0 0 12px 0;
-    display: block;
-    white-space: nowrap;
-}
-
 .heroBrandWrapper {
+    position: relative;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0;
-    padding: 0;
+}
+
+/* Halo sutil de luz tras el logo para darle volumen */
+.heroBrandWrapper::before {
+    display: none;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
 }
 
 .heroBrandLogo {
-    width: 100%;
-    max-width: 280px;
+    width: 150%;
+    max-width: 150vw;
     height: auto;
+    display: block;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
+    /* Resplandor dorado elegante sobre la imagen */
+    filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.3));
+    transition: filter 0.4s ease;
 }
 
-.heroDescription {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--mimarte-primary-dark);
-    max-width: 90%;
-    margin: 16px 0 24px 0;
-    font-weight: 300;
-    line-height: 1.5;
+.heroBrandLogo:hover {
+    filter: drop-shadow(0 6px 28px rgba(212, 175, 55, 0.5));
+}
+
+.heroHighlightPhrase {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #38a3a5;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: -4rem 0 24px 0;
+    /* Espaciado proporcional con el logo */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.heroHighlightPhrase span {
+    font-style: italic;
+    font-weight: 600;
+    /* Degradado de oro metálico para la palabra MIMARTE */
+    background: #D4AF37;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35));
 }
 
 .heroCtaWrapper {
-    margin-top: 0;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +123,7 @@
     width: 100%;
 }
 
-/* Botones */
+/* Botones con bordes suavizados y resplandor */
 .btnHeroPrimary {
     font-family: var(--font-body);
     font-size: 12px;
@@ -105,14 +132,18 @@
     background-color: var(--mimarte-primary);
     color: var(--mimarte-white);
     padding: 16px 32px;
+    border-radius: 30px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     width: auto;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(56, 163, 165, 0.3);
 }
 
 .btnHeroPrimary:hover {
     background-color: var(--mimarte-primary-dark);
+    box-shadow: 0 6px 22px rgba(56, 163, 165, 0.5);
+    transform: translateY(-2px);
 }
 
 .btnHeroSecondary {
@@ -123,21 +154,24 @@
     border: 1px solid var(--mimarte-text);
     color: var(--mimarte-text);
     padding: 16px 32px;
+    border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease;
     width: auto;
     text-align: center;
+    backdrop-filter: blur(4px);
 }
 
 .btnHeroSecondary:hover {
     background-color: var(--mimarte-text);
     color: var(--mimarte-bg);
+    transform: translateY(-2px);
 }
 
 /* Indicador de Scroll inferior */
 .scrollHint {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -157,7 +191,7 @@
 
 .scrollLine {
     width: 1px;
-    height: 56px;
+    height: 40px;
     background: linear-gradient(to bottom, var(--mimarte-text) 50%, transparent);
     animation: pulse 2s infinite;
 }
@@ -174,43 +208,29 @@
     }
 }
 
-
 /* ==========================================
-   2. ESTILOS DESKTOP (MANTIENE TUS MEDIDAS)
+   2. ESTILOS DESKTOP
    ========================================== */
 
 @media (min-width: 1024px) {
     .heroContentSingle {
-        max-width: 900px;
-        margin: 20rem 0 0 0;
-        padding: 0;
-    }
-
-    .heroTagline {
-        font-size: 20px;
-        letter-spacing: 0.3em;
-        margin-left: 13rem;
-        margin-bottom: -23rem;
+        padding-top: 20px;
+        /* Eleva todo el contenido centrándolo en pantalla */
     }
 
     .heroBrandLogo {
-        position: relative;
-        width: 170%;
-        max-width: 120rem;
-        top: -9rem;
+        /* Mantiene tus proporciones exactas */
+        max-width: 100rem;
+        width: 120vw;
+        margin: -25rem 0 28px 0;
     }
 
-    .heroDescription {
-        font-size: 20px;
-        max-width: 700px;
-        margin-top: -30rem;
-        margin-right: -20px;
-        margin-bottom: 20px;
-        line-height: 1.6;
+    .heroHighlightPhrase {
+        font-size: 2.2rem;
+        margin: -20rem 0 28px 0;
     }
 
     .heroCtaWrapper {
-        margin-top: 10px;
         flex-direction: row;
         gap: 20px;
     }

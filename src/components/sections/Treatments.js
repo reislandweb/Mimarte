@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "../css/Treatments.css";
+import BodyZones from "./BodyZones";
 
 const WHATSAPP_PHONE = "34641882041";
 
@@ -21,7 +22,7 @@ const SERVICES = {
     {
       title: "Higiene Facial",
       price: "45 €",
-      img: "/images/services/higiene-facial.jpg", // 📸 ESPACIO PARA FOTO
+      img: "/images/services/higiene-facial.jpg",
       benefits:
         "Limpia en profundidad, elimina células muertas y devuelve luminosidad y equilibrio a tu piel.",
       desc: "Una piel limpia es el primer paso para una piel saludable. Eliminamos impurezas, células muertas y exceso de grasa para devolver luminosidad, frescura y equilibrio a tu piel. Ideal como tratamiento de mantenimiento o como preparación para otros protocolos faciales.",
@@ -40,7 +41,7 @@ const SERVICES = {
       img: "/images/services/lumina-c.jpg",
       benefits:
         "Acción antioxidante, máxima luminosidad e hidratación profunda frente al envejecimiento.",
-      desc: "Lumina C es un tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro. El resultado es un rostro más fresco, uniforme y naturalmente radiante.",
+      desc: "Lumina C es un tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro. El resultado es un rostro más fresco, uniforme y naturally radiante.",
     },
     {
       title: "Retinol Repair",
@@ -80,7 +81,7 @@ const SERVICES = {
       title: "Radiofrecuencia Facial Mimarte",
       price: "78 €",
       duration: "60 min",
-      isGold: true, // ⭐ TRATAMIENTO ESTRELLA (ORO)
+      isGold: true,
       img: "/images/services/rf-mimarte.jpg",
       benefits:
         "Reafirmación integral, valoración, doble limpieza, presoterapia ocular y Masaje Mimarte.",
@@ -136,6 +137,8 @@ const SERVICES = {
       title: "Radiofrecuencia Corporal",
       price: "49 € / 75 €",
       duration: "30 min / 50 min",
+      // Lista de zonas donde aplica este tratamiento
+      areas: ["abdomen", "gluteos", "piernas", "brazos", "espalda"],
       img: "/images/services/rf-corporal.jpg",
       benefits:
         "Reafirma zonas con flacidez, reduce la celulitis y actúa sobre grasa localizada.",
@@ -145,6 +148,7 @@ const SERVICES = {
       title: "Cavitación",
       price: "45 €",
       duration: "30 min",
+      areas: ["abdomen", "gluteos", "piernas", "flancos"],
       img: "/images/services/cavitacion.jpg",
       benefits:
         "Ultrasonidos focalizados para reducir grasa localizada y moldear la silueta.",
@@ -154,6 +158,7 @@ const SERVICES = {
       title: "Vacumterapia",
       price: "45 € / 65 €",
       duration: "30 min / 45 min",
+      areas: ["abdomen", "gluteos", "piernas"],
       img: "/images/services/vacumterapia.jpg",
       benefits:
         "Drenaje linfático profundo, eliminación de líquidos y moldeado de abdomen/glúteos.",
@@ -163,6 +168,7 @@ const SERVICES = {
       title: "Maderoterapia",
       price: "50 €",
       duration: "60 min",
+      areas: ["abdomen", "gluteos", "piernas", "brazos"],
       img: "/images/services/maderoterapia.jpg",
       benefits:
         "Remodelación corporal manual con madera, activa la circulación y libera tensión.",
@@ -202,6 +208,24 @@ const SERVICES = {
 
 export default function Treatments() {
   const [activeTab, setActiveTab] = useState("faciales");
+  const [selectedBodyArea, setSelectedBodyArea] = useState("todos");
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setSelectedBodyArea("todos");
+  };
+
+  // Filtrado de servicios
+  const displayedServices = SERVICES[activeTab].filter((service) => {
+    if (
+      activeTab === "corporales" &&
+      selectedBodyArea &&
+      selectedBodyArea !== "todos"
+    ) {
+      return service.areas && service.areas.includes(selectedBodyArea);
+    }
+    return true;
+  });
 
   return (
     <section id="tratamientos" className="treatmentsSection">
@@ -217,7 +241,7 @@ export default function Treatments() {
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
+              onClick={() => handleTabChange(cat.id)}
               className={`tabBtn ${activeTab === cat.id ? "active" : ""}`}
             >
               {cat.label}
@@ -225,89 +249,105 @@ export default function Treatments() {
           ))}
         </div>
 
+        {/* INTEGRACIÓN DE BODY AREAS: SOLO EN CORPORALES */}
+        {activeTab === "corporales" && (
+          <div className="corporalAreasWrapper">
+            <BodyZones
+              selectedArea={selectedBodyArea}
+              onSelectArea={(areaId) => setSelectedBodyArea(areaId)}
+            />
+          </div>
+        )}
+
         {/* Grid de Tarjetas 3D */}
         <div className="treatmentsGrid">
-          {SERVICES[activeTab].map((service, idx) => (
-            <div
-              key={`${activeTab}-${idx}`}
-              className={`flipCardContainer ${service.isGold ? "goldCard" : ""}`}
-            >
-              <div className="flipCardInner">
-                {/* ── CARA DELANTERA ── */}
-                <div className="cardFront">
-                  {service.isGold && (
-                    <div className="goldBadge">★ Tratamiento Estrella</div>
-                  )}
-
-                  {/* Espacio para Foto */}
-                  <div className="cardImgWrapper">
-                    <img
-                      src={service.img}
-                      alt={service.title}
-                      className="cardImg"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div className="cardFrontBody">
-                    <div className="frontHeader">
-                      <h3 className="cardTitle">{service.title}</h3>
-                      <span className="cardPrice">{service.price}</span>
-                    </div>
-
-                    {service.duration && (
-                      <span className="cardMeta">
-                        ⏱ Duración: {service.duration}
-                      </span>
+          {displayedServices.length > 0 ? (
+            displayedServices.map((service, idx) => (
+              <div
+                key={`${activeTab}-${idx}`}
+                className={`flipCardContainer ${service.isGold ? "goldCard" : ""}`}
+              >
+                <div className="flipCardInner">
+                  {/* ── CARA DELANTERA ── */}
+                  <div className="cardFront">
+                    {service.isGold && (
+                      <div className="goldBadge">★ Tratamiento Estrella</div>
                     )}
 
-                    <div className="benefitsBox">
-                      <span className="benefitsLabel">Beneficios clave:</span>
-                      <p className="benefitsText">{service.benefits}</p>
-                    </div>
+                    {/*<div className="cardImgWrapper">
+                      <img
+                        src={service.img}
+                        alt={service.title}
+                        className="cardImg"
+                        loading="lazy"
+                      />
+                    </div> */}
 
-                    <div className="flipHint">
-                      <span>Pasa el ratón o toca para ver descripción</span>
-                      <span className="rotateIcon">🔄</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* ── CARA TRASERA ── */}
-                <div className="cardBack">
-                  <h4 className="backTitle">{service.title}</h4>
-
-                  <div className="scrollDesc">
-                    <p className="fullDesc">{service.desc}</p>
-
-                    {service.hasBonoLink && (
-                      <div className="bonoNoticeBox">
-                        <span className="bonoNoticeTitle">Opción en Bono:</span>
-                        <span className="bonoNoticeDetails">
-                          {service.bonoInfo}
-                        </span>
+                    <div className="cardFrontBody">
+                      <div className="frontHeader">
+                        <h3 className="cardTitle">{service.title}</h3>
+                        <span className="cardPrice">{service.price}</span>
                       </div>
-                    )}
+
+                      {service.duration && (
+                        <span className="cardMeta">
+                          ⏱ Duración: {service.duration}
+                        </span>
+                      )}
+
+                      <div className="benefitsBox">
+                        <span className="benefitsLabel">Beneficios:</span>
+                        <p className="benefitsText">{service.benefits}</p>
+                      </div>
+
+                      <div className="flipHint">
+                        <span>Pasa el ratón o toca para ver descripción</span>
+                        <span className="rotateIcon">🔄</span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Botones duales: Reservar y + Info */}
-                  <div className="cardBackActions">
-                    <a
-                      href={getWhatsAppLink(service.title)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bookBtn"
-                    >
-                      Reservar Cita
-                    </a>
-                    <a href="#contacto" className="infoBtn">
-                      + Info
-                    </a>
+                  {/* ── CARA TRASERA ── */}
+                  <div className="cardBack">
+                    <h4 className="backTitle">{service.title}</h4>
+
+                    <div className="scrollDesc">
+                      <p className="fullDesc">{service.desc}</p>
+
+                      {service.hasBonoLink && (
+                        <div className="bonoNoticeBox">
+                          <span className="bonoNoticeTitle">
+                            Opción en Bono:
+                          </span>
+                          <span className="bonoNoticeDetails">
+                            {service.bonoInfo}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="cardBackActions">
+                      <a
+                        href={getWhatsAppLink(service.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bookBtn"
+                      >
+                        Reservar Cita
+                      </a>
+                      <a href="#contacto" className="infoBtn">
+                        + Info
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="noResultsMsg">
+              No hay tratamientos disponibles para esta zona.
+            </p>
+          )}
         </div>
       </div>
     </section>

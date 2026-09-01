@@ -10,7 +10,6 @@ const LINKS = [
   { label: "Tratamientos", href: "#tratamientos" },
   { label: "Bonos", href: "#bonos" },
   { label: "Productos", href: "#productos" },
-  { label: "Body-Areas", href: "#zonas-corporales" },
 ];
 
 export default function Navbar() {

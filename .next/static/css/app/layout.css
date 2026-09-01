@@ -966,6 +966,12 @@ video {
 .fixed {
   position: fixed;
 }
+.relative {
+  position: relative;
+}
+.flex {
+  display: flex;
+}
 .resize {
   resize: both;
 }
@@ -975,9 +981,24 @@ video {
 .italic {
   font-style: italic;
 }
+.underline {
+  text-decoration-line: underline;
+}
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -989,7 +1010,7 @@ video {
   --font-body: 'DM Sans', montserrat;
   /* Colores reales de Mimarte Estética */
   --mimarte-bg: #faf8f4;
-  --mimarte-text: #black;
+  --mimarte-text: black;
   --mimarte-primary: #38a3a5;
   --mimarte-primary-light: #57cc99;
   --mimarte-primary-dark: #38a3a5;
