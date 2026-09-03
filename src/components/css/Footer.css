@@ -109,7 +109,7 @@
     margin: 0;
 }
 
-/* ── BARRA INFERIOR (COPYRIGHT) */
+/* ── BARRA INFERIOR (COPYRIGHT, FIRMA Y LEGALES) */
 .footerBottom {
     border-top: 1px solid rgba(195, 154, 131, 0.1);
     padding-top: 32px;
@@ -135,21 +135,191 @@
     margin: 0;
 }
 
+/* ── ANIMACIÓN EN CARRUSEL PARA TU FIRMA (RAISELANDWEB) */
+.footerSignatureWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.signatureLabel {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    opacity: 0.8;
+}
+
+.marqueeContainer {
+    overflow: hidden;
+    width: 125px;
+    /* Ancho del área visible por donde pasa la firma */
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+}
+
+.raiselandAnimatedLink {
+    display: inline-block;
+    color: #c5a880;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--font-body);
+    animation: slideRightLoop 5s linear infinite;
+}
+
+.raiselandAnimatedLink:hover {
+    animation-play-state: paused;
+    color: var(--mimarte-white);
+}
+
+@keyframes slideRightLoop {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ── BOTONES DE ENLACES LEGALES (PRIVACIDAD, AVISO LEGAL, COOKIES) */
 .footerLegalLinks {
     display: flex;
     gap: 24px;
 }
 
-.footerLegalLink {
+.footerLegalBtn {
+    background: transparent;
+    border: none;
     font-family: var(--font-body);
     font-size: 13px;
     color: var(--mimarte-white);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
 }
 
-.footerLegalLink:hover {
-    color: var(--mimarte-white);
+.footerLegalBtn:hover {
+    color: #c5a880;
+    opacity: 0.9;
+}
+
+/* ── VENTANA MODAL EMERGENTE PARA CONTENIDO LEGAL */
+.legalModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+.legalModalCard {
+    background: #ffffff;
+    color: #222222;
+    width: 100%;
+    max-width: 650px;
+    max-height: 80vh;
+    border-radius: 16px;
+    padding: 35px 30px 30px 30px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.legalModalCloseBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: #f0f0f0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legalModalCloseBtn:hover {
+    background: #c5a880;
+    color: #ffffff;
+}
+
+.legalModalTitle {
+    font-family: var(--font-display, serif);
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c5a880;
+    padding-bottom: 10px;
+}
+
+.legalModalBody {
+    overflow-y: auto;
+    padding-right: 10px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444444;
+}
+
+.legalModalBody h4 {
+    color: #1a1a1a;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+
+.legalModalBody p {
+    margin-bottom: 12px;
+}
+
+.legalModalBody ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.legalModalBody li {
+    margin-bottom: 6px;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* FORZAR TAMAÑO MÁS GRANDE DE LA BURBUJA DE CHATBASE */

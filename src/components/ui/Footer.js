@@ -1,12 +1,109 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../css/Footer.css"; // Enlazamos tus estilos puros libres de Tailwind
+
+// Textos legales predeterminados para la ventana emergente
+const LEGAL_CONTENT = {
+  privacidad: {
+    title: "Política de Privacidad",
+    text: (
+      <>
+        <p>
+          En <strong>Mimarte Estética</strong> nos tomamos muy en serio la
+          protección de sus datos personales. De conformidad con el Reglamento
+          General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018
+          (LOPDGDD), le informamos que los datos facilitados a través de nuestro
+          sitio web o formularios de contacto serán tratados bajo la
+          responsabilidad de Mimarte Estética.
+        </p>
+        <h4>1. Finalidad del tratamiento</h4>
+        <p>
+          Gestionar las solicitudes de cita previa, responder a consultas sobre
+          nuestros tratamientos (Faciales, Maderoterapia, Radiofrecuencia,
+          Láser) y envío de información comercial en caso de haber sido
+          autorizada explícitamente.
+        </p>
+        <h4>2. Legitimación</h4>
+        <p>
+          El consentimiento del usuario al ponerse en contacto con nosotros o
+          solicitar la reserva de bonos y tratamientos.
+        </p>
+        <h4>3. Derechos del usuario</h4>
+        <p>
+          Tiene derecho a acceder, rectificar, suprimir y limitar el tratamiento
+          de sus datos enviando un correo electrónico a{" "}
+          <strong>info@mimarteestetica.es</strong> junto con una copia de su
+          DNI.
+        </p>
+      </>
+    ),
+  },
+  avisoLegal: {
+    title: "Aviso Legal",
+    text: (
+      <>
+        <p>
+          En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de
+          Servicios de la Sociedad de la Información y Comercio Electrónico
+          (LSSI-CE), se exponen los datos identificativos del titular del sitio
+          web:
+        </p>
+        <ul>
+          <li>
+            <strong>Denominación comercial:</strong> Mimarte Estética
+          </li>
+          <li>
+            <strong>Ubicación:</strong> Zaragoza, España
+          </li>
+          <li>
+            <strong>Contacto:</strong> 641 88 20 41 | info@mimarteestetica.es
+          </li>
+        </ul>
+        <h4>Propiedad Intelectual</h4>
+        <p>
+          Todos los contenidos del sitio web (textos, logotipos, imágenes,
+          estructura de navegación, marcas) son propiedad exclusiva de Mimarte
+          Estética o de sus licenciantes. Queda prohibida su reproducción o
+          distribución sin autorización previa.
+        </p>
+      </>
+    ),
+  },
+  cookies: {
+    title: "Política de Cookies",
+    text: (
+      <>
+        <p>
+          Este sitio web utiliza cookies técnicas y analíticas necesarias para
+          garantizar el correcto funcionamiento de la página y analizar las
+          interacciones de nuestros usuarios.
+        </p>
+        <h4>Tipos de cookies utilizadas:</h4>
+        <ul>
+          <li>
+            <strong>Cookies Técnicas:</strong> Esenciales para el correcto
+            funcionamiento de la web y la navegación.
+          </li>
+          <li>
+            <strong>Cookies de Personalización/Asistente:</strong> Utilizadas
+            para la integración del asistente virtual de consultas (Chatbase).
+          </li>
+        </ul>
+        <p>
+          Puede configurar o deshabilitar las cookies en cualquier momento desde
+          los ajustes de su navegador (Chrome, Safari, Firefox, Edge).
+        </p>
+      </>
+    ),
+  },
+};
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [activeModal, setActiveModal] = useState(null);
 
-  // 🤖 Inyección de Chatbase adaptada a React
+  // Inyección de Chatbase adaptada a React
   useEffect(() => {
     if (!window.chatbase || window.chatbase("getState") !== "initialized") {
       window.chatbase = (...args) => {
@@ -122,35 +219,68 @@ export default function Footer() {
             reservados.
           </p>
 
-          <p className="footerCopy" style={{ margin: "4px 0" }}>
-            Desarrollado por{" "}
-            <a
-              href="https://raiselandweb.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#c5a880",
-                fontWeight: "600",
-                textDecoration: "none",
-              }}
-            >
-              RaiselandWeb
-            </a>
-          </p>
+          {/* FIRMA CON ANIMACIÓN CARROUSEL / TICKER DESPLAZABLE */}
+          <div className="footerSignatureWrapper">
+            <span className="signatureLabel">Desarrollado por</span>
+            <div className="marqueeContainer">
+              <a
+                href="https://raiselandweb.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="raiselandAnimatedLink"
+              >
+                RaiselandWeb ✨
+              </a>
+            </div>
+          </div>
 
+          {/* ENLACES LEGALES (ABREN MODAL) */}
           <div className="footerLegalLinks">
-            <a href="/politica-de-privacidad" className="footerLegalLink">
+            <button
+              type="button"
+              onClick={() => setActiveModal("privacidad")}
+              className="footerLegalBtn"
+            >
               Privacidad
-            </a>
-            <a href="/aviso-legal" className="footerLegalLink">
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveModal("avisoLegal")}
+              className="footerLegalBtn"
+            >
               Aviso Legal
-            </a>
-            <a href="/politica-de-cookies" className="footerLegalLink">
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveModal("cookies")}
+              className="footerLegalBtn"
+            >
               Cookies
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      {/* ── VENTANA MODAL DE TEXTOS LEGALES */}
+      {activeModal && (
+        <div className="legalModalOverlay" onClick={() => setActiveModal(null)}>
+          <div className="legalModalCard" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="legalModalCloseBtn"
+              onClick={() => setActiveModal(null)}
+            >
+              ✕
+            </button>
+            <h3 className="legalModalTitle">
+              {LEGAL_CONTENT[activeModal].title}
+            </h3>
+            <div className="legalModalBody">
+              {LEGAL_CONTENT[activeModal].text}
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

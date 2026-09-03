@@ -421,81 +421,96 @@
 /* src/components/css/Bonos.css */
 
 .bonosSection {
-    padding: 128px 24px;
+    padding: 80px 20px;
+    position: relative;
     width: 100%;
 }
 
 .bonosContainer {
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cabecera */
+/* Cabecera y Títulos */
 .headerText {
-    margin-bottom: 80px;
     text-align: center;
+    margin-bottom: 40px;
 }
 
 .bonosSubtitle {
-    font-family: var(--font-body);
-    font-size: 12px;
-    letter-spacing: 0.3em;
+    font-family: var(--font-body, sans-serif);
+    font-size: 13px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--mimarte-primary-dark);
-    margin-bottom: 16px;
+    color: #38a3a5;
     display: block;
+    margin-bottom: 8px;
 }
 
 .bonosTitle {
-    font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--mimarte-text);
-    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 12px;
 }
 
 .bonosTitle em {
     font-style: italic;
-    color: var(--mimarte-primary);
+    color: #d4af37;
 }
 
 .bonosDesc {
-    font-family: var(--font-body);
-    color: var(--mimarte-text);
-    opacity: 0.7;
-    margin: 16px auto 0 auto;
-    max-width: 576px;
-    text-align: center;
-    font-size: 14px;
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: #666;
     line-height: 1.6;
 }
 
-/* Grid de tarjetas */
+/* Botones de Filtro / Pestañas */
+.bonosFilterWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.filterBtn:hover,
+.filterBtn.active {
+    background: #38a3a5;
+    color: #fff;
+    border-color: #38a3a5;
+    box-shadow: 0 4px 12px rgba(56, 163, 165, 0.25);
+}
+
+/* Grid de Tarjetas */
 .bonosGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    perspective: 1000px;
+    /* Imprescindible para el giro 3D */
 }
 
-@media (min-width: 640px) {
-    .bonosGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1200px) {
-    .bonosGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* ── MAQUINARIA EFECTO GIRATORIO 3D (FLIP CARDS) */
+/* Contenedor Flip 3D */
 .bonoCardContainer {
-    background-color: transparent;
-    perspective: 1200px;
-    height: 440px;
-    border-radius: 12px;
-    /* Alto fijo estandarizado para que todas giren perfectas */
+    height: 480px;
+    perspective: 1000px;
 }
 
 .flipCardInner {
@@ -503,249 +518,206 @@
     width: 100%;
     height: 100%;
     text-align: left;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
 }
 
-/* Activación del giro al pasar el ratón */
-.bonoCardContainer:hover .flipCardInner {
+.flipCardInner.isFlipped {
     transform: rotateY(180deg);
 }
 
-/* Comportamiento base de ambas caras */
+.bonoCardContainer:hover .flipCardInner {
+    /* Efecto leve de inclinación al pasar cursor */
+}
+
+/* Caras Frontal y Trasera */
 .cardFront,
 .cardBack {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 30px 24px;
     display: flex;
     flex-direction: column;
-    padding: 32px;
-    box-sizing: border-box;
-    border-radius: 12px;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: #ffffff;
 }
 
-/* Enlazamos con tus clases de colores originales */
-.cardFront.cardNormal {
-    background-color: var(--mimarte-white);
-    color: var(--mimarte-text);
-    border: 1px solid var(--mimarte-primary-light);
+.cardNormal {
+    background: #ffffff;
 }
 
-.cardFront.cardFeatured {
-    background-color: var(--mimarte-primary);
-    color: var(--mimarte-white);
-    border: 1px solid var(--mimarte-primary);
+.cardFeatured {
+    background: linear-gradient(145deg, #ffffff 0%, #fffdf7 100%);
+    border: 2px solid #d4af37;
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.18);
 }
 
-/* ── ELEMENTOS INTERNOS FRONT */
+/* Cara Trasera */
+.cardBack {
+    transform: rotateY(180deg);
+    background: #fcfbf8;
+}
+
+/* Elementos de la Tarjeta */
 .tagPopular {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #38a3a5;
+    color: #fff;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--mimarte-white);
-    padding: 4px 12px;
-    align-self: flex-start;
-    margin-bottom: 16px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.goldTag {
+    background: #d4af37;
 }
 
 .sessionsTag {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    margin-bottom: 4px;
-}
-
-.sessionsNormal {
-    color: var(--mimarte-primary-dark);
-}
-
-.sessionsFeatured {
-    color: rgba(255, 255, 255, 0.8);
+    color: #38a3a5;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
 }
 
 .cardTitle {
-    font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 300;
-    margin: 0 0 4px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #222;
+    margin-bottom: 4px;
 }
 
 .cardTreatment {
-    font-family: var(--font-body);
-    font-size: 12px;
-    margin-bottom: 24px;
-    opacity: 0.6;
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+    min-height: 38px;
 }
 
 .priceWrapper {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .priceText {
-    font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 300;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
 }
 
-.priceNormal {
-    color: var(--mimarte-primary);
-}
-
-.priceFeatured {
-    color: var(--mimarte-white);
-}
-
-.featuresList {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex-grow: 1;
-}
-
-.featureItem {
-    font-family: var(--font-body);
-    font-size: 12px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-}
-
-.featureNormal {
-    color: rgba(47, 46, 44, 0.75);
-}
-
-.featureFeatured {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.checkIcon {
-    font-weight: bold;
-}
-
-.checkNormal {
-    color: var(--mimarte-primary);
-}
-
-.checkFeatured {
-    color: var(--mimarte-white);
-}
-
-/* ── CARA TRASERA (BACK) */
-.cardBack {
-    transform: rotateY(180deg);
-    /* Del revés por defecto */
-    justify-content: space-between;
-}
-
-/* Colores dinámicos del reverso según si es destacado o no */
-.cardBack.cardNormal {
-    background-color: #faf7f2;
-    color: var(--mimarte-text);
-    border: 1px solid var(--mimarte-primary-light);
-}
-
-.cardBack.cardFeatured {
-    background-color: var(--mimarte-primary-dark);
-    color: var(--mimarte-white);
-    border: 1px solid var(--mimarte-primary-dark);
-}
-
-.backTermsTitle {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 300;
-    margin: 0 0 16px 0;
-    border-bottom: 1px solid rgba(195, 154, 131, 0.2);
-    padding-bottom: 8px;
-}
-
-.cardBack.cardFeatured .backTermsTitle {
-    border-bottom-color: rgba(255, 255, 255, 0.2);
-}
-
+/* Listas de características y términos */
+.featuresList,
 .termsList {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 15px 0;
+}
+
+.featureItem {
+    font-size: 0.88rem;
+    color: #444;
+    margin-bottom: 8px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-grow: 1;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    color: #38a3a5;
+    font-weight: bold;
+}
+
+.backTermsTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #222;
 }
 
 .termsList li {
-    font-family: var(--font-body);
-    font-size: 12px;
-    line-height: 1.5;
-    opacity: 0.85;
-    position: relative;
-    padding-left: 16px;
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
-.termsList li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--mimarte-primary);
-}
-
-.cardBack.cardFeatured .termsList li::before {
-    color: var(--mimarte-white);
-}
-
-/* Botones de acción (CTA) */
-.btnBono {
-    font-family: var(--font-body);
-    font-size: 12px;
-    letter-spacing: 0.1em;
+/* Botones y Acciones */
+.btnFlipTrigger {
+    background: transparent;
+    border: none;
+    color: #38a3a5;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 0;
+    text-align: center;
+    transition: color 0.2s;
     text-transform: uppercase;
-    text-align: center;
-    padding: 12px 0;
+    letter-spacing: 0.05em;
+}
+
+.btnFlipTrigger:hover {
+    color: #d4af37;
+}
+
+.cardActionButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.btnBono {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: auto;
-}
-
-.btnNormal {
-    background-color: var(--mimarte-primary);
-    color: var(--mimarte-white);
-}
-
-.btnNormal:hover {
-    background-color: var(--mimarte-primary-dark);
-}
-
-.btnFeatured {
-    background-color: var(--mimarte-white);
-    color: var(--mimarte-primary);
-}
-
-.btnFeatured:hover {
-    background-color: var(--mimarte-bg);
-}
-
-/* Nota inferior */
-.bonosNotice {
-    font-family: var(--font-body);
-    font-size: 11px;
     text-align: center;
-    margin-top: 32px;
-    color: var(--mimarte-text);
-    opacity: 0.5;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    flex: 1;
 }
 
-.btnInfo:hover {
-    border: 1px solid #000000;
+.btnBackTurn {
+    background: #eee;
+    color: #333;
+}
 
+.btnBackTurn:hover {
+    background: #ddd;
+}
+
+.btnWhatsapp {
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btnWhatsapp:hover {
+    background: #1eb956;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.bonosNotice {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 40px;
 }
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Contact.css ***!
@@ -2083,7 +2055,7 @@
     margin: 0;
 }
 
-/* ── BARRA INFERIOR (COPYRIGHT) */
+/* ── BARRA INFERIOR (COPYRIGHT, FIRMA Y LEGALES) */
 .footerBottom {
     border-top: 1px solid rgba(195, 154, 131, 0.1);
     padding-top: 32px;
@@ -2109,21 +2081,191 @@
     margin: 0;
 }
 
+/* ── ANIMACIÓN EN CARRUSEL PARA TU FIRMA (RAISELANDWEB) */
+.footerSignatureWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.signatureLabel {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    opacity: 0.8;
+}
+
+.marqueeContainer {
+    overflow: hidden;
+    width: 125px;
+    /* Ancho del área visible por donde pasa la firma */
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+}
+
+.raiselandAnimatedLink {
+    display: inline-block;
+    color: #c5a880;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--font-body);
+    animation: slideRightLoop 5s linear infinite;
+}
+
+.raiselandAnimatedLink:hover {
+    animation-play-state: paused;
+    color: var(--mimarte-white);
+}
+
+@keyframes slideRightLoop {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ── BOTONES DE ENLACES LEGALES (PRIVACIDAD, AVISO LEGAL, COOKIES) */
 .footerLegalLinks {
     display: flex;
     gap: 24px;
 }
 
-.footerLegalLink {
+.footerLegalBtn {
+    background: transparent;
+    border: none;
     font-family: var(--font-body);
     font-size: 13px;
     color: var(--mimarte-white);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
 }
 
-.footerLegalLink:hover {
-    color: var(--mimarte-white);
+.footerLegalBtn:hover {
+    color: #c5a880;
+    opacity: 0.9;
+}
+
+/* ── VENTANA MODAL EMERGENTE PARA CONTENIDO LEGAL */
+.legalModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+.legalModalCard {
+    background: #ffffff;
+    color: #222222;
+    width: 100%;
+    max-width: 650px;
+    max-height: 80vh;
+    border-radius: 16px;
+    padding: 35px 30px 30px 30px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.legalModalCloseBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: #f0f0f0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legalModalCloseBtn:hover {
+    background: #c5a880;
+    color: #ffffff;
+}
+
+.legalModalTitle {
+    font-family: var(--font-display, serif);
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c5a880;
+    padding-bottom: 10px;
+}
+
+.legalModalBody {
+    overflow-y: auto;
+    padding-right: 10px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444444;
+}
+
+.legalModalBody h4 {
+    color: #1a1a1a;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+
+.legalModalBody p {
+    margin-bottom: 12px;
+}
+
+.legalModalBody ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.legalModalBody li {
+    margin-bottom: 6px;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* FORZAR TAMAÑO MÁS GRANDE DE LA BURBUJA DE CHATBASE */
