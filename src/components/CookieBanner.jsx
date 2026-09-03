@@ -1,31 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    setMounted(true);
     const consent = localStorage.getItem("mimarte_cookies_accepted");
     if (!consent) {
       setShowBanner(true);
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("mimarte_cookies_accepted", "true");
-    setShowBanner(false);
-  };
+  // Evitamos cualquier desajuste de hidratación esperando al montaje en cliente
+  if (!mounted) return null;
 
-  const handleDecline = () => {
-    localStorage.setItem("mimarte_cookies_accepted", "false");
-    setShowBanner(false);
-  };
-
-  if (!showBanner) return null;
+  // Si no hay que mostrarlo O la URL es la política de cookies, NO se renderiza
+  if (!showBanner || pathname?.includes("politica-de-cookies")) return null;
 
   return (
-    // Overlay semitransparente que cubre toda la pantalla y bloquea la interacción
     <div
       style={{
         position: "fixed",
@@ -40,9 +37,9 @@ export default function CookieBanner() {
         alignItems: "center",
         justifyContent: "center",
         padding: "20px",
+        cursor: "auto",
       }}
     >
-      {/* CPT / Ventana modal centrada */}
       <div
         style={{
           backgroundColor: "#ffffff",
@@ -54,6 +51,7 @@ export default function CookieBanner() {
           textAlign: "center",
           position: "relative",
           zIndex: 1000000,
+          cursor: "auto",
         }}
       >
         <h3
@@ -62,7 +60,7 @@ export default function CookieBanner() {
             fontSize: "20px",
             color: "#1a1a1a",
             fontFamily: "serif",
-            letterSpacing: "0.03em",
+            cursor: "auto",
           }}
         >
           Aviso de Cookies
@@ -74,10 +72,11 @@ export default function CookieBanner() {
             lineHeight: "1.6",
             color: "#555555",
             marginBottom: "24px",
+            cursor: "auto",
           }}
         >
           Utilizamos cookies propias y de terceros para analizar el tráfico y
-          mejorar tu experiencia en nuestra web. Puedes revisar nuestra{" "}
+          mejorar tu experiencia. Puedes revisar nuestra{" "}
           <a
             href="/politica-de-cookies"
             target="_blank"
@@ -86,9 +85,7 @@ export default function CookieBanner() {
               color: "#8a714a",
               textDecoration: "underline",
               fontWeight: "600",
-              cursor: "pointer",
-              position: "relative",
-              zIndex: 1000001,
+              cursor: "auto",
             }}
           >
             Política de Cookies
@@ -102,29 +99,34 @@ export default function CookieBanner() {
             gap: "12px",
             justifyContent: "center",
             flexWrap: "wrap",
+            cursor: "auto",
           }}
         >
           <button
-            onClick={handleDecline}
+            onClick={() => {
+              localStorage.setItem("mimarte_cookies_accepted", "false");
+              setShowBanner(false);
+            }}
             style={{
               flex: "1",
               minWidth: "130px",
               padding: "12px 20px",
               fontSize: "14px",
-              fontWeight: "500",
               borderRadius: "8px",
               border: "1px solid #dcdcdc",
               backgroundColor: "#f8f8f8",
               color: "#555555",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
+              cursor: "auto",
             }}
           >
             Rechazar
           </button>
 
           <button
-            onClick={handleAccept}
+            onClick={() => {
+              localStorage.setItem("mimarte_cookies_accepted", "true");
+              setShowBanner(false);
+            }}
             style={{
               flex: "1",
               minWidth: "130px",
@@ -135,8 +137,7 @@ export default function CookieBanner() {
               border: "none",
               backgroundColor: "#c5a880",
               color: "#ffffff",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
+              cursor: "auto",
             }}
           >
             Aceptar todas

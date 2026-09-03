@@ -1,0 +1,186 @@
+/* CONTEO Y ESTRUCTURA PRINCIPAL */
+/* Forzar que el cursor del sistema sea siempre visible en esta página */
+html,
+body,
+.cookiesPageContainer,
+.cookiesPageContainer * {
+    cursor: auto !important;
+}
+
+/* Y para enlaces y botones, asegurar el puntero de mano */
+a,
+button,
+.backHomeBtn {
+    cursor: pointer !important;
+}
+
+.cookiesPageContainer {
+    min-height: 100vh;
+    background-color: #faf8f5;
+    /* Fondo cálido suave */
+    color: #2c2c2c;
+    padding: 80px 24px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.cookiesContentCard {
+    max-width: 860px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 56px 48px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+/* CABECERA */
+.cookiesHeader {
+    border-bottom: 1px solid #f0eae1;
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+}
+
+.cookiesBadge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c5a880;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.cookiesTitle {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.cookiesUpdated {
+    font-size: 0.85rem;
+    color: #888888;
+    margin: 0;
+}
+
+/* SECCIONES Y TEXTO */
+.cookiesSection {
+    margin-bottom: 36px;
+}
+
+.cookiesSection h2 {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 1.35rem;
+    color: #1a1a1a;
+    margin: 0 0 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cookiesSection h2::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background-color: #c5a880;
+    border-radius: 4px;
+}
+
+.cookiesSection p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 0 16px 0;
+}
+
+/* LISTAS Y TARJETAS DE TIPOS DE COOKIES */
+.cookiesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+@media (min-width: 640px) {
+    .cookiesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.cookieTypeCard {
+    background-color: #faf8f5;
+    border: 1px solid #f0eae1;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cookieTypeCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cookieTypeCard h3 {
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+}
+
+.cookieTypeCard p {
+    font-size: 0.88rem;
+    color: #666666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* BOTÓN DE RETORNO / ACCIÓN */
+.cookiesFooterAction {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid #f0eae1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.backHomeBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.backHomeBtn:hover {
+    background-color: #c5a880;
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .cookiesPageContainer {
+        padding: 40px 16px 60px;
+    }
+
+    .cookiesContentCard {
+        padding: 32px 20px;
+        border-radius: 16px;
+    }
+
+    .cookiesTitle {
+        font-size: 1.8rem;
+    }
+}
