@@ -224,7 +224,7 @@ export default function Footer() {
             <span className="signatureLabel">Desarrollado por</span>
             <div className="marqueeContainer">
               <a
-                href="https://raiselandweb.com"
+                href="https://www.instagram.com/reislandweb?igsi=N2txMGQycHp5Ymll"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="raiselandAnimatedLink"
