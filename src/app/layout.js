@@ -29,10 +29,7 @@ export const metadata = {
   description:
     "Centro de estética en Zaragoza. Tratamientos faciales, corporales, Indiba, depilación láser y más.",
   icons: {
-    icon: [
-      { url: "/images/logoPestana.png" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
-    ],
+    icon: [{ url: "/images/logoPestana.png" }],
     apple: "/apple-icon.png", // Opcional: para cuando guardan la web en la pantalla de inicio del iPhone
   },
   keywords: [
