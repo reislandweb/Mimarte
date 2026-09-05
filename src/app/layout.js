@@ -28,6 +28,13 @@ export const metadata = {
   title: "Mimarte Estética | Bienestar facial y corporal Zaragoza",
   description:
     "Centro de estética en Zaragoza. Tratamientos faciales, corporales, Indiba, depilación láser y más.",
+  icons: {
+    icon: [
+      { url: "/images/logoPestana.png" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.png", // Opcional: para cuando guardan la web en la pantalla de inicio del iPhone
+  },
   keywords: [
     "centro de belleza",
     "estética Zaragoza",
