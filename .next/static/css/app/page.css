@@ -1,0 +1,2532 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/About.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/About.css */
+
+.aboutSection {
+    padding: 128px 24px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Corregido */
+    gap: 64px;
+    align-items: center;
+}
+
+/* Responsive para pantallas grandes (Escritorio) */
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 96px;
+    }
+}
+
+/* Estilos del Bloque de Texto */
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    color: var(--mimarte-text);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 32px;
+    }
+}
+
+.description {
+    font-family: var(--font-body);
+    color: var(--mimarte-text);
+    opacity: 0.9;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-align: left;
+    /* Alineación más elegante que justify */
+    font-size: 19px;
+}
+
+.description p {
+    margin-bottom: 16px;
+}
+
+.description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Bloque de estadísticas */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--mimarte-primary-light);
+    padding-top: 32px;
+}
+
+.statValue {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--mimarte-primary);
+    margin: 0;
+}
+
+.statLabel {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.6;
+    margin-top: 4px;
+    line-height: 1.3;
+}
+
+/* Bloque de la Imagen con Degradado en el Contorno */
+.imageWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.imageFrame {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%);
+}
+
+.imageSrc {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease, filter 0.7s ease;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.98) contrast(1.02);
+}
+
+.imageSrc:hover {
+    transform: scale(1.05);
+    filter: brightness(1.02) contrast(1.05);
+}
+
+/* Elementos decorativos suavizados tras el degradado */
+.decoLine {
+    position: absolute;
+    bottom: -24px;
+    left: -24px;
+    width: 192px;
+    height: 192px;
+    border: 1px solid var(--mimarte-primary-light);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.decoBox {
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    width: 128px;
+    height: 128px;
+    background-color: var(--mimarte-bg);
+    border: 1px solid var(--mimarte-primary-light);
+    z-index: -1;
+    opacity: 0.5;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/BodyZones.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.zonesSection {
+    background-color: var(--mimarte-bg-soft, #fdfbf7);
+    padding: 80px 20px;
+}
+
+.zonesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.zonesHeader {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.zonesSubtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--mimarte-primary, #cbb29a);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.zonesTitle {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+}
+
+.zonesTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary, #cbb29a);
+}
+
+.zonesDesc {
+    max-width: 650px;
+    margin: 15px auto 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.zonesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .zonesGrid {
+        grid-template-columns: 1fr 1.1fr;
+    }
+}
+
+/* ── MAPA INTERACTIVO ── */
+.zonesInteractiveWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    background: #fff;
+}
+
+.baseImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.interactiveHint {
+    font-size: 13px;
+    color: #888;
+    margin-top: 12px;
+}
+
+/* Hotspots (Puntos interactivos) */
+.hotspotDot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #e67e22;
+    /* Tono naranja acorde a la imagen */
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+}
+
+.hotspotDot:hover,
+.hotspotDot.active {
+    background-color: #d35400;
+    transform: translate(-50%, -50%) scale(1.3);
+    z-index: 3;
+}
+
+/* Efecto de pulso en los puntos */
+.dotPulse {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid #e67e22;
+    animation: pulse 2s infinite;
+    opacity: 0.6;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+/* Tooltip al pasar el cursor sobre el punto */
+.dotTooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.hotspotDot:hover .dotTooltip {
+    opacity: 1;
+}
+
+/* ── DERECHA: TARJETA DE INFORMACIÓN DE SESIONES ── */
+.zonesInfoCard {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0e8e0;
+}
+
+.timeHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.timeBadge {
+    background: #f4ece4;
+    color: var(--mimarte-primary, #b3977d);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.badgeGold {
+    background: #e67e22;
+    color: #fff;
+}
+
+.timeBlock h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+.timeDesc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.zonesPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.zonePill {
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.zonePill:hover,
+.zonePill.selected {
+    background: var(--mimarte-primary, #cbb29a);
+    color: #fff;
+    border-color: var(--mimarte-primary, #cbb29a);
+}
+
+.zonesDivider {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 25px 0;
+}
+
+.examplesBox {
+    background: #faf8f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.examplesTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.examplesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: #666;
+}
+
+.warningBox {
+    background: #fff8f5;
+    border-left: 3px solid #e67e22;
+    padding: 12px;
+    font-size: 13px;
+    color: #775544;
+    line-height: 1.4;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Bonos.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Bonos.css */
+
+.bonosSection {
+    padding: 80px 20px;
+    position: relative;
+    width: 100%;
+}
+
+.bonosContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cabecera y Títulos */
+.headerText {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bonosSubtitle {
+    font-family: var(--font-body, sans-serif);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #38a3a5;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.bonosTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.bonosTitle em {
+    font-style: italic;
+    color: #d4af37;
+}
+
+.bonosDesc {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Botones de Filtro / Pestañas */
+.bonosFilterWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.filterBtn:hover,
+.filterBtn.active {
+    background: #38a3a5;
+    color: #fff;
+    border-color: #38a3a5;
+    box-shadow: 0 4px 12px rgba(56, 163, 165, 0.25);
+}
+
+/* Grid de Tarjetas */
+.bonosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    perspective: 1000px;
+    /* Imprescindible para el giro 3D */
+}
+
+/* Contenedor Flip 3D */
+.bonoCardContainer {
+    height: 480px;
+    perspective: 1000px;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flipCardInner.isFlipped {
+    transform: rotateY(180deg);
+}
+
+.bonoCardContainer:hover .flipCardInner {
+    /* Efecto leve de inclinación al pasar cursor */
+}
+
+/* Caras Frontal y Trasera */
+.cardFront,
+.cardBack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: #ffffff;
+}
+
+.cardNormal {
+    background: #ffffff;
+}
+
+.cardFeatured {
+    background: linear-gradient(145deg, #ffffff 0%, #fffdf7 100%);
+    border: 2px solid #d4af37;
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.18);
+}
+
+/* Cara Trasera */
+.cardBack {
+    transform: rotateY(180deg);
+    background: #fcfbf8;
+}
+
+/* Elementos de la Tarjeta */
+.tagPopular {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #38a3a5;
+    color: #fff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.goldTag {
+    background: #d4af37;
+}
+
+.sessionsTag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #38a3a5;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+}
+
+.cardTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.cardTreatment {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+    min-height: 38px;
+}
+
+.priceWrapper {
+    margin-bottom: 15px;
+}
+
+.priceText {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Listas de características y términos */
+.featuresList,
+.termsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.featureItem {
+    font-size: 0.88rem;
+    color: #444;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    color: #38a3a5;
+    font-weight: bold;
+}
+
+.backTermsTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.termsList li {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Botones y Acciones */
+.btnFlipTrigger {
+    background: transparent;
+    border: none;
+    color: #38a3a5;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 0;
+    text-align: center;
+    transition: color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btnFlipTrigger:hover {
+    color: #d4af37;
+}
+
+.cardActionButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.btnBono {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btnBackTurn {
+    background: #eee;
+    color: #333;
+}
+
+.btnBackTurn:hover {
+    background: #ddd;
+}
+
+.btnWhatsapp {
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btnWhatsapp:hover {
+    background: #1eb956;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.bonosNotice {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 40px;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Contact.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Contact.css */
+
+.contactSection {
+    padding: 128px 24px;
+    width: 100%;
+}
+
+.contactContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Cabecera */
+.contactHeader {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.contactSubtitle {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.contactTitle {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    /* Letras de título más marcadas */
+    color: var(--mimarte-text);
+    margin: 0;
+}
+
+.contactTitle em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--mimarte-primary);
+}
+
+/* Distribución del Grid */
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+}
+
+@media (min-width: 1024px) {
+    .contactGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Formulario */
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.doubleGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Etiquetas del formulario resaltadas */
+.formLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    /* Texto visible y nítido */
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    width: 100%;
+    border: 1.5px solid var(--mimarte-primary-light);
+    background-color: transparent;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--mimarte-text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.formSelect {
+    background-color: var(--mimarte-white);
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+    outline: none;
+    border-color: var(--mimarte-primary);
+    box-shadow: 0 0 8px rgba(56, 163, 165, 0.2);
+}
+
+.formTextarea {
+    resize: none;
+}
+
+.btnSubmit {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 16px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(56, 163, 165, 0.25);
+}
+
+.btnSubmit:hover:not(:disabled) {
+    background-color: var(--mimarte-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(56, 163, 165, 0.35);
+}
+
+.btnSubmit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.privacyNotice {
+    font-family: var(--font-body);
+    font-size: 12px;
+    text-align: center;
+    color: var(--mimarte-text);
+    opacity: 0.8;
+}
+
+.privacyNotice a {
+    color: var(--mimarte-primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.privacyNotice a:hover {
+    color: var(--mimarte-primary);
+}
+
+/* Pantalla de Éxito */
+.successWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 0;
+    height: 100%;
+}
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--mimarte-primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--mimarte-primary-dark);
+    font-size: 24px;
+}
+
+.successTitle {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--mimarte-text);
+    margin: 0 0 12px 0;
+}
+
+.successDesc {
+    font-family: var(--font-body);
+    color: var(--mimarte-text);
+    opacity: 0.85;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Bloques de Información de la Derecha */
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.infoBlockTitle {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--mimarte-text);
+    margin: 0 0 24px 0;
+    border-bottom: 2px solid var(--mimarte-primary-light);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.infoDataWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Subtítulos de información resaltados */
+.infoLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    /* Negrita clara */
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.infoText {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--mimarte-text);
+    opacity: 1;
+    /* Texto 100% visible sin desvanecidos */
+    line-height: 1.6;
+}
+
+.infoText a {
+    color: var(--mimarte-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.infoText a:hover {
+    color: var(--mimarte-primary);
+}
+
+/* Horarios */
+.hoursRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(195, 154, 131, 0.25);
+}
+
+.hoursDays {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+}
+
+.hoursTime {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--mimarte-primary-dark);
+}
+
+/* Redes Sociales */
+.socialsRow {
+    display: flex;
+    gap: 16px;
+}
+
+.socialBtn {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--mimarte-primary-light);
+    padding: 10px 20px;
+    color: var(--mimarte-text);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.socialBtn:hover {
+    border-color: var(--mimarte-primary);
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    transform: translateY(-2px);
+}
+
+.socialIcon {
+    width: 4rem;
+    height: 4rem;
+    -o-object-fit: contain;
+       object-fit: contain;
+    display: block;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Hero.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Hero.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+/* Contenedor principal de la sección */
+.heroSection {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Imagen de fondo con parallax */
+.heroBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1.1);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Capa overlay sutil */
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+/* ==========================================
+   1. ESTILOS BASE (MÓVIL / TABLET)
+   ========================================== */
+
+.heroContentSingle {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 40px 20px;
+    /* Ajustado para dar espacio al menú superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.heroBrandWrapper {
+    position: relative;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Halo sutil de luz tras el logo para darle volumen */
+.heroBrandWrapper::before {
+    display: none;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.heroBrandLogo {
+    width: 150%;
+    max-width: 150vw;
+    height: auto;
+    display: block;
+    -o-object-fit: contain;
+       object-fit: contain;
+    /* Resplandor dorado elegante sobre la imagen */
+    filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.3));
+    transition: filter 0.4s ease;
+}
+
+.heroBrandLogo:hover {
+    filter: drop-shadow(0 6px 28px rgba(212, 175, 55, 0.5));
+}
+
+.heroHighlightPhrase {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #38a3a5;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: -4rem 0 24px 0;
+    /* Espaciado proporcional con el logo */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.heroHighlightPhrase span {
+    font-style: italic;
+    font-weight: 600;
+    /* Degradado de oro metálico para la palabra MIMARTE */
+    background: #D4AF37;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35));
+}
+
+.heroCtaWrapper {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Botones con bordes suavizados y resplandor */
+.btnHeroPrimary {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 16px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(56, 163, 165, 0.3);
+}
+
+.btnHeroPrimary:hover {
+    background-color: var(--mimarte-primary-dark);
+    box-shadow: 0 6px 22px rgba(56, 163, 165, 0.5);
+    transform: translateY(-2px);
+}
+
+.btnHeroSecondary {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid var(--mimarte-text);
+    color: var(--mimarte-text);
+    padding: 16px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: auto;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+.btnHeroSecondary:hover {
+    background-color: var(--mimarte-text);
+    color: var(--mimarte-bg);
+    transform: translateY(-2px);
+}
+
+/* Indicador de Scroll inferior */
+.scrollHint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--mimarte-text);
+    opacity: 0.4;
+}
+
+.scrollHintText {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.scrollLine {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--mimarte-text) 50%, transparent);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   2. ESTILOS DESKTOP
+   ========================================== */
+
+@media (min-width: 1024px) {
+    .heroContentSingle {
+        padding-top: 20px;
+        /* Eleva todo el contenido centrándolo en pantalla */
+    }
+
+    .heroBrandLogo {
+        /* Mantiene tus proporciones exactas */
+        max-width: 100rem;
+        width: 120vw;
+        margin: -25rem 0 28px 0;
+    }
+
+    .heroHighlightPhrase {
+        font-size: 2.2rem;
+        margin: -20rem 0 28px 0;
+    }
+
+    .heroCtaWrapper {
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/MapAndReviews.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/MapAndReviews.css */
+
+.mapReviewsSection {
+    padding: 80px 24px;
+    background-color: var(--mimarte-white);
+    width: 100%;
+    border-top: 1px solid rgba(195, 154, 131, 0.1);
+}
+
+.mapReviewsContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .mapReviewsContainer {
+        grid-template-columns: 1fr 1fr;
+        /* Mitad reseñas, mitad mapa */
+    }
+}
+
+/* ── BLOQUE RESEÑAS */
+.reviewsBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewsSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 12px;
+}
+
+.reviewsTitle {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0 0 32px 0;
+}
+
+/* Contenedor del Carrusel */
+.carouselWrapper {
+    position: relative;
+    height: 180px;
+    /* Alto fijo controlado para las opiniones */
+    width: 100%;
+    overflow: hidden;
+}
+
+.reviewCard {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(30px);
+    /* Entran desde la derecha */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+/* Reseña activa en pantalla */
+.reviewCard.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.starsRow {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.reviewText {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mimarte-text);
+    font-style: italic;
+    opacity: 0.85;
+    margin: 0 0 16px 0;
+}
+
+.reviewAuthor {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--mimarte-primary-dark);
+    margin: 0;
+}
+
+/* Puntos de navegación */
+.carouselDots {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--mimarte-primary-light);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.dothtml.dotActive {
+    background-color: var(--mimarte-primary);
+    width: 20px;
+    /* Se estira la bolita activa de forma moderna */
+    border-radius: 4px;
+}
+
+/* ── BLOQUE MAPA */
+.mapBlock {
+    width: 100%;
+    height: 350px;
+    /* Alto del minimapa */
+    border-radius: 12px;
+    /* Ajustado con tu border-radius favorito */
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(195, 154, 131, 0.08);
+    border: 1px solid var(--mimarte-primary-light);
+}
+
+.googleMapIframe {
+    filter: grayscale(0.2) contrast(1);
+    /* Un filtro sutil para que no choque con la estética pastel */
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Products.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Products.css */
+
+.productsSection {
+    padding: 128px 24px;
+    width: 100%;
+    background-color: var(--mimarte-white);
+}
+
+.productsContainer {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Cabecera de la sección */
+.productsHeader {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.productsSubtitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mimarte-primary-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.productsTitle {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--mimarte-text);
+    margin: 0;
+}
+
+.productsTitle em {
+    font-style: italic;
+    color: var(--mimarte-primary);
+}
+
+/* Tarjeta principal de información de marcas */
+.productsCard {
+    border: 1px solid rgba(195, 154, 131, 0.2);
+    background-color: var(--mimarte-bg);
+    padding: 50px 40px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.productsCard:hover {
+    border-color: var(--mimarte-primary);
+    background-color: var(--mimarte-white);
+    box-shadow: 0 10px 30px rgba(26, 22, 20, 0.04);
+}
+
+.productsTextContent {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.productsMainText {
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--mimarte-text);
+    margin-bottom: 20px;
+}
+
+.productsMainText strong {
+    color: var(--mimarte-primary-dark);
+    font-weight: 600;
+}
+
+.productsSecondaryText {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mimarte-text);
+    opacity: 0.8;
+    font-style: italic;
+    margin: 0;
+}
+
+.productsSecondaryText strong {
+    color: var(--mimarte-primary-dark);
+    font-style: normal;
+}
+
+/* Badges decorativos de las marcas */
+.productsLogos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+}
+
+.brandBadge {
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    font-weight: 400;
+    color: var(--mimarte-primary-dark);
+}
+
+.brandDivider {
+    color: var(--mimarte-primary);
+    opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+    .productsSection {
+        padding: 80px 16px;
+    }
+
+    .productsCard {
+        padding: 32px 20px;
+    }
+
+    .productsTitle {
+        font-size: 36px;
+    }
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Treatments.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Treatments.css */
+
+.treatmentsSection {
+    padding: 80px 20px;
+    background-color: #faf7f4;
+    width: 100%;
+}
+
+.treatmentsContainer {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.treatmentsHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.treatmentsSubtitle {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #b89335;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.treatmentsTitle {
+    font-size: 36px;
+    color: #2b2b2b;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Categorías */
+.treatmentsTabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.tabBtn {
+    background: #ffffff;
+    color: #666;
+    border: 1px solid #e2d8cd;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tabBtn:hover,
+.tabBtn.active {
+    background: #c59b27;
+    color: #ffffff;
+    border-color: #c59b27;
+    box-shadow: 0 4px 12px rgba(197, 155, 39, 0.25);
+}
+
+/* Grid */
+.treatmentsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+}
+
+@media (min-width: 768px) {
+    .treatmentsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .treatmentsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ── FLIP CARD ENGINE (3D) ── */
+.flipCardContainer {
+    background-color: transparent;
+    height: 420px;
+    /* Aumentamos la altura para acomodar las fotos adecuadamente */
+    perspective: 1000px;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flipCardContainer:hover .flipCardInner {
+    transform: rotateY(180deg);
+}
+
+/* Estilos comunes Cara Delantera / Trasera */
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee6dd;
+    background: #ffffff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ── CARA DELANTERA CON FOTO ── */
+.cardFront {
+    justify-content: space-between;
+}
+
+.cardImgWrapper {
+    width: 100%;
+    height: 140px;
+    background-color: #f4efe9;
+    overflow: hidden;
+    position: relative;
+}
+
+.cardImg {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.flipCardContainer:hover .cardImg {
+    transform: scale(1.05);
+}
+
+.cardFrontBody {
+    padding: 18px 20px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.frontHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.cardTitle {
+    font-size: 18px;
+    color: #2c2c2c;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.cardPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #b89335;
+    white-space: nowrap;
+}
+
+.cardMeta {
+    font-size: 11.5px;
+    color: #888;
+    margin-top: 4px;
+    display: block;
+}
+
+.benefitsBox {
+    background-color: #fcf8f0;
+    border-left: 3px solid #d4af37;
+    padding: 8px 10px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+}
+
+.benefitsLabel {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8e6d19;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.benefitsText {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    line-height: 1.35;
+}
+
+.flipHint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #f0e9e1;
+    padding-top: 8px;
+}
+
+/* ── CARA TRASERA ── */
+.cardBack {
+    transform: rotateY(180deg);
+    background: #fdfbf8;
+    border-color: #e6dacd;
+    padding: 24px;
+}
+
+.backTitle {
+    font-size: 17px;
+    color: #2c2c2c;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #ebd9c8;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+.scrollDesc {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 14px;
+    padding-right: 4px;
+}
+
+.fullDesc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #555;
+    margin: 0 0 12px 0;
+}
+
+.bonoNoticeBox {
+    background: #f7ede0;
+    border: 1px dashed #d4af37;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+}
+
+.bonoNoticeTitle {
+    display: block;
+    font-weight: 700;
+    color: #8e6d19;
+}
+
+.bonoNoticeDetails {
+    color: #444;
+}
+
+/* Acciones Cara Trasera (+ INFO + Reservar) */
+.cardBackActions {
+    display: flex;
+    gap: 10px;
+}
+
+.bookBtn {
+    flex: 2;
+    text-align: center;
+    background: #2c2c2c;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.bookBtn:hover {
+    background: #b89335;
+}
+
+.infoBtn {
+    flex: 1;
+    text-align: center;
+    background: transparent;
+    color: #b89335;
+    border: 1.5px solid #b89335;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.infoBtn:hover {
+    background: #b89335;
+    color: #ffffff;
+}
+
+/* ── TARJETA ORO (TRATAMIENTOS ESTRELLA) ── */
+.flipCardContainer.goldCard .cardFront,
+.flipCardContainer.goldCard .cardBack {
+    background: linear-gradient(145deg, #ffffff 0%, #fffdf4 100%);
+    border: 2px solid #d4af37;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.goldBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+    color: #2d2105;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+.goldCard .cardTitle {
+    color: #1a160d;
+    font-weight: 600;
+}
+
+.goldCard .cardPrice {
+    color: #9e7916;
+    font-size: 19px;
+}
+
+.goldCard .bookBtn {
+    background: linear-gradient(135deg, #d4af37 0%, #b89335 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.goldCard .bookBtn:hover {
+    background: linear-gradient(135deg, #b89335 0%, #8e6d19 100%);
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/CustomCursor.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/CustomCursor.css */
+
+.customCursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--mimarte-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Hace que el cursor cambie sutilmente de color según el fondo, queda espectacular */
+    transition: transform 0.1s ease-out;
+}
+
+/* Clase opcional por si Claudio programó que se agrande al pasar sobre botones */
+.customCursor.hovered {
+    transform: scale(2);
+    background-color: transparent;
+    border: 1px solid var(--mimarte-primary);
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Footer.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* src/components/css/Footer.css */
+
+.footerSection {
+    background-color: var(--mimarte-primary-dark);
+    /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    padding: 80px 24px 32px 24px;
+    width: 100%;
+    z-index: 999;
+}
+
+.footerContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Rejilla principal del Footer */
+.footerGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .footerGrid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+/* Columna 1: Branding e Identidad */
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 16px 0;
+    font-weight: 300;
+}
+
+.footerLogo em {
+    font-style: italic;
+    color: var(--mimarte-white);
+}
+
+.footerTagline {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mimarte-white);
+    max-width: 320px;
+    margin: 0;
+}
+
+/* Estilo común para los títulos de las columnas */
+.footerColTitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mimarte-white);
+    margin: 0 0 24px 0;
+    font-weight: 500;
+}
+
+/* Listas de enlaces e información */
+.footerList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerListLink {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mimarte-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footerListLink:hover {
+    color: var(--mimarte-white);
+    padding-left: 4px;
+    /* Sutil efecto dinámico al pasar el ratón */
+}
+
+/* Textos estáticos de información (Horarios/Contacto) */
+.footerInfoText {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+/* ── BARRA INFERIOR (COPYRIGHT, FIRMA Y LEGALES) */
+.footerBottom {
+    border-top: 1px solid rgba(195, 154, 131, 0.1);
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footerBottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footerCopy {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    margin: 0;
+}
+
+/* ── ANIMACIÓN EN CARRUSEL PARA TU FIRMA (RAISELANDWEB) */
+.footerSignatureWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.signatureLabel {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    opacity: 0.8;
+}
+
+.marqueeContainer {
+    overflow: hidden;
+    width: 125px;
+    /* Ancho del área visible por donde pasa la firma */
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+}
+
+.raiselandAnimatedLink {
+    display: inline-block;
+    color: #c5a880;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--font-body);
+    animation: slideRightLoop 5s linear infinite;
+}
+
+.raiselandAnimatedLink:hover {
+    animation-play-state: paused;
+    color: var(--mimarte-white);
+}
+
+@keyframes slideRightLoop {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ── BOTONES DE ENLACES LEGALES (PRIVACIDAD, AVISO LEGAL, COOKIES) */
+.footerLegalLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.footerLegalBtn {
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--mimarte-white);
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footerLegalBtn:hover {
+    color: #c5a880;
+    opacity: 0.9;
+}
+
+/* ── VENTANA MODAL EMERGENTE PARA CONTENIDO LEGAL */
+.legalModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+.legalModalCard {
+    background: #ffffff;
+    color: #222222;
+    width: 100%;
+    max-width: 650px;
+    max-height: 80vh;
+    border-radius: 16px;
+    padding: 35px 30px 30px 30px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.legalModalCloseBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: #f0f0f0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legalModalCloseBtn:hover {
+    background: #c5a880;
+    color: #ffffff;
+}
+
+.legalModalTitle {
+    font-family: var(--font-display, serif);
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c5a880;
+    padding-bottom: 10px;
+}
+
+.legalModalBody {
+    overflow-y: auto;
+    padding-right: 10px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444444;
+}
+
+.legalModalBody h4 {
+    color: #1a1a1a;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+
+.legalModalBody p {
+    margin-bottom: 12px;
+}
+
+.legalModalBody ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.legalModalBody li {
+    margin-bottom: 6px;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FORZAR TAMAÑO MÁS GRANDE DE LA BURBUJA DE CHATBASE */
+#chatbase-bubble-button {
+    transform: scale(1.5) !important;
+    transform-origin: bottom right !important;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/components/css/Navbar.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* Contenedor principal de la cabecera */
+.navbarHeader {
+    transition: all 500ms ease;
+    position: relative;
+    width: 100%;
+}
+
+/* Estado py-6 por defecto */
+.navbarHeader.notScrolled {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+/* Estado cuando se hace scroll */
+.navbarHeader.isScrolled {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    background-color: var(--mimarte-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Caja interior del menú */
+.navbarContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribuye espacio entre logo y menú */
+    position: relative;
+}
+
+/* Enlace del Logotipo */
+.navbarLogo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    z-index: 60;
+}
+
+/* ─────────────────────────────────────────────────────────────
+LÓGICA DEL LOGO DE NAVEGACIÓN (Oculto arriba, visible en Scroll)
+   ───────────────────────────────────────────────────────────── */
+.navbarLogoImg {
+    display: none !important;
+    transition: opacity 300ms ease, height 300ms ease;
+}
+
+.navbarHeader.isScrolled .navbarLogoImg {
+    display: block !important;
+    height: 13rem;
+    width: auto;
+    margin: 0;
+    animation: fadeInLogo 400ms ease forwards;
+}
+
+.navbarLogoImg:hover {
+    transform: scale(1.03);
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── NAVEGACIÓN DE ESCRITORIO */
+.navbarMenuDesktop {
+    display: none;
+    align-items: center;
+    gap: 28px;
+    transition: all 400ms ease;
+}
+
+@media (min-width: 1024px) {
+    .navbarMenuDesktop {
+        display: flex;
+    }
+
+    .navbarHeader.notScrolled .navbarMenuDesktop {
+        margin: 0 auto;
+    }
+
+    .navbarHeader.isScrolled .navbarMenuDesktop {
+        margin-left: auto;
+    }
+}
+
+.navLink {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+.navLink:hover {
+    opacity: 1;
+    color: var(--mimarte-primary);
+}
+
+.navCtaButton {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+.navCtaButton:hover {
+    background-color: var(--mimarte-primary-dark);
+}
+
+/* ── BOTÓN HAMBURGUESA MÓVIL */
+.hamburgerBtn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 60;
+}
+
+@media (min-width: 1024px) {
+    .hamburgerBtn {
+        display: none;
+    }
+}
+
+.hamburgerLine {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--mimarte-primary);
+    transition: all 300ms ease;
+}
+
+.hamburgerLine.top {
+    margin-bottom: 6px;
+}
+
+.hamburgerLine.mid {
+    margin-bottom: 6px;
+}
+
+.hamburgerLine.top.open {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerLine.mid.open {
+    opacity: 0;
+}
+
+.hamburgerLine.bot.open {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ── MENÚ MÓVIL DESPLEGABLE */
+.navbarMenuMobileCollapse {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 500ms ease-in-out, opacity 300ms ease;
+    z-index: 50;
+}
+
+@media (min-width: 1024px) {
+    .navbarMenuMobileCollapse {
+        display: none;
+    }
+}
+
+.navbarMenuMobileCollapse.closed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navbarMenuMobileCollapse.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navbarMenuMobileBody {
+    background-color: rgba(253, 251, 247, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid rgba(195, 154, 131, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navLinkMobile {
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mimarte-text);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: color 300ms ease;
+}
+
+.navLinkMobile:hover {
+    color: var(--mimarte-primary);
+    opacity: 1;
+}
+
+.navCtaButtonMobile {
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background-color: var(--mimarte-primary);
+    color: var(--mimarte-white);
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
