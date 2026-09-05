@@ -56,7 +56,7 @@ export default function About() {
           <div className="imageFrame">
             <div
               className="imageSrc"
-              style={{ backgroundImage: "url('/images/Dayana.png')" }}
+              style={{ backgroundImage: `url('/images/Dayana.png')` }}
             />
           </div>
           {/* Decoraciones en capas inferiores */}
