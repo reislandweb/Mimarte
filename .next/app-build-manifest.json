@@ -1,21 +1,41 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-7cf6e4f88fb40067.js",
+      "static/chunks/fd9d1056-4e1a26e2d413ba3c.js",
+      "static/chunks/23-e858a605c389406c.js",
+      "static/chunks/main-app-a5ab89b9baa40cf2.js",
+      "static/chunks/app/_not-found/page-2418f8e8c448e349.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/webpack-7cf6e4f88fb40067.js",
+      "static/chunks/fd9d1056-4e1a26e2d413ba3c.js",
+      "static/chunks/23-e858a605c389406c.js",
+      "static/chunks/main-app-a5ab89b9baa40cf2.js",
+      "static/css/b1f14839c2cbfd04.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/209-008d8b027d478389.js",
+      "static/chunks/app/layout-3862464cc95297fc.js"
     ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+    "/politica-de-cookies/page": [
+      "static/chunks/webpack-7cf6e4f88fb40067.js",
+      "static/chunks/fd9d1056-4e1a26e2d413ba3c.js",
+      "static/chunks/23-e858a605c389406c.js",
+      "static/chunks/main-app-a5ab89b9baa40cf2.js",
+      "static/css/b2c2c7ff7bbb6b38.css",
+      "static/chunks/231-06a2befaad2a290a.js",
+      "static/chunks/app/politica-de-cookies/page-5b6f7c50a710281c.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-7cf6e4f88fb40067.js",
+      "static/chunks/fd9d1056-4e1a26e2d413ba3c.js",
+      "static/chunks/23-e858a605c389406c.js",
+      "static/chunks/main-app-a5ab89b9baa40cf2.js",
+      "static/css/381f67066e8a5d6e.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/b536a0f1-50829f202c43cde9.js",
+      "static/chunks/209-008d8b027d478389.js",
+      "static/chunks/app/page-b128cda53a88f769.js"
     ]
   }
 }
