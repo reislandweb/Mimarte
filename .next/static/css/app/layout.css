@@ -969,6 +969,9 @@ video {
 .relative {
   position: relative;
 }
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
 }

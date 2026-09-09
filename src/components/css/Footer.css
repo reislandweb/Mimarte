@@ -2,11 +2,9 @@
 
 .footerSection {
     background-color: var(--mimarte-primary-dark);
-    /* O var(--mimarte-white) si prefieres contrastar con la sección anterior */
     border-top: 1px solid rgba(195, 154, 131, 0.15);
     padding: 80px 24px 32px 24px;
     width: 100%;
-    z-index: 999;
 }
 
 .footerContainer {
@@ -135,7 +133,7 @@
     margin: 0;
 }
 
-/* ── ANIMACIÓN EN CARRUSEL PARA TU FIRMA (RAISELANDWEB) */
+
 .footerSignatureWrapper {
     display: flex;
     align-items: center;
@@ -154,7 +152,6 @@
 .marqueeContainer {
     overflow: hidden;
     width: 125px;
-    /* Ancho del área visible por donde pasa la firma */
     display: inline-block;
     white-space: nowrap;
     position: relative;
@@ -230,6 +227,7 @@
     align-items: center;
     justify-content: center;
     z-index: 99999;
+    pointer-events: auto;
     padding: 20px;
     animation: fadeInModal 0.3s ease-out;
 }
@@ -246,6 +244,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+
 }
 
 .legalModalCloseBtn {
