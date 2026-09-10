@@ -18,7 +18,7 @@
 
 .contactSubtitle {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -76,7 +76,7 @@
 /* Etiquetas del formulario resaltadas */
 .formLabel {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
     /* Texto visible y nítido */
     letter-spacing: 0.12em;
@@ -94,7 +94,7 @@
     background-color: transparent;
     padding: 12px 16px;
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 18px;
     color: var(--mimarte-text);
     font-weight: 500;
     transition: all 0.3s ease;
@@ -120,7 +120,7 @@
 .btnSubmit {
     width: 100%;
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -147,7 +147,7 @@
 
 .privacyNotice {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 18px;
     text-align: center;
     color: var(--mimarte-text);
     opacity: 0.8;
@@ -199,7 +199,7 @@
     font-family: var(--font-body);
     color: var(--mimarte-text);
     opacity: 0.85;
-    font-size: 15px;
+    font-size: 18px;
     margin: 0;
 }
 
@@ -230,7 +230,7 @@
 /* Subtítulos de información resaltados */
 .infoLabel {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     /* Negrita clara */
     letter-spacing: 0.12em;
@@ -272,7 +272,7 @@
 
 .hoursDays {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -281,7 +281,7 @@
 
 .hoursTime {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--mimarte-primary-dark);
 }
@@ -294,7 +294,7 @@
 
 .socialBtn {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;

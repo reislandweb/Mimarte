@@ -41,7 +41,7 @@
 
 .footerLogo {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 28px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--mimarte-white);
@@ -56,7 +56,7 @@
 
 .footerTagline {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.6;
     color: var(--mimarte-white);
     max-width: 320px;
@@ -66,7 +66,7 @@
 /* Estilo común para los títulos de las columnas */
 .footerColTitle {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 18px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--mimarte-white);
@@ -86,7 +86,7 @@
 
 .footerListLink {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 18px;
     color: var(--mimarte-white);
     text-decoration: none;
     transition: all 0.3s ease;
@@ -101,7 +101,7 @@
 /* Textos estáticos de información (Horarios/Contacto) */
 .footerInfoText {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.5;
     color: var(--mimarte-white);
     margin: 0;
@@ -128,7 +128,7 @@
 
 .footerCopy {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 18px;
     color: var(--mimarte-white);
     margin: 0;
 }
@@ -144,7 +144,7 @@
 
 .signatureLabel {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 18px;
     color: var(--mimarte-white);
     opacity: 0.8;
 }
@@ -162,7 +162,7 @@
     color: #c5a880;
     font-weight: 600;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 18px;
     font-family: var(--font-body);
     animation: slideRightLoop 5s linear infinite;
 }
@@ -202,7 +202,7 @@
     background: transparent;
     border: none;
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 18px;
     color: var(--mimarte-white);
     cursor: pointer;
     padding: 0;

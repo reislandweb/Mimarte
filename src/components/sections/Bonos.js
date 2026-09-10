@@ -252,7 +252,6 @@ export default function Bonos() {
                     </p>
 
                     <h3 className="cardTitle">{bono.name}</h3>
-                    <p className="cardTreatment">{bono.treatment}</p>
 
                     {/* Precio */}
                     <div className="priceWrapper">
@@ -288,7 +287,7 @@ export default function Bonos() {
                     className={`cardBack bonoCard ${bono.featured ? "cardFeatured" : "cardNormal"}`}
                   >
                     <div className="backContent">
-                      <h4 className="backTermsTitle">Condiciones e Info</h4>
+                      <h4 className="backTermsTitle">+Info</h4>
                       <ul className="termsList">
                         {bono.terms.map((term, index) => (
                           <li key={index}>• {term}</li>
@@ -319,13 +318,6 @@ export default function Bonos() {
             );
           })}
         </div>
-
-        {/* Nota legal */}
-        <p className="bonosNotice">
-          * Precios e información sujetos a valoración en centro. Bonos
-          nominales e intransferibles. Validez de 12 meses desde la fecha de
-          compra.
-        </p>
       </div>
     </section>
   );

@@ -20,11 +20,11 @@ gsap.registerPlugin(ScrollTrigger);
 // ─────────────────────────────────────────────────────────────
 // CONFIGURACIÓN — modifica estos valores
 // ─────────────────────────────────────────────────────────────
-const PARTICLE_COUNT = 2200;
+const PARTICLE_COUNT = 2000;
 const PARTICLE_SIZE = 0.12;
-const SPHERE_RADIUS = 3; // radio esfera principal
+const SPHERE_RADIUS = 2; // radio esfera principal
 const SPHERE_RADIUS_2 = 3; // radio esfera final (más pequeña)
-const EXPLOSION_FORCE = 10; // fuerza de la explosión
+const EXPLOSION_FORCE = 7; // fuerza de la explosión
 
 // CONFIGURACIÓN DE COLORES — Paleta de la clienta (hex 0xRRGGBB)
 // ─────────────────────────────────────────────────────────────
@@ -141,7 +141,7 @@ export default function ThreeBackground() {
       size: 0.15,
       color: new THREE.Color(COLOR_CHAOS),
       transparent: false,
-      opacity: 1,
+      opacity: 0.8,
       sizeAttenuation: true,
       blending: THREE.NormalBlending,
       depthWrite: false,

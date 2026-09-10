@@ -3,7 +3,7 @@
 .productsSection {
     padding: 128px 24px;
     width: 100%;
-    background-color: var(--mimarte-white);
+    background-color: transparent;
 }
 
 .productsContainer {

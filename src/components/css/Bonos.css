@@ -1,4 +1,7 @@
 /* src/components/css/Bonos.css */
+#bonos {
+    background-color: transparent;
+}
 
 .bonosSection {
     padding: 80px 20px;
@@ -84,7 +87,6 @@
     gap: 30px;
     margin-top: 30px;
     perspective: 1000px;
-    /* Imprescindible para el giro 3D */
 }
 
 /* Contenedor Flip 3D */
@@ -166,26 +168,20 @@
 }
 
 .sessionsTag {
-    font-size: 0.8rem;
+    font-size: 0.85rem !important;
     text-transform: uppercase;
-    color: #38a3a5;
-    font-weight: 600;
+    color: #38a3a5 !important;
+    font-weight: 700 !important;
     letter-spacing: 0.08em;
-    margin-bottom: 5px;
+    margin-bottom: 6px !important;
 }
 
 .cardTitle {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #222;
-    margin-bottom: 4px;
-}
-
-.cardTreatment {
-    font-size: 0.85rem;
-    color: #777;
-    margin-bottom: 15px;
-    min-height: 38px;
+    font-size: 1.90rem !important;
+    color: #111111 !important;
+    font-weight: 800 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.01em;
 }
 
 .priceWrapper {
@@ -193,9 +189,10 @@
 }
 
 .priceText {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #222;
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+    color: #111111 !important;
+    letter-spacing: -0.02em;
 }
 
 /* Listas de características y términos */
@@ -207,13 +204,14 @@
 }
 
 .featureItem {
-    font-size: 0.88rem;
-    color: #444;
-    margin-bottom: 8px;
+    font-size: 0.95rem !important;
+    color: #222222 !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    line-height: 1.45;
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    line-height: 1.4;
 }
 
 .checkIcon {
@@ -223,16 +221,19 @@
 
 .backTermsTitle {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    letter-spacing: .3rem;
     margin-bottom: 15px;
-    color: #222;
+    color: #111111 !important;
 }
 
 .termsList li {
-    font-size: 0.85rem;
-    color: #555;
+    font-size: 1.3rem !important;
+    color: #333333 !important;
+    font-weight: 520 !important;
     margin-bottom: 10px;
-    line-height: 1.4;
+    line-height: 1.8;
 }
 
 /* Botones y Acciones */

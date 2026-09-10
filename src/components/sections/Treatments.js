@@ -125,7 +125,7 @@ const SERVICES = {
     },
     {
       title: "Dermapen",
-      price: "80 €",
+      price: "Desde 80 €",
       img: "/images/services/dermapen.jpg",
       benefits:
         "Microagujas para la penetración profunda de activos (antiedad, manchas o cicatrices).",
@@ -135,9 +135,8 @@ const SERVICES = {
   corporales: [
     {
       title: "Radiofrecuencia Corporal",
-      price: "49 € / 75 €",
+      price: "Desde 49 €",
       duration: "30 min / 50 min",
-      // Lista de zonas donde aplica este tratamiento
       areas: ["abdomen", "gluteos", "piernas", "brazos", "espalda"],
       img: "/images/services/rf-corporal.jpg",
       benefits:
@@ -156,7 +155,7 @@ const SERVICES = {
     },
     {
       title: "Vacumterapia",
-      price: "45 € / 65 €",
+      price: "Desde 45 €",
       duration: "30 min / 45 min",
       areas: ["abdomen", "gluteos", "piernas"],
       img: "/images/services/vacumterapia.jpg",
@@ -249,16 +248,6 @@ export default function Treatments() {
           ))}
         </div>
 
-        {/* INTEGRACIÓN DE BODY AREAS: SOLO EN CORPORALES */}
-        {activeTab === "corporales" && (
-          <div className="corporalAreasWrapper">
-            <BodyZones
-              selectedArea={selectedBodyArea}
-              onSelectArea={(areaId) => setSelectedBodyArea(areaId)}
-            />
-          </div>
-        )}
-
         {/* Grid de Tarjetas 3D */}
         <div className="treatmentsGrid">
           {displayedServices.length > 0 ? (
@@ -273,15 +262,6 @@ export default function Treatments() {
                     {service.isGold && (
                       <div className="goldBadge">★ Tratamiento Estrella</div>
                     )}
-
-                    {/*<div className="cardImgWrapper">
-                      <img
-                        src={service.img}
-                        alt={service.title}
-                        className="cardImg"
-                        loading="lazy"
-                      />
-                    </div> */}
 
                     <div className="cardFrontBody">
                       <div className="frontHeader">
@@ -309,7 +289,7 @@ export default function Treatments() {
 
                   {/* ── CARA TRASERA ── */}
                   <div className="cardBack">
-                    <h4 className="backTitle">{service.title}</h4>
+                    <h4 className="backTitle">Descripcion</h4>
 
                     <div className="scrollDesc">
                       <p className="fullDesc">{service.desc}</p>
@@ -349,6 +329,16 @@ export default function Treatments() {
             </p>
           )}
         </div>
+
+        {/* INTEGRACIÓN DE BODY ZONES: AHORA UBICADO DEBAJO DE LOS TRATAMIENTOS CORPORALES */}
+        {activeTab === "corporales" && (
+          <div className="corporalAreasWrapper">
+            <BodyZones
+              selectedArea={selectedBodyArea}
+              onSelectArea={(areaId) => setSelectedBodyArea(areaId)}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

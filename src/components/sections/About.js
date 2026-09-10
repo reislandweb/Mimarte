@@ -4,7 +4,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import "../css/About.css"; // Conectamos tu CSS Puro desde tu nueva carpeta
 
 const STATS = [
-  { value: "10+", label: "Años de experiencia" },
+  { value: "7+", label: "Años de experiencia" },
   { value: "800+", label: "Clientas satisfechas" },
   { value: "20+", label: "Tratamientos" },
 ];
