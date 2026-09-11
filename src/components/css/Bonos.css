@@ -45,18 +45,20 @@
 .bonosDesc {
     max-width: 650px;
     margin: 0 auto;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #666;
     line-height: 1.6;
 }
 
-/* Botones de Filtro / Pestañas */
+/* Botones de Filtro / Pestañas Principales */
+.bonosMainTabs,
 .bonosFilterWrapper {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 25px;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-top: 25px;
+    margin-bottom: 24px;
 }
 
 .filterBtn {
@@ -108,11 +110,7 @@
     transform: rotateY(180deg);
 }
 
-.bonoCardContainer:hover .flipCardInner {
-    /* Efecto leve de inclinación al pasar cursor */
-}
-
-/* Caras Frontal y Trasera */
+/* Caras Frontal y Trasera Base */
 .cardFront,
 .cardBack {
     position: absolute;
@@ -124,35 +122,123 @@
     backface-visibility: hidden;
     border-radius: 16px;
     padding: 30px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* =========================================================
+   CARA DELANTERA: TEXTURA GEOMÉTRICA & MARCO EDITORIAL
+   ========================================================= */
+.cardFront {
+    position: relative;
+    padding-top: 3.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    background: #ffffff;
+    overflow: hidden;
+    /* Fondo con degradado base + Micro-patrón geométrico SVG integrado */
+    background-color: #ffffff;
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(56, 163, 165, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2338a3a5' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+/* Marco decorativo sutil en bordes interiores */
+.cardFront::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px dashed rgba(56, 163, 165, 0.2);
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+/* Marca de agua / Sello geométrico orgánico al fondo */
+.cardFront::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 140px;
+    height: 140px;
+    border: 2px solid rgba(212, 175, 55, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 12px rgba(56, 163, 165, 0.03);
+}
+
+/* Variantes de Tarjeta */
 .cardNormal {
-    background: #ffffff;
+    background-color: #ffffff;
 }
 
 .cardFeatured {
-    background: linear-gradient(145deg, #ffffff 0%, #fffdf7 100%);
     border: 2px solid #d4af37;
     box-shadow: 0 12px 35px rgba(212, 175, 55, 0.18);
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Cara Trasera */
+.cardFeatured::before {
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* =========================================================
+   CARA TRASERA
+   ========================================================= */
 .cardBack {
     transform: rotateY(180deg);
     background: #fcfbf8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
-/* Elementos de la Tarjeta */
+.backContent {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 12px;
+}
+
+/* Scrollbar fina para la cara trasera */
+.backContent::-webkit-scrollbar {
+    width: 4px;
+}
+
+.backContent::-webkit-scrollbar-thumb {
+    background: rgba(56, 163, 165, 0.3);
+    border-radius: 4px;
+}
+
+.backContent::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.backContent p {
+    font-size: 1.2rem !important;
+    line-height: 1.5;
+    color: #333333;
+}
+
+.backContent strong {
+    font-size: 1.15rem !important;
+    color: #111111;
+}
+
+/* Badges / Etiquetas Flotantes */
 .tagPopular {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 14px;
+    right: 14px;
+    margin: 0;
+    z-index: 2;
     background: #38a3a5;
     color: #fff;
     font-size: 0.7rem;
@@ -167,35 +253,44 @@
     background: #d4af37;
 }
 
-.sessionsTag {
-    font-size: 0.85rem !important;
-    text-transform: uppercase;
-    color: #38a3a5 !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px !important;
+/* Tipografías y Títulos */
+.cardTitle {
+    font-size: 1.85rem !important;
+    color: #111111;
+    font-weight: 800;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
 }
 
-.cardTitle {
-    font-size: 1.90rem !important;
-    color: #111111 !important;
-    font-weight: 800 !important;
-    margin-bottom: 8px !important;
-    letter-spacing: -0.01em;
+.sessionsTag {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #38a3a5;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
 }
 
 .priceWrapper {
     margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .priceText {
-    font-size: 2.5rem !important;
-    font-weight: 800 !important;
-    color: #111111 !important;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111111;
     letter-spacing: -0.02em;
 }
 
-/* Listas de características y términos */
+/* Listas de características y términos en Cara Trasera */
 .featuresList,
 .termsList {
     list-style: none;
@@ -204,10 +299,10 @@
 }
 
 .featureItem {
-    font-size: 0.95rem !important;
-    color: #222222 !important;
-    font-weight: 600 !important;
-    margin-bottom: 10px !important;
+    font-size: 0.95rem;
+    color: #222222;
+    font-weight: 600;
+    margin-bottom: 10px;
     line-height: 1.45;
     display: flex;
     align-items: flex-start;
@@ -221,43 +316,50 @@
 
 .backTermsTitle {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem !important;
-    font-weight: 700 !important;
-    letter-spacing: .3rem;
-    margin-bottom: 15px;
-    color: #111111 !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+    margin-bottom: 12px;
+    color: #111111;
 }
 
 .termsList li {
-    font-size: 1.3rem !important;
-    color: #333333 !important;
-    font-weight: 520 !important;
-    margin-bottom: 10px;
-    line-height: 1.8;
+    font-size: 1.2rem;
+    color: #333333;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.5;
 }
 
 /* Botones y Acciones */
 .btnFlipTrigger {
-    background: transparent;
-    border: none;
+    background: rgba(56, 163, 165, 0.06);
+    border: 1px solid rgba(56, 163, 165, 0.25);
+    border-radius: 20px;
     color: #38a3a5;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
-    padding: 8px 0;
+    padding: 10px 14px;
     text-align: center;
-    transition: color 0.2s;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
 }
 
 .btnFlipTrigger:hover {
-    color: #d4af37;
+    background: #38a3a5;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(56, 163, 165, 0.2);
 }
 
 .cardActionButtons {
     display: flex;
     gap: 10px;
+    margin-top: auto;
+    padding-top: 8px;
 }
 
 .btnBono {
@@ -300,4 +402,132 @@
     font-size: 0.8rem;
     color: #888;
     margin-top: 40px;
+}
+
+/* =========================================================
+   ANIMACIONES INTERNAS Y MICRO-INTERACCIONES
+   ========================================================= */
+
+/* 1. Efecto Resplandor VIP (Glow Pass) */
+.cardFront {
+    overflow: hidden;
+    /* Asegura que el resplandor no sobresalga */
+}
+
+.cardFront::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.45) 50%,
+            transparent 100%);
+    transform: skewX(-20deg);
+    transition: left 0.8s ease-in-out;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bonoCardContainer:hover .cardFront::before {
+    left: 160%;
+}
+
+/* 2. Sello Orgánico en Movimiento (Respiración en bucle) */
+@keyframes pulseOrganic {
+    0% {
+        transform: scale(1) rotate(0deg);
+        border-color: rgba(212, 175, 55, 0.12);
+    }
+
+    50% {
+        transform: scale(1.08) rotate(6deg);
+        border-color: rgba(56, 163, 165, 0.25);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        border-color: rgba(212, 175, 55, 0.12);
+    }
+}
+
+.cardFront::after {
+    animation: pulseOrganic 40s ease-in-out infinite;
+}
+
+/* 3. Reacción interactiva del Botón "Ver detalles" */
+.btnFlipTrigger {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.bonoCardContainer:hover .btnFlipTrigger {
+    transform: translateY(-1px);
+    background: #38a3a5;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(56, 163, 165, 0.3);
+}
+
+/* =========================================================
+   ANIMACIÓN DEL CÍRCULO / SELLO EN MOVIMIENTO INTERNO
+   ========================================================= */
+
+/* 1. Aseguramos que el círculo no desborde la tarjeta */
+.cardFront {
+    overflow: hidden;
+}
+
+/* 2. Definición del recorrido orbital/flotante del círculo */
+@keyframes floatInsideCard {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        border-color: rgba(212, 175, 55, 0.15);
+    }
+
+    25% {
+        /* Se desplaza hacia la izquierda y sube un poco */
+        transform: translate(-100px, -10px) scale(1.1) rotate(45deg);
+        border-color: rgba(56, 163, 165, 0.25);
+    }
+
+    50% {
+        /* Sube más hacia el centro-derecha */
+        transform: translate(-20px, -120px) scale(0.95) rotate(90deg);
+        border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    75% {
+        /* Se desplaza hacia la izquierda abajo */
+        transform: translate(-100px, -10px) scale(1.05) rotate(135deg);
+        border-color: rgba(56, 163, 165, 0.2);
+    }
+
+    100% {
+        /* Regresa a la posición inicial */
+        transform: translate(0, 0) scale(1) rotate(180deg);
+        border-color: rgba(212, 175, 55, 0.15);
+    }
+}
+
+/* 3. Aplicación de la animación al pseudo-elemento del fondo */
+.cardFront::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 130px;
+    height: 130px;
+    border: 2px solid rgba(212, 175, 55, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 10px rgba(56, 163, 165, 0.03);
+
+    /* Animación fluida e infinita de 12 segundos */
+    animation: floatInsideCard 12s ease-in-out infinite;
+}
+
+/* Opcional: Acelera ligeramente el movimiento al pasar el ratón */
+.bonoCardContainer:hover .cardFront::after {
+    animation-duration: 6s;
 }
