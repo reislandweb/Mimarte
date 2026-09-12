@@ -132,48 +132,104 @@ const SERVICES = {
       desc: "Tratamiento facial que utiliza microagujas para favorecer la penetración de activos específicos en la piel, seleccionados de forma personalizada según sus necesidades y los objetivos del tratamiento. Ya sea para aportar hidratación, combatir los signos del envejecimiento, tratar manchas o mejorar cicatrices y marcas de acné.",
     },
   ],
+
   corporales: [
+    {
+      title: "Maderoterapia",
+      price: "50 €",
+      areas: ["abdomen", "gluteos", "piernas", "brazos"],
+      img: "/images/services/maderoterapia.jpg",
+      benefits:
+        "Tratamiento manual con instrumentos de madera que ayuda a estimular la circulación, trabajar la celulitis y favorecer la remodelación corporal.",
+      backOptions: [
+        {
+          duration: "60 min",
+          price: "50 €",
+          zone: "1 zona corporal focalizada o hasta 2 zonas contiguas",
+        },
+      ],
+      desc: "Mediante distintas maniobras y elementos de madera se trabaja el tejido para mejorar su aspecto, favorecer la circulación y potenciar la sensación de firmeza y remodelación.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
+    },
     {
       title: "Radiofrecuencia Corporal",
       price: "Desde 49 €",
-      duration: "30 min / 50 min",
       areas: ["abdomen", "gluteos", "piernas", "brazos", "espalda"],
       img: "/images/services/rf-corporal.jpg",
       benefits:
-        "Reafirma zonas con flacidez, reduce la celulitis y actúa sobre grasa localizada.",
-      desc: "Tratamiento corporal enfocado en reafirmar, remodelar y mejorar el aspecto de la piel. Se trabaja de forma localizada por zonas, adaptando cada sesión a las necesidades y objetivos de cada persona. Antes de comenzar, realizamos siempre una asesoría corporal personalizada.",
-    },
-    {
-      title: "Cavitación",
-      price: "45 €",
-      duration: "30 min",
-      areas: ["abdomen", "gluteos", "piernas", "flancos"],
-      img: "/images/services/cavitacion.jpg",
-      benefits:
-        "Ultrasonidos focalizados para reducir grasa localizada y moldear la silueta.",
-      desc: "Tratamiento corporal localizado que utiliza ultrasonidos para actuar sobre la grasa acumulada en zonas específicas, favoreciendo su movilización y posterior eliminación por el organismo. Está especialmente indicado para mejorar la adiposidad localizada y remodelar el contorno corporal.",
+        "Tratamiento corporal con acción reafirmante, lipolítica y anticelulítica, indicado para mejorar la firmeza, la textura de la piel, la celulitis y la grasa localizada.",
+      backOptions: [
+        { duration: "30 min", price: "49 €", zone: "1 zona corporal" },
+        {
+          duration: "50 min",
+          price: "75 €",
+          zone: "2 zonas corporales contiguas",
+        },
+      ],
+      desc: "Mejora de forma progresiva flacidez, celulitis y adiposidad localizada.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
     },
     {
       title: "Vacumterapia",
       price: "Desde 45 €",
-      duration: "30 min / 45 min",
       areas: ["abdomen", "gluteos", "piernas"],
       img: "/images/services/vacumterapia.jpg",
       benefits:
-        "Drenaje linfático profundo, eliminación de líquidos y moldeado de abdomen/glúteos.",
-      desc: "Tratamiento corporal que utiliza un masaje mediante succión controlada para movilizar los tejidos, favorecer el drenaje y trabajar de forma localizada el contorno corporal. Especialmente indicado para mejorar la celulitis y la retención de líquidos.",
+        "Tratamiento mediante succión controlada que moviliza el tejido y mejora el aspecto de la celulitis y la calidad de la piel.",
+      backOptions: [
+        { duration: "30 min", price: "45 €", zone: "1 zona corporal" },
+        {
+          duration: "50 min",
+          price: "65 €",
+          zone: "2 zonas corporales contiguas",
+        },
+      ],
+      desc: "Activa la circulación, drena y trabaja especialmente zonas con celulitis y tejido congestionado.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
     },
     {
-      title: "Maderoterapia",
-      price: "50 €",
-      duration: "60 min",
-      areas: ["abdomen", "gluteos", "piernas", "brazos"],
-      img: "/images/services/maderoterapia.jpg",
+      title: "Cavitación",
+      price: "Desde 45 €",
+      areas: ["abdomen", "gluteos", "piernas", "flancos"],
+      img: "/images/services/cavitacion.jpg",
       benefits:
-        "Remodelación corporal manual con madera, activa la circulación y libera tensión.",
-      desc: "Tratamiento corporal manual realizado con diferentes elementos de madera que ayuda a movilizar tejidos, mejorar la circulación y favorecer la remodelación corporal. Sus maniobras también ayudan a liberar tensión y relajar la musculatura.",
+        "Tratamiento corporal no invasivo dirigido especialmente a trabajar acumulaciones de grasa localizada y favorecer la remodelación corporal.",
+      backOptions: [
+        { duration: "30 min", price: "45 €", zone: "1 zona corporal" },
+      ],
+      desc: "Mediante ondas ultrasónicas ayuda a trabajar adiposidad localizada en zonas concretas y puede combinarse con otros tratamientos corporales según el objetivo.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
+    },
+    {
+      title: "Presoterapia",
+      price: "27 €",
+      areas: ["piernas", "abdomen", "gluteos"],
+      img: "/images/services/presoterapia.jpg",
+      benefits:
+        "Tratamiento de drenaje ideal para aliviar piernas cansadas, reducir la sensación de hinchazón y favorecer la circulación.",
+      backOptions: [{ duration: "30 min", price: "27 €" }],
+      desc: "La compresión secuencial favorece el drenaje y ayuda a aliviar la sensación de pesadez y retención de líquidos. También es un excelente complemento para otros protocolos corporales.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
+    },
+    {
+      title: "Vendas Frías",
+      price: "49 €",
+      areas: ["piernas"],
+      img: "/images/services/vendas-frias.jpg",
+      benefits:
+        "Tratamiento corporal anticelulítico con efecto frío inmediato, especialmente indicado para piernas cansadas, hinchazón, retención de líquidos y celulitis edematosa.",
+      backOptions: [{ duration: "30 min", price: "49 €" }],
+      desc: "Favorece el drenaje y la circulación, aportando una agradable sensación de frescor y ligereza y contribuyendo a mejorar el aspecto y la tonificación de la piel. También es un excelente complemento para otros protocolos corporales.",
+      recommendation:
+        "Tratamiento recomendado bajo valoración corporal previa.",
     },
   ],
+
   masajes: [
     {
       title: "Masaje Relajante Cuerpo Entero",
@@ -289,10 +345,58 @@ export default function Treatments() {
 
                   {/* ── CARA TRASERA ── */}
                   <div className="cardBack">
-                    <h4 className="backTitle">Descripcion</h4>
+                    <h4 className="backTitle">Descripción</h4>
 
                     <div className="scrollDesc">
+                      {/* Si el servicio cuenta con desglose de opciones/precios en la trasera */}
+                      {service.backOptions && (
+                        <div
+                          className="backOptionsWrapper"
+                          style={{ marginBottom: "12px" }}
+                        >
+                          {service.backOptions.map((opt, oIdx) => (
+                            <div
+                              key={oIdx}
+                              style={{
+                                fontSize: "0.95rem",
+                                fontWeight: "700",
+                                color: "#38a3a5",
+                                marginBottom: "4px",
+                              }}
+                            >
+                              ⏱ {opt.duration} · {opt.price}
+                              {opt.zone && (
+                                <div
+                                  style={{
+                                    fontSize: "0.85rem",
+                                    fontWeight: "500",
+                                    color: "#555",
+                                    marginTop: "2px",
+                                  }}
+                                >
+                                  {opt.zone}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       <p className="fullDesc">{service.desc}</p>
+
+                      {service.recommendation && (
+                        <p
+                          className="recommendationText"
+                          style={{
+                            fontSize: "0.82rem",
+                            fontStyle: "italic",
+                            color: "#888",
+                            marginTop: "10px",
+                          }}
+                        >
+                          {service.recommendation}
+                        </p>
+                      )}
 
                       {service.hasBonoLink && (
                         <div className="bonoNoticeBox">
@@ -330,7 +434,7 @@ export default function Treatments() {
           )}
         </div>
 
-        {/* INTEGRACIÓN DE BODY ZONES: AHORA UBICADO DEBAJO DE LOS TRATAMIENTOS CORPORALES */}
+        {/* INTEGRACIÓN DE BODY ZONES: UBICADO DEBAJO DE LOS TRATAMIENTOS CORPORALES */}
         {activeTab === "corporales" && (
           <div className="corporalAreasWrapper">
             <BodyZones

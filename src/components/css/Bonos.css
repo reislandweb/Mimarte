@@ -439,17 +439,17 @@
 @keyframes pulseOrganic {
     0% {
         transform: scale(1) rotate(0deg);
-        border-color: rgba(212, 175, 55, 0.12);
+        border-color: rgb(212, 175, 55);
     }
 
     50% {
         transform: scale(1.08) rotate(6deg);
-        border-color: rgba(56, 163, 165, 0.25);
+        border-color: rgb(56, 163, 165);
     }
 
     100% {
         transform: scale(1) rotate(0deg);
-        border-color: rgba(212, 175, 55, 0.12);
+        border-color: rgb(212, 175, 55);
     }
 }
 

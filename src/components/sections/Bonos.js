@@ -33,7 +33,9 @@ const BONOS = [
       "Dermolimpieza avanzada",
       "Tratamiento personalizado: Lumina C, Hyaluronic Hidratación, Retinol Repair u Oxibalance",
     ],
-    terms: ["Tratamiento personalizado a definir según valoración facial previa."],
+    terms: [
+      "Tratamiento personalizado a definir según valoración facial previa.",
+    ],
   },
   {
     id: "deluxe",
@@ -60,7 +62,9 @@ const BONOS = [
         ],
       },
     ],
-    terms: ["Tratamientos personalizados según valoración facial previa y necesidades de la piel."],
+    terms: [
+      "Tratamientos personalizados según valoración facial previa y necesidades de la piel.",
+    ],
   },
   {
     id: "rf-mimarte",
@@ -85,7 +89,9 @@ const BONOS = [
     description: "Tratamiento reafirmante de rostro completo.",
     duration: "45 min",
     pricingDetails: ["Bono 4 sesiones: 240 €", "Bono 8 sesiones: 460 €"],
-    terms: ["Enfocado en estimular colágeno y elastina para mejorar la firmeza, elasticidad y minimizar arrugas."],
+    terms: [
+      "Enfocado en estimular colágeno y elastina para mejorar la firmeza, elasticidad y minimizar arrugas.",
+    ],
   },
   {
     id: "rf-mirada",
@@ -93,10 +99,13 @@ const BONOS = [
     name: "Radiofrecuencia Mirada Perfecta",
     sessions: "Zona Específica",
     price: "Desde 140 €",
-    description: "Tratamiento específico para reafirmar y revitalizar el contorno de ojos.",
+    description:
+      "Tratamiento específico para reafirmar y revitalizar el contorno de ojos.",
     duration: "20 min",
     pricingDetails: ["Bono 4 sesiones: 140 €", "Bono 8 sesiones: 250 €"],
-    terms: ["Ayuda a mejorar la firmeza de la piel y suavizar la apariencia de líneas de expresión, bolsas y ojeras."],
+    terms: [
+      "Ayuda a mejorar la firmeza de la piel y suavizar la apariencia de líneas de expresión, bolsas y ojeras.",
+    ],
   },
   {
     id: "rf-surco",
@@ -104,10 +113,13 @@ const BONOS = [
     name: "Radiofrecuencia Surco Nasogeniano",
     sessions: "Zona Específica",
     price: "Desde 140 €",
-    description: "Tratamiento localizado para mejorar la firmeza y suavizar líneas de expresión del contorno de labios.",
+    description:
+      "Tratamiento localizado para mejorar la firmeza y suavizar líneas de expresión del contorno de labios.",
     duration: "20 min",
     pricingDetails: ["Bono 4 sesiones: 140 €", "Bono 8 sesiones: 250 €"],
-    terms: ["Tratamiento específico para la zona alrededor de la boca, orientado a suavizar el aspecto del surco nasogeniano y mejorar la firmeza de la piel."],
+    terms: [
+      "Tratamiento específico para la zona alrededor de la boca, orientado a suavizar el aspecto del surco nasogeniano y mejorar la firmeza de la piel.",
+    ],
   },
   {
     id: "rf-cuello-escote",
@@ -118,7 +130,9 @@ const BONOS = [
     description: "Firmeza y cuidado para cuello y escote.",
     duration: "30 min",
     pricingDetails: ["Bono 4 sesiones: 165 €", "Bono 8 sesiones: 310 €"],
-    terms: ["Tratamiento específico para mejorar firmeza, elasticidad y aspecto general de la piel del cuello y escote."],
+    terms: [
+      "Tratamiento específico para mejorar firmeza, elasticidad y aspecto general de la piel del cuello y escote.",
+    ],
   },
 
   // ── CORPORALES ──
@@ -128,7 +142,8 @@ const BONOS = [
     name: "Radiofrecuencia Corporal",
     sessions: "Corporal Reafirmante",
     price: "Desde 180 €",
-    description: "Tratamiento corporal con acción reafirmante, lipolítica y anticelulítica.",
+    description:
+      "Tratamiento corporal con acción reafirmante, lipolítica y anticelulítica.",
     duration: "30 o 50 min",
     options: [
       {
@@ -140,7 +155,9 @@ const BONOS = [
         items: ["Bono 4 sesiones: 280 €", "Bono 8 sesiones: 547 €"],
       },
     ],
-    terms: ["Ayuda a mejorar de forma progresiva flacidez, celulitis y grasa localizada."],
+    terms: [
+      "Ayuda a mejorar de forma progresiva flacidez, celulitis y grasa localizada.",
+    ],
   },
   {
     id: "vacumterapia",
@@ -148,7 +165,8 @@ const BONOS = [
     name: "VacumTerapia",
     sessions: "Circulatorio y Remodelador",
     price: "Desde 165 €",
-    description: "Tratamiento corporal que ayuda a mejorar la circulación, trabajar la celulitis y favorecer un aspecto más uniforme de la piel.",
+    description:
+      "Tratamiento corporal que ayuda a mejorar la circulación, trabajar la celulitis y favorecer un aspecto más uniforme de la piel.",
     duration: "30 o 50 min",
     options: [
       {
@@ -160,7 +178,9 @@ const BONOS = [
         items: ["Bono 4 sesiones: 240 €", "Bono 8 sesiones: 460 €"],
       },
     ],
-    terms: ["Especialmente indicada para trabajar celulitis, tejido congestionado y retención de líquidos."],
+    terms: [
+      "Especialmente indicada para trabajar celulitis, tejido congestionado y retención de líquidos.",
+    ],
   },
   {
     id: "cavitacion",
@@ -168,10 +188,13 @@ const BONOS = [
     name: "Cavitación",
     sessions: "Grasa Localizada",
     price: "Desde 165 €",
-    description: "Tratamiento corporal enfocado en trabajar la grasa localizada mediante ondas ultrasónicas.",
+    description:
+      "Tratamiento corporal enfocado en trabajar la grasa localizada mediante ondas ultrasónicas.",
     duration: "30 min",
     pricingDetails: ["Bono 4 sesiones: 165 €", "Bono 8 sesiones: 310 €"],
-    terms: ["Indicada para trabajar zonas con acumulaciones localizadas de grasa y complementar planes de remodelación corporal."],
+    terms: [
+      "Indicada para trabajar zonas con acumulaciones localizadas de grasa y complementar planes de remodelación corporal.",
+    ],
   },
   {
     id: "maderoterapia",
@@ -179,10 +202,13 @@ const BONOS = [
     name: "Maderoterapia",
     sessions: "Remodelación Manual",
     price: "Desde 189 €",
-    description: "Tratamiento manual con instrumentos de madera diseñado para estimular la circulación, trabajar la celulitis y favorecer la remodelación corporal.",
+    description:
+      "Tratamiento manual con instrumentos de madera diseñado para estimular la circulación, trabajar la celulitis y favorecer la remodelación corporal.",
     duration: "60 min",
     pricingDetails: ["Bono 4 sesiones: 189 €", "Bono 8 sesiones: 360 €"],
-    terms: ["Un protocolo corporal completo que combina masaje y diferentes maniobras de maderoterapia para trabajar el tejido de forma progresiva."],
+    terms: [
+      "Un protocolo corporal completo que combina masaje y diferentes maniobras de maderoterapia para trabajar el tejido de forma progresiva.",
+    ],
   },
   {
     id: "presoterapia",
@@ -190,10 +216,13 @@ const BONOS = [
     name: "Presoterapia",
     sessions: "Drenaje y Circulación",
     price: "Desde 150 €",
-    description: "Tratamiento de drenaje que ayuda a aliviar la sensación de piernas cansadas, favorecer la circulación y reducir la retención de líquidos.",
+    description:
+      "Tratamiento de drenaje que ayuda a aliviar la sensación de piernas cansadas, favorecer la circulación y reducir la retención de líquidos.",
     duration: "30 min",
     pricingDetails: ["Bono 6 sesiones: 150 €"],
-    terms: ["Ideal para favorecer el drenaje, aliviar la sensación de pesadez y acompañar otros tratamientos corporales."],
+    terms: [
+      "Ideal para favorecer el drenaje, aliviar la sensación de pesadez y acompañar otros tratamientos corporales.",
+    ],
   },
 ];
 
@@ -229,7 +258,7 @@ export default function Bonos() {
           stagger: 0.1,
           duration: 0.6,
           ease: "power2.out",
-        }
+        },
       );
     });
 
@@ -247,7 +276,8 @@ export default function Bonos() {
           </h2>
           <p className="bonosDesc">
             Programas pensados para trabajar la firmeza y mantener resultados de
-            forma progresiva. Recomendamos la opción ideal según las necesidades de tu piel.
+            forma progresiva. Recomendamos la opción ideal según las necesidades
+            de tu piel.
           </p>
 
           {/* PESTAÑAS PRINCIPALES */}
@@ -271,12 +301,17 @@ export default function Bonos() {
 
             return (
               <div key={bono.id} className="bonoCardContainer">
-                <div className={`flipCardInner ${isFlipped ? "isFlipped" : ""}`}>
-                  
+                <div
+                  className={`flipCardInner ${isFlipped ? "isFlipped" : ""}`}
+                >
                   {/* CARA DELANTERA STRICTA: SOLO NOMBRE, SESIONES Y PRECIO */}
-                  <div className={`cardFront bonoCard ${bono.featured ? "cardFeatured" : "cardNormal"}`}>
+                  <div
+                    className={`cardFront bonoCard ${bono.featured ? "cardFeatured" : "cardNormal"}`}
+                  >
                     {bono.badge && (
-                      <span className={`tagPopular ${bono.featured ? "goldTag" : ""}`}>
+                      <span
+                        className={`tagPopular ${bono.featured ? "goldTag" : ""}`}
+                      >
                         {bono.badge}
                       </span>
                     )}
@@ -302,20 +337,34 @@ export default function Bonos() {
                   </div>
 
                   {/* CARA TRASERA: DESCRIPCIÓN, DURACIÓN, OPCIONES Y CONDICIONES */}
-                  <div className={`cardBack bonoCard ${bono.featured ? "cardFeatured" : "cardNormal"}`}>
+                  <div
+                    className={`cardBack bonoCard ${bono.featured ? "cardFeatured" : "cardNormal"}`}
+                  >
                     <div className="backContent">
                       <h4 className="backTermsTitle">Incluye & Detalles</h4>
 
                       {/* Descripción corta si existe */}
                       {bono.description && (
-                        <p style={{ fontSize: "1rem", marginBottom: "8px", opacity: 0.9 }}>
+                        <p
+                          style={{
+                            fontSize: "1rem",
+                            marginBottom: "8px",
+                            opacity: 0.9,
+                          }}
+                        >
                           {bono.description}
                         </p>
                       )}
 
                       {/* Duración si aplica */}
                       {bono.duration && (
-                        <p style={{ fontSize: "2rem", fontWeight: "600", marginBottom: "8px" }}>
+                        <p
+                          style={{
+                            fontSize: "2rem",
+                            fontWeight: "600",
+                            marginBottom: "8px",
+                          }}
+                        >
                           ⏱ Duración: {bono.duration} por sesión
                         </p>
                       )}
@@ -334,7 +383,9 @@ export default function Bonos() {
                         <div className="backOptionsWrapper">
                           {bono.options.map((opt, idx) => (
                             <div key={idx} style={{ marginBottom: "8px" }}>
-                              <strong style={{ fontSize: "1rem" }}>{opt.title}</strong>
+                              <strong style={{ fontSize: "1rem" }}>
+                                {opt.title}
+                              </strong>
                               <ul className="termsList">
                                 {opt.items.map((item, i) => (
                                   <li key={i}>• {item}</li>
@@ -349,16 +400,26 @@ export default function Bonos() {
                       {bono.pricingDetails && (
                         <ul className="termsList">
                           {bono.pricingDetails.map((p, idx) => (
-                            <li key={idx} style={{ fontWeight: "600" }}>✓ {p}</li>
+                            <li key={idx} style={{ fontWeight: "600" }}>
+                              ✓ {p}
+                            </li>
                           ))}
                         </ul>
                       )}
 
                       {/* Términos o notas de valoración previa */}
                       {bono.terms && (
-                        <div style={{ marginTop: "6px", fontSize: "0.82rem", opacity: 0.85 }}>
+                        <div
+                          style={{
+                            marginTop: "6px",
+                            fontSize: "0.82rem",
+                            opacity: 0.85,
+                          }}
+                        >
                           {bono.terms.map((term, index) => (
-                            <p key={index} style={{ margin: "2px 0" }}>{term}</p>
+                            <p key={index} style={{ margin: "2px 0" }}>
+                              {term}
+                            </p>
                           ))}
                         </div>
                       )}
@@ -382,7 +443,6 @@ export default function Bonos() {
                       </a>
                     </div>
                   </div>
-
                 </div>
               </div>
             );
@@ -390,13 +450,19 @@ export default function Bonos() {
         </div>
 
         {/* FRASE FINAL SOLICITADA EN CORPORALES */}
-        {activeMainTab === "corporales" && (
+        {
           <div style={{ textAlign: "center", marginTop: "32px" }}>
-            <p style={{ fontStyle: "italic", opacity: 0.85, fontSize: "1.05rem" }}>
+            <p
+              style={{
+                fontStyle: "italic",
+                opacity: 0.85,
+                fontSize: "1.05rem",
+              }}
+            >
               Cuidados continuados para potenciar tus resultados
             </p>
           </div>
-        )}
+        }
       </div>
     </section>
   );
