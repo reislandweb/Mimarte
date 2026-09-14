@@ -41,7 +41,7 @@ const SERVICES = {
       img: "/images/services/lumina-c.jpg",
       benefits:
         "Acción antioxidante, máxima luminosidad e hidratación profunda frente al envejecimiento.",
-      desc: "Lumina C es un tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro. El resultado es un rostro más fresco, uniforme y naturally radiante.",
+      desc: "Lumina C es un tratamiento facial manual con acción antioxidante que revitaliza la piel, aporta luminosidad e hidratación y ayuda a protegerla frente al envejecimiento prematuro. El resultado es un rostro más fresco, uniforme y naturalmente radiante.",
     },
     {
       title: "Retinol Repair",
@@ -264,13 +264,18 @@ const SERVICES = {
 export default function Treatments() {
   const [activeTab, setActiveTab] = useState("faciales");
   const [selectedBodyArea, setSelectedBodyArea] = useState("todos");
+  const [flippedCardKey, setFlippedCardKey] = useState(null);
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
     setSelectedBodyArea("todos");
+    setFlippedCardKey(null);
   };
 
-  // Filtrado de servicios
+  const handleCardToggle = (cardKey) => {
+    setFlippedCardKey((prevKey) => (prevKey === cardKey ? null : cardKey));
+  };
+
   const displayedServices = SERVICES[activeTab].filter((service) => {
     if (
       activeTab === "corporales" &&
@@ -285,13 +290,11 @@ export default function Treatments() {
   return (
     <section id="tratamientos" className="treatmentsSection">
       <div className="treatmentsContainer">
-        {/* Cabecera */}
         <div className="treatmentsHeader">
           <span className="treatmentsSubtitle">NUESTROS SERVICIOS</span>
           <h2 className="treatmentsTitle">Tratamientos y Bienestar</h2>
         </div>
 
-        {/* Categorías */}
         <div className="treatmentsTabs">
           {CATEGORIES.map((cat) => (
             <button
@@ -304,129 +307,138 @@ export default function Treatments() {
           ))}
         </div>
 
-        {/* Grid de Tarjetas 3D */}
         <div className="treatmentsGrid">
           {displayedServices.length > 0 ? (
-            displayedServices.map((service, idx) => (
-              <div
-                key={`${activeTab}-${idx}`}
-                className={`flipCardContainer ${service.isGold ? "goldCard" : ""}`}
-              >
-                <div className="flipCardInner">
-                  {/* ── CARA DELANTERA ── */}
-                  <div className="cardFront">
-                    {service.isGold && (
-                      <div className="goldBadge">★ Tratamiento Estrella</div>
-                    )}
+            displayedServices.map((service, idx) => {
+              const cardKey = `${activeTab}-${idx}`;
+              const isFlipped = flippedCardKey === cardKey;
 
-                    <div className="cardFrontBody">
-                      <div className="frontHeader">
-                        <h3 className="cardTitle">{service.title}</h3>
-                        <span className="cardPrice">{service.price}</span>
-                      </div>
-
-                      {service.duration && (
-                        <span className="cardMeta">
-                          ⏱ Duración: {service.duration}
-                        </span>
+              return (
+                <div
+                  key={cardKey}
+                  className={`flipCardContainer ${
+                    service.isGold ? "goldCard" : ""
+                  } ${isFlipped ? "flipped" : ""}`}
+                  onClick={() => handleCardToggle(cardKey)}
+                >
+                  <div className="flipCardInner">
+                    {/* CARA DELANTERA */}
+                    <div className="cardFront">
+                      {service.isGold && (
+                        <div className="goldBadge">★ Tratamiento Estrella</div>
                       )}
 
-                      <div className="benefitsBox">
-                        <span className="benefitsLabel">Beneficios:</span>
-                        <p className="benefitsText">{service.benefits}</p>
-                      </div>
+                      <div className="cardFrontBody">
+                        <div className="frontHeader">
+                          <h3 className="cardTitle">{service.title}</h3>
+                          <span className="cardPrice">{service.price}</span>
+                        </div>
 
-                      <div className="flipHint">
-                        <span>Pasa el ratón o toca para ver descripción</span>
-                        <span className="rotateIcon">🔄</span>
+                        {service.duration && (
+                          <span className="cardMeta">
+                            ⏱ Duración: {service.duration}
+                          </span>
+                        )}
+
+                        <div className="benefitsBox">
+                          <span className="benefitsLabel">Beneficios:</span>
+                          <p className="benefitsText">{service.benefits}</p>
+                        </div>
+
+                        <div className="flipHint">
+                          <span>Pasa el ratón o toca para ver descripción</span>
+                          <span className="rotateIcon">🔄</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* ── CARA TRASERA ── */}
-                  <div className="cardBack">
-                    <h4 className="backTitle">Descripción</h4>
+                    {/* CARA TRASERA */}
+                    <div className="cardBack">
+                      <h4 className="backTitle">Descripción</h4>
 
-                    <div className="scrollDesc">
-                      {/* Si el servicio cuenta con desglose de opciones/precios en la trasera */}
-                      {service.backOptions && (
-                        <div
-                          className="backOptionsWrapper"
-                          style={{ marginBottom: "12px" }}
-                        >
-                          {service.backOptions.map((opt, oIdx) => (
-                            <div
-                              key={oIdx}
-                              style={{
-                                fontSize: "0.95rem",
-                                fontWeight: "700",
-                                color: "#38a3a5",
-                                marginBottom: "4px",
-                              }}
-                            >
-                              ⏱ {opt.duration} · {opt.price}
-                              {opt.zone && (
-                                <div
-                                  style={{
-                                    fontSize: "0.85rem",
-                                    fontWeight: "500",
-                                    color: "#555",
-                                    marginTop: "2px",
-                                  }}
-                                >
-                                  {opt.zone}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <div className="scrollDesc">
+                        {service.backOptions && (
+                          <div
+                            className="backOptionsWrapper"
+                            style={{ marginBottom: "12px" }}
+                          >
+                            {service.backOptions.map((opt, oIdx) => (
+                              <div
+                                key={oIdx}
+                                style={{
+                                  fontSize: "0.95rem",
+                                  fontWeight: "700",
+                                  color: "#38a3a5",
+                                  marginBottom: "4px",
+                                }}
+                              >
+                                ⏱ {opt.duration} · {opt.price}
+                                {opt.zone && (
+                                  <div
+                                    style={{
+                                      fontSize: "0.85rem",
+                                      fontWeight: "500",
+                                      color: "#555",
+                                      marginTop: "2px",
+                                    }}
+                                  >
+                                    {opt.zone}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
 
-                      <p className="fullDesc">{service.desc}</p>
+                        <p className="fullDesc">{service.desc}</p>
 
-                      {service.recommendation && (
-                        <p
-                          className="recommendationText"
-                          style={{
-                            fontSize: "0.82rem",
-                            fontStyle: "italic",
-                            color: "#888",
-                            marginTop: "10px",
-                          }}
-                        >
-                          {service.recommendation}
-                        </p>
-                      )}
+                        {service.recommendation && (
+                          <p
+                            className="recommendationText"
+                            style={{
+                              fontSize: "0.82rem",
+                              fontStyle: "italic",
+                              color: "#888",
+                              marginTop: "10px",
+                            }}
+                          >
+                            {service.recommendation}
+                          </p>
+                        )}
 
-                      {service.hasBonoLink && (
-                        <div className="bonoNoticeBox">
-                          <span className="bonoNoticeTitle">
-                            Opción en Bono:
-                          </span>
-                          <span className="bonoNoticeDetails">
-                            {service.bonoInfo}
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                        {service.hasBonoLink && (
+                          <div className="bonoNoticeBox">
+                            <span className="bonoNoticeTitle">
+                              Opción en Bono:
+                            </span>
+                            <span className="bonoNoticeDetails">
+                              {service.bonoInfo}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
-                    <div className="cardBackActions">
-                      <a
-                        href={getWhatsAppLink(service.title)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bookBtn"
+                      <div
+                        className="cardBackActions"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        Reservar Cita
-                      </a>
-                      <a href="#contacto" className="infoBtn">
-                        + Info
-                      </a>
+                        <a
+                          href={getWhatsAppLink(service.title)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bookBtn"
+                        >
+                          Reservar Cita
+                        </a>
+                        <a href="#contacto" className="infoBtn">
+                          + Info
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p className="noResultsMsg">
               No hay tratamientos disponibles para esta zona.
@@ -434,7 +446,6 @@ export default function Treatments() {
           )}
         </div>
 
-        {/* INTEGRACIÓN DE BODY ZONES: UBICADO DEBAJO DE LOS TRATAMIENTOS CORPORALES */}
         {activeTab === "corporales" && (
           <div className="corporalAreasWrapper">
             <BodyZones

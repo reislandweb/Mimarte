@@ -1740,7 +1740,8 @@
 
 .treatmentsSection {
     padding: 80px 20px;
-    background-color: tra;
+    background-color: transparent;
+    /* Corregido 'tra' */
     width: 100%;
 }
 
@@ -1758,9 +1759,9 @@
     background: #fffdf4;
     display: inline-flex;
     font-size: 12px;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #e9a805;
-    letter-spacing: 0.3em;
     padding: 8px 8px;
     border: 1px solid #e2d8cd;
     border-radius: 30px;
@@ -1786,7 +1787,6 @@
 @media (max-width: 480px) {
     .treatmentsTabs {
         flex-wrap: wrap;
-        /* Permite que si no caben en una fila, bajen limpiamente */
         gap: 6px;
     }
 
@@ -1794,7 +1794,6 @@
         padding: 8px 14px;
         font-size: 0.8rem;
         flex: 1 1 auto;
-        /* Se ajustan proporcionalmente */
         text-align: center;
     }
 }
@@ -1843,7 +1842,6 @@
 .flipCardContainer {
     background-color: transparent;
     height: 420px;
-    /* Aumentamos la altura para acomodar las fotos adecuadamente */
     perspective: 1000px;
 }
 
@@ -1856,7 +1854,9 @@
     transform-style: preserve-3d;
 }
 
-.flipCardContainer:hover .flipCardInner {
+/* Soporte para Hover y estado Flip activo */
+.flipCardContainer:hover .flipCardInner,
+.flipCardContainer.flipped .flipCardInner {
     transform: rotateY(180deg);
 }
 
@@ -1879,6 +1879,13 @@
 /* ── CARA DELANTERA CON FOTO ── */
 .cardFront {
     justify-content: space-between;
+    z-index: 2;
+}
+
+.flipCardContainer:hover .cardFront,
+.flipCardContainer.flipped .cardFront {
+    pointer-events: none;
+    /* Evita que intercepte clics al estar volteada */
 }
 
 .cardImgWrapper {
@@ -1980,6 +1987,7 @@
     background: #fdfbf8;
     border-color: #e6dacd;
     padding: 24px;
+    z-index: 3;
 }
 
 .backTitle {
@@ -1999,8 +2007,9 @@
 }
 
 .fullDesc {
-    font-size: 20px;
-    line-height: 1.1;
+    font-size: 16px;
+    /* Ajustado de 20px a 16px para mejor lectura */
+    line-height: 1.35;
     color: #181313;
     font-weight: 500;
     margin: 0 0 12px 0;
@@ -2028,6 +2037,10 @@
 .cardBackActions {
     display: flex;
     gap: 10px;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    /* Asegura recepción de clics */
 }
 
 .bookBtn {
@@ -2040,6 +2053,7 @@
     border-radius: 8px;
     font-size: 13px;
     font-weight: 500;
+    cursor: pointer;
     transition: background 0.3s ease;
 }
 
@@ -2058,6 +2072,7 @@
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 

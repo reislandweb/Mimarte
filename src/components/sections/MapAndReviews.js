@@ -37,15 +37,14 @@ export default function MapAndReviews() {
         {/* BLOQUE DERECHO: MINIMAPA DE GOOGLE */}
         <div className="mapBlock">
           <iframe
-            src="https://maps.google.com/maps?q=Mimarte%20Est%C3%A9tica,%20Av.%20Fco.%20de%20Goya,%2072,%20Local%2011,%2050005%20Zaragoza&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.59563710461!2d-0.8956020234472846!3d41.64576227992824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59153e271cf705%3A0xa48c8e85c96edfd2!2sMimarte%20Est%C3%A9tica!5e1!3m2!1ses!2ses!4v1789397355423!5m2!1ses!2ses"
             width="100%"
-            height="100%"
+            height="450"
             style={{ border: 0 }}
-            allowFullScreen=""
+            allowFullScreen
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="googleMapIframe"
-          ></iframe>
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </div>
       </div>
     </section>
