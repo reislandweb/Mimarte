@@ -46,6 +46,22 @@
     margin-bottom: 40px;
 }
 
+@media (max-width: 480px) {
+    .treatmentsTabs {
+        flex-wrap: wrap;
+        /* Permite que si no caben en una fila, bajen limpiamente */
+        gap: 6px;
+    }
+
+    .tabBtn {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        flex: 1 1 auto;
+        /* Se ajustan proporcionalmente */
+        text-align: center;
+    }
+}
+
 .tabBtn {
     background: #ffffff;
     color: #666;

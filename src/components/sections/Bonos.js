@@ -10,9 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_PHONE = "34641882041";
 
-const getWhatsAppLink = (bonoName, optionDetail = "") => {
-  const detailText = optionDetail ? ` (${optionDetail})` : "";
-  const message = `¡Hola! Me gustaría información o reservar el *${bonoName}*${detailText}.\n\n¿Podríais darme disponibilidad de citas?`;
+const getWhatsAppBonoLink = (bonoTitle) => {
+  const message = `¡Hola! Me gustaría pedir información/cita para el bono: *${bonoTitle}*.`;
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 };
 
@@ -332,7 +331,7 @@ export default function Bonos() {
                       onClick={() => toggleFlip(bono.id)}
                       className="btnFlipTrigger"
                     >
-                      Ver condiciones y opciones 🔄
+                      + Info
                     </button>
                   </div>
 
@@ -360,7 +359,7 @@ export default function Bonos() {
                       {bono.duration && (
                         <p
                           style={{
-                            fontSize: "2rem",
+                            fontSize: "0.95rem",
                             fontWeight: "600",
                             marginBottom: "8px",
                           }}
@@ -378,7 +377,7 @@ export default function Bonos() {
                         </ul>
                       )}
 
-                      {/* Caso B: Opciones (Opción 1, Opción 2 o por Zonas/Minutos) */}
+                      {/* Caso B: Opciones */}
                       {bono.options && (
                         <div className="backOptionsWrapper">
                           {bono.options.map((opt, idx) => (
@@ -428,16 +427,20 @@ export default function Bonos() {
                     <div className="cardActionButtons">
                       <button
                         type="button"
-                        onClick={() => toggleFlip(bono.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleFlip(bono.id);
+                        }}
                         className="btnBono btnBackTurn"
                       >
                         ← Volver
                       </button>
                       <a
-                        href={getWhatsAppLink(bono.name)}
+                        href={getWhatsAppBonoLink(bono.name)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btnBono btnWhatsapp"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         Reservar WhatsApp
                       </a>
@@ -449,20 +452,18 @@ export default function Bonos() {
           })}
         </div>
 
-        {/* FRASE FINAL SOLICITADA EN CORPORALES */}
-        {
-          <div style={{ textAlign: "center", marginTop: "32px" }}>
-            <p
-              style={{
-                fontStyle: "italic",
-                opacity: 0.85,
-                fontSize: "1.05rem",
-              }}
-            >
-              Cuidados continuados para potenciar tus resultados
-            </p>
-          </div>
-        }
+        {/* FRASE FINAL */}
+        <div style={{ textAlign: "center", marginTop: "32px" }}>
+          <p
+            style={{
+              fontStyle: "italic",
+              opacity: 0.85,
+              fontSize: "1.05rem",
+            }}
+          >
+            Cuidados continuados para potenciar tus resultados
+          </p>
+        </div>
       </div>
     </section>
   );
